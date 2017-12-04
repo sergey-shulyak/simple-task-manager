@@ -15,7 +15,7 @@ const config = {
         ]
     },
     devServer: {
-        contentBase: [path.join(__dirname, "public")],
+        contentBase: [path.join(__dirname, 'public')],
         inline: true
     }
 }
