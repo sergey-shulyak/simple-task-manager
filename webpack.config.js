@@ -15,9 +15,9 @@ const config = {
     ]
   },
   devServer: {
-    contentBase: [path.join(__dirname, 'public')],
-    inline: true
-  }
+    contentBase: [path.join(__dirname, 'public')]
+  },
+  devtool: 'inline-source-map'
 };
 
 module.exports = config;
