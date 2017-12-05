@@ -11,13 +11,11 @@ const INITIAL_STATE = {};
 
 const sagaMiddleware = createSagaMiddleware();
 
-/* eslint-disable no-underscore-dangle */
 const store = createStore(
   rootReducer,
   INITIAL_STATE,
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
-/* eslint-enable */
 
 sagaMiddleware.run(rootSaga);
 
