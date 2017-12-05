@@ -1,12 +1,12 @@
 import { handleActions, combineActions } from 'redux-actions';
-import { fetchBoardListSuccess, fetchBoardListError } from '../../actions/boardListPage';
+import { fetchBoardsSuccess, fetchBoardsError } from '../../actions/boardListPage';
 
 const defaultState = { boards: [] };
 
 const reducer = handleActions({
   [combineActions(
-    fetchBoardListSuccess,
-    fetchBoardListError
+    fetchBoardsSuccess,
+    fetchBoardsError
   )](state, { payload, error }) {
     return { ...state, boards: error ? [] : payload, error };
   }

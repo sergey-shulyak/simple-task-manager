@@ -9,7 +9,7 @@ function request(method, entity, id, body) {
 
 const BOARDS = 'boards';
 
-export function getBoardList() {
+export function getBoards() {
   return request('GET', BOARDS);
 }
 

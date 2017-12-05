@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import BoardList from './boardList';
 import Board from './boardList/board';
 
-const mapBoardToListElement = boardList =>
-  boardList.map(board => <Board key={board.id} {...board} />);
+const mapBoardsToListElement = boards =>
+  boards.map(board => <Board key={board.id} {...board} />);
 
 class BoardListPage extends Component {
   componentDidMount() {
-    this.props.fetchBoardList();
+    this.props.fetchBoards();
   }
 
   render() {
-    const { boardList } = this.props;
+    const { boards } = this.props;
     return (
       <div className="board-list-page">
         <BoardList>
-          {mapBoardToListElement(boardList)}
+          {mapBoardsToListElement(boards)}
         </BoardList>
       </div>
     );
@@ -25,12 +25,12 @@ class BoardListPage extends Component {
 }
 
 BoardListPage.propTypes = {
-  boardList: PropTypes.arrayOf(PropTypes.object),
-  fetchBoardList: PropTypes.func.isRequired
+  boards: PropTypes.arrayOf(PropTypes.object),
+  fetchBoards: PropTypes.func.isRequired
 };
 
 BoardListPage.defaultProps = {
-  boardList: []
+  boards: []
 };
 
 export default BoardListPage;
