@@ -13,7 +13,12 @@ const config = {
   module: {
     rules: [
       { test: /\.js$/, include: SRC_DIR, use: 'babel-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader' }
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: { failOnError: false }
+      }
     ]
   },
   devServer: {

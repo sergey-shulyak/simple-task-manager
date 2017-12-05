@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
+import { fetchBoardList } from '../../store/actions/boardListPage';
 import BoardListPage from '../../components/boardListPage';
 
-function mapState() {
-  return {};
-}
+const mapState = ({ boards }) => ({ boardList: boards.boards });
 
-function mapDispatch() {
-  return {};
-}
+const mapDispatch = dispatch => ({
+  fetchBoardList: () => dispatch(fetchBoardList())
+});
 
 export default connect(mapState, mapDispatch)(BoardListPage);
