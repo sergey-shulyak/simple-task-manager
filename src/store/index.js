@@ -1,12 +1,24 @@
-import { createStore, combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+/* eslint-disable import/no-extraneous-dependencies */
+import { composeWithDevTools } from 'redux-devtools-extension';
+/* eslint-enable */
+
+import rootReducer from './reducers';
+import rootSaga from '../sagas';
 
 const INITIAL_STATE = {};
 
+const sagaMiddleware = createSagaMiddleware();
+
 /* eslint-disable no-underscore-dangle */
-const store = createStore(combineReducers({
-  routing: routerReducer
-}), INITIAL_STATE, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+  rootReducer,
+  INITIAL_STATE,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
 /* eslint-enable */
+
+sagaMiddleware.run(rootSaga);
 
 export default store;
