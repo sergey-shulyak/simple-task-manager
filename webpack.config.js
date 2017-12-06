@@ -13,17 +13,11 @@ const config = {
   module: {
     rules: [
       { test: /\.js$/, include: SRC_DIR, use: 'babel-loader' },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: { failOnError: false }
-      }
+      { test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader' }
     ]
   },
   devServer: {
-    contentBase: [path.join(__dirname, 'public')],
-    historyApiFallback: true
+    contentBase: [path.join(__dirname, 'public')]
   },
   devtool: 'inline-source-map'
 };
