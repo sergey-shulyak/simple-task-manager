@@ -26,6 +26,7 @@
     "react/jsx-indent": [
       "enabled",
       2
-    ]
+    ],
+    "jsx-a11y/anchor-is-valid": 0
   }
 }
