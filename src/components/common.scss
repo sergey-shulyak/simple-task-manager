@@ -1,0 +1,25 @@
+$default-font: Sans-Serif;
+$primary-color: #1976D2;
+$secondaty-color: #777;
+$border-color: #E0E0E0;
+$shadow-color: #AAA;
+
+.bolder {
+  font-weight: bolder;
+}
+
+.link-button {
+  padding: 1em;
+
+  border: 1px solid $border-color;
+  border-radius: 5px;
+
+  font-family: $default-font;
+  text-decoration: none;
+  color: $primary-color;
+
+  &:hover {
+    box-shadow: 0 0 20px $shadow-color;
+    transition: box-shadow 0.1s ease-in-out;
+  }
+}

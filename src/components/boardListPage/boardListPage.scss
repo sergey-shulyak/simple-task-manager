@@ -1,0 +1,9 @@
+@import '../common.scss';
+
+#board-list-page {
+  .back-link {
+    @extend .link-button;
+    margin: 0 1em;
+    float: left;    
+  }
+}

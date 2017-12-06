@@ -1,0 +1,32 @@
+@import '../../../common';
+
+.board {
+  margin: 1em auto;
+  padding: 1em;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+
+  width: 50%;
+  min-width: max-content;
+  
+  font-family: $default-font;
+
+  &:hover {
+    box-shadow: 0 0 20px $shadow-color;
+    transition: box-shadow 0.1s ease-in-out;
+  }
+
+  .title {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  .description {
+    margin-bottom: 0;
+    
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: $secondaty-color;
+  }
+}

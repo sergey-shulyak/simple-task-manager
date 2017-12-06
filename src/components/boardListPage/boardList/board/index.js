@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Board = ({ title, description }) => (
+import './board.scss';
+
+const Board = ({ title, description, url }) => (
   <div className="board">
-    <h3>{title}</h3>
-    <p>{description}</p>
+    <Link to={url} className="title">{title}</Link>
+    <p className="description">{description}</p>
   </div>
 );
 
 Board.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string
+  description: PropTypes.string,
+  url: PropTypes.string.isRequired
 };
 
 Board.defaultProps = {

@@ -18,6 +18,10 @@ const config = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
         options: { failOnError: false }
+      },
+      {
+        test: /\.(s?)css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
