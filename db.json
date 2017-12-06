@@ -1,0 +1,19 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Sample Board 1",
+      "description": "Super importand project 1 board"
+    },
+    {
+      "id": 2,
+      "title": "Sample Board 2",
+      "description": "Super importand project 2 board"
+    },
+    {
+      "id": 3,
+      "title": "Sample Board 3",
+      "description": "Super importand project 3 board"
+    }
+  ]
+}
