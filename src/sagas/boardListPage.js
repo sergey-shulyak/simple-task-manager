@@ -1,9 +1,9 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-import { getBoards } from '../../api';
-import { fetchBoardsSuccess, fetchBoardsError } from '../../store/actions/boardListPage';
+import { getBoards } from '../api/boards';
+import { fetchBoardsSuccess, fetchBoardsError } from '../store/actions/boardListPage';
 
-import * as actions from '../../store/actionTypes/boardListPage';
+import * as actions from '../store/actionTypes/boardListPage';
 
 function* fetchBoards() {
   try {
