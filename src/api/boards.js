@@ -1,26 +1,28 @@
-import { API_ROOT } from '../../properties.json';
+import request from './utils';
 
-const headers = { 'Content-Type': 'application/json' };
-
-function request(method, entity, id, body) {
-  return fetch(`${API_ROOT}/${entity}/${id || ''}`, { method, headers, body })
-    .then(response => response.json());
-}
-
-const BOARDS = 'boards';
+const entity = 'boards';
 
 export function getBoards() {
-  return request('GET', BOARDS);
+  return request({ entity });
 }
 
 export function getBoard(id) {
-  return request('GET', BOARDS, id);
+  return request({ entity, id });
+}
+
+export function createBoard(board) {
+  return request({ method: 'POST', entity, body: board });
 }
 
 export function updateBoard(board) {
-  return request('PUT', BOARDS, board.id, JSON.stringify(board));
+  return request({
+    method: 'PUT',
+    entity,
+    id: board.id,
+    body: board
+  });
 }
 
 export function deleteBoard(id) {
-  return request('DELETE', BOARDS, id);
+  return request({ method: 'DELETE', entity, id });
 }

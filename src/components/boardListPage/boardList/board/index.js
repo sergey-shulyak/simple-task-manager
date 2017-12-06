@@ -10,7 +10,11 @@ const Board = ({ title, description }) => (
 
 Board.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string
+};
+
+Board.defaultProps = {
+  description: ''
 };
 
 export default Board;
