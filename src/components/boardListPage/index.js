@@ -5,11 +5,8 @@ import { Link } from 'react-router-dom';
 import BoardList from './boardList';
 import Board from './boardList/board';
 
-const mapBoardsToListElement = boards =>
-  boards.map(board => <Board key={board.id} {...board} />);
-
 class BoardListPage extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchBoards();
   }
 
@@ -19,7 +16,7 @@ class BoardListPage extends Component {
       <div className="board-list-page">
         <Link to="/">Go back</Link>
         <BoardList>
-          {mapBoardsToListElement(boards)}
+          {boards.map(board => <Board key={board.id} {...board} />)}
         </BoardList>
       </div>
     );

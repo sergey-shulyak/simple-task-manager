@@ -1,16 +1,16 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
 import { getBoards } from '../api/boards';
-import { fetchBoardsSuccess, fetchBoardsError } from '../store/actions/boardListPage';
+import { saveBoardsToStore, saveBoardsError } from '../store/actions/boards';
 
-import * as actions from '../store/actionTypes/boardListPage';
+import * as actions from '../store/actionTypes/boards';
 
 function* fetchBoards() {
   try {
     const boards = yield call(getBoards);
-    yield put(fetchBoardsSuccess(boards));
+    yield put(saveBoardsToStore(boards));
   } catch (error) {
-    yield put(fetchBoardsError(error));
+    yield put(saveBoardsError(error));
   }
 }
 
