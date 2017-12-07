@@ -1,0 +1,22 @@
+@import './common';
+
+.home-page {
+  margin: auto;
+  padding: 1em;
+
+  width: 50%;
+  height: 100%;
+  min-width: max-content;
+  
+  font-family: $default-font;
+  text-align: center;
+
+  &__title {
+    font-weight: lighter;
+    margin-bottom: 1em;
+  }
+
+  &__accent {
+    font-weight: bolder;
+  }
+}

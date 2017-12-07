@@ -1,0 +1,16 @@
+@import '../common.scss';
+
+.board-list-page {
+  &__back-link {
+    margin: 0 1em;
+    float: left;    
+  }
+
+  &__board {
+    margin: 1em auto;
+    padding: 1em;
+
+    width: 50%;
+    min-width: max-content;
+  }
+}

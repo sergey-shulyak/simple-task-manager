@@ -1,0 +1,29 @@
+@import '../../../common';
+
+.board {
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  
+  font-family: $default-font;
+
+  transition: border-color 0.1s ease-in-out;
+
+  &:hover {
+    border-color: $border-color-dark;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  &__title {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  &__description {
+    margin-bottom: 0;
+    
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: $secondaty-color;
+  }
+}
