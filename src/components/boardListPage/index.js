@@ -15,11 +15,16 @@ class BoardListPage extends Component {
   render() {
     const { boards, match } = this.props;
     return (
-      <div id="board-list-page">
-        <Link to="/" className="back-link">Go back</Link>
+      <div className="board-list-page">
+        <Link to="/" className="link-button board-list-page__back-link">Go back</Link>
         <BoardList>
-          {boards.map(board =>
-            <Board key={board.id} url={`${match.url}/${board.id}`} {...board} />)}
+          {boards.map(board => (
+            <Board
+              className="board-list-page__board"
+              key={board.id}
+              url={`${match.url}/${board.id}`}
+              {...board}
+            />))}
         </BoardList>
       </div>
     );

@@ -1,13 +1,8 @@
 @import '../../../common';
 
 .board {
-  margin: 1em auto;
-  padding: 1em;
   border: 1px solid $border-color;
   border-radius: 10px;
-
-  width: 50%;
-  min-width: max-content;
   
   font-family: $default-font;
 
@@ -16,13 +11,13 @@
     transition: box-shadow 0.1s ease-in-out;
   }
 
-  .title {
+  &__title {
     font-size: 1.5em;
     text-decoration: none;
     color: $primary-color;
   }
 
-  .description {
+  &__description {
     margin-bottom: 0;
     
     font-size: 1.2em;
