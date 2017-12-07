@@ -3,7 +3,29 @@
     {
       "id": 1,
       "title": "Sample Board 1",
-      "description": "Super important project 1 board"
+      "description": "Super important project 1 board",
+      "columns": [
+        {
+          "id": 11,
+          "title": "To do",
+          "tickets": [
+            {
+              "id": 111,
+              "title": "Implement this page",
+              "description": "Sample task description",
+              "priority": "high",
+              "type": "feature"
+            },
+            {
+              "id": 112,
+              "title": "Implement styles for this page",
+              "description": "Sample task description",
+              "priority": "medium",
+              "type": "feature"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 2,

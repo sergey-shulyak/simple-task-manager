@@ -14,6 +14,9 @@ class BoardListPage extends Component {
 
   render() {
     const { boards, match } = this.props;
+
+    console.dir(boards);
+
     return (
       <div className="board-list-page">
         <Link to="/" className="link-button board-list-page__back-link">Go back</Link>

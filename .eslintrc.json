@@ -20,7 +20,7 @@
           "consistent": true
         },
         "ObjectPattern": {
-          "minProperties": 5,
+          "minProperties": 6,
           "consistent": true
         }
       }

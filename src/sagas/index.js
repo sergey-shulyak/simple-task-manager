@@ -1,8 +1,8 @@
 import { fork } from 'redux-saga/effects';
-import boardListPage from './boardListPage';
+import boards from './boards';
 
 export default function* rootSaga() {
   yield [
-    fork(boardListPage)
+    fork(boards)
   ];
 }
