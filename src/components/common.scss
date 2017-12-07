@@ -2,6 +2,7 @@ $default-font: Sans-Serif;
 $primary-color: #1976D2;
 $secondaty-color: #777;
 $border-color: #E0E0E0;
+$border-color-dark: #212121;
 $shadow-color: #AAA;
 
 .link-button {
@@ -14,8 +15,10 @@ $shadow-color: #AAA;
   text-decoration: none;
   color: $primary-color;
 
+  transition: border-color 0.2s ease-in-out;
+
   &:hover {
-    box-shadow: 0 0 20px $shadow-color;
-    transition: box-shadow 0.1s ease-in-out;
+    border-color: $border-color-dark;
+    transition: border-color 0.2s ease-in-out;
   }
 }

@@ -6,7 +6,7 @@ import './app.scss';
 const App = () => (
   <div className="home-page">
     <h1 className="home-page__title">
-      Yet another <span className="home-page__title home-page__title_accented">Task manager</span>
+      Yet another <span className="home-page__accent">Task manager</span>
     </h1>
     <Link to="/boards" className="link-button">
       View boards
