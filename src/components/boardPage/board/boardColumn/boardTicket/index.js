@@ -19,16 +19,18 @@ const BoardTicket = ({ title, description, priority, type, url }) => (
 );
 
 BoardTicket.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   description: PropTypes.string,
   priority: PropTypes.oneOf(['high', 'medium', 'low']),
-  type: PropTypes.oneOf(['feature', 'task', 'bug']).isRequired,
+  type: PropTypes.oneOf(['feature', 'task', 'bug']),
   url: PropTypes.string.isRequired
 };
 
 BoardTicket.defaultProps = {
+  title: '',
   description: '',
-  priority: 'medium'
+  priority: 'medium',
+  type: ''
 };
 
 export default BoardTicket;

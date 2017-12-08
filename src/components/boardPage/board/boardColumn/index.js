@@ -8,8 +8,9 @@ const BoardColumn = ({ title, tickets, className, match }) => (
     <h2 className="board-column__title">{title}</h2>
     {tickets.map(ticket => (
       <BoardTicket
+        key={ticket.id}
         className="board-column__ticket"
-        url={`${match.url}/${ticket.id}`}
+        url={`${match.url}/tickets/${ticket.id}`}
         {...ticket}
       />))}
   </div>

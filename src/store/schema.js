@@ -1,9 +1,18 @@
 import { schema } from 'normalizr';
 
-const ticket = new schema.Entity('tickets');
-const column = new schema.Entity('columns', { tickets: [ticket] });
-const board = new schema.Entity('boards', { columns: [column] });
+const ticketSchema = new schema.Entity('tickets');
+const columnSchema = new schema.Entity('columns');
+const boardSchema = new schema.Entity('boards', { columns: [columnSchema] });
 
-const boardList = [board];
+const boardsSchema = [boardSchema];
+const columnsSchema = [columnSchema];
+const ticketsSchema = [ticketSchema];
 
-export { boardList, board, column, ticket };
+export {
+  boardsSchema,
+  columnsSchema,
+  ticketsSchema,
+  boardSchema,
+  columnSchema,
+  ticketSchema
+};

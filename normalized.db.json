@@ -1,0 +1,81 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Sample Board 1",
+      "description": "Super important project 1 board",
+      "columns": [
+        1
+      ],
+      "tickets": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Sample Board 2",
+      "description": "Super important project 2 board"
+    },
+    {
+      "id": 3,
+      "title": "Sample Board 3",
+      "description": "Super important project 3 board"
+    }
+  ],
+  "columns": [
+    {
+      "id": 1,
+      "title": "To do",
+      "boardId": 1
+    },
+    {
+      "id": 2,
+      "title": "In progress",
+      "boardId": 1
+    },
+    {
+      "id": 3,
+      "title": "Done",
+      "boardId": 1
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "title": "Implement this page",
+      "description": "Sample task description",
+      "priority": "high",
+      "type": "feature",
+      "status": "To do",
+      "boardId": 1
+    },
+    {
+      "id": 2,
+      "title": "Implement styles for this page",
+      "description": "Sample task description",
+      "priority": "high",
+      "type": "feature",
+      "status": "To do",
+      "boardId": 1
+    },
+    {
+      "id": 3,
+      "title": "Do something interesting",
+      "description": "Sample task description",
+      "priority": "low",
+      "type": "feature",
+      "status": "In progress",
+      "boardId": 1
+    },
+    {
+      "id": 4,
+      "title": "Normalize store",
+      "description": "Sample task description",
+      "priority": "medium",
+      "type": "feature",
+      "status": "Done",
+      "boardId": 1
+    }
+  ]
+}

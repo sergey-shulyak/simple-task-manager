@@ -15,7 +15,7 @@ class BoardListPage extends Component {
   render() {
     const { boards, match } = this.props;
 
-    console.dir(boards);
+    // console.dir(boards);
 
     return (
       <div className="board-list-page">

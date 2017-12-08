@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import boardListPageReducer from './boards';
+import entities from './entities';
 
 const rootReducer = combineReducers({
   router: routerReducer,
-  boards: boardListPageReducer
+  entities
 });
 
 export default rootReducer;
