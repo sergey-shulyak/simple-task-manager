@@ -5,7 +5,7 @@ const defaultState = {};
 
 const boardsReducer = handleActions({
   [combineActions(actions.saveBoardsToStore, actions.saveBoardsError)](state, { payload, error }) {
-    return error ? defaultState : payload;
+    return error || !payload ? defaultState : payload;
   },
   [actions.saveBoardToStore](state, { payload }) {
     return payload || defaultState;

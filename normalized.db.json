@@ -5,7 +5,18 @@
       "title": "Sample Board 1",
       "description": "Super important project 1 board",
       "columns": [
-        1
+        {
+          "id": 1,
+          "title": "To do"
+        },
+        {
+          "id": 2,
+          "title": "In progress"
+        },
+        {
+          "id": 3,
+          "title": "Done"
+        }
       ],
       "tickets": [
         1,
@@ -21,23 +32,6 @@
       "id": 3,
       "title": "Sample Board 3",
       "description": "Super important project 3 board"
-    }
-  ],
-  "columns": [
-    {
-      "id": 1,
-      "title": "To do",
-      "boardId": 1
-    },
-    {
-      "id": 2,
-      "title": "In progress",
-      "boardId": 1
-    },
-    {
-      "id": 3,
-      "title": "Done",
-      "boardId": 1
     }
   ],
   "tickets": [

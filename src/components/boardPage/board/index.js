@@ -19,9 +19,13 @@ const Board = ({ title, columns, tickets, match }) => (
 
 Board.propTypes = {
   title: PropTypes.string.isRequired,
-  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
+  columns: PropTypes.arrayOf(PropTypes.object),
   tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.shape({ url: PropTypes.string }).isRequired
+};
+
+Board.defaultProps = {
+  columns: []
 };
 
 export default Board;

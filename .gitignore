@@ -3,3 +3,6 @@ node_modules
 
 # Ignore bundled application
 public/build
+
+# VS Code misc
+.vscode
