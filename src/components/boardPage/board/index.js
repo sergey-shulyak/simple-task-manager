@@ -3,17 +3,21 @@ import PropTypes from 'prop-types';
 
 import BoardColumn from './boardColumn';
 
+import './board.scss';
+
 const Board = ({ title, columns, tickets, match }) => (
   <div className="board">
-    <h2 className="board__title">{title}</h2>
-    {columns.map(column => (
-      <BoardColumn
-        key={column.id}
-        className="board-column__ticket"
-        tickets={tickets.filter(ticket => ticket.status === column.title)}
-        match={match}
-        {...column}
-      />))}
+    <h1 className="board__title">{title}</h1>
+    <div className="board__columns">
+      {columns.map(column => (
+        <BoardColumn
+          key={column.id}
+          className="board__column"
+          tickets={tickets.filter(ticket => ticket.status === column.title)}
+          match={match}
+          {...column}
+        />))}
+    </div>
   </div>
 );
 

@@ -1,0 +1,55 @@
+@import '../../../../common';
+
+.ticket {
+  padding: 1em;
+  padding-bottom: 0;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+
+  color: $secondary-color;
+
+  transition: border-color 0.1s ease-in-out;  
+
+  &:hover {
+    border-color: $border-color-dark;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  &__title {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  &__field {
+    font-weight: bolder;
+  }
+
+  &__type {
+    &_feature {
+      color: $green;
+    }
+
+    &_bug {
+      color: $red;
+    }
+
+    &_task {
+      color: $blue;
+    }
+  }
+
+  &__priority {
+    &_low {
+      color: $green;      
+    }
+
+    &_medium {
+      color: $yellow;
+    }
+
+    &_high {
+      color: $red;
+    }
+  }
+}

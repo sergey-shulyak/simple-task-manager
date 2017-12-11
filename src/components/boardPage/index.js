@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import Board from './board';
 
+import './boardPage.scss';
+
 class BoardPage extends Component {
   componentWillMount() {
     const { board, fetchBoard, fetchTickets, match } = this.props;

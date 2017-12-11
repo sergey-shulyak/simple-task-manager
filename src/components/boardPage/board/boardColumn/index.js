@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 import BoardTicket from './boardTicket';
 
+import './column.scss';
+
 const BoardColumn = ({ title, tickets, className, match }) => (
-  <div className={`board-column ${className}`}>
-    <h2 className="board-column__title">{title}</h2>
+  <div className={`column ${className}`}>
+    <h2 className="column__title">{title}</h2>
     {tickets.map(ticket => (
       <BoardTicket
         key={ticket.id}
-        className="board-column__ticket"
+        className="column__ticket"
         url={`${match.url}/tickets/${ticket.id}`}
         {...ticket}
       />))}

@@ -1,0 +1,31 @@
+@import '../../common';
+
+.board {
+  font-family: $default-font;
+  
+  &__columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-weight: normal;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__column {
+    margin: 1em;
+    margin-top: 0;
+    
+    flex: 1 1 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

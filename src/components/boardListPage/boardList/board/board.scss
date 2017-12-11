@@ -1,6 +1,6 @@
 @import '../../../common';
 
-.board {
+.board-entry {
   border: 1px solid $border-color;
   border-radius: 10px;
   
@@ -24,6 +24,6 @@
     
     font-size: 1.2em;
     font-weight: lighter;
-    color: $secondaty-color;
+    color: $secondary-color;
   }
 }
