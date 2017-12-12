@@ -1,0 +1,17 @@
+@import '../../../common.scss';
+
+.column {
+  &__title {
+    color: $secondary-color;
+    font-weight: lighter;
+    text-align: center;
+  }
+
+  &__ticket {
+    margin-bottom: 1em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

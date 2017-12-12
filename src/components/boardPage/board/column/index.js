@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Ticket from './ticket';
 
+import './column.scss';
+
 const Column = ({ title, tickets, className }) => (
   <div className={`column ${className}`}>
     <h2 className="column__title">{title}</h2>

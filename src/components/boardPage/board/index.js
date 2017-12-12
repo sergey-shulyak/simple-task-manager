@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Column from './column';
 
+import './board.scss';
+
 const Board = ({ title, columns, tickets }) => (
   <div className="board">
     <h1 className="board__title">{title}</h1>

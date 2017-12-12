@@ -1,9 +1,15 @@
 $default-font: Sans-Serif;
-$primary-color: #1976D2;
-$secondaty-color: #777;
+
+$primary-color: #3b78b1;
+$secondary-color: #212121;
+
 $border-color: #E0E0E0;
 $border-color-dark: #212121;
-$shadow-color: #AAA;
+
+$blue: #2993b3;
+$green: #578d57;
+$yellow: #c7be3e;
+$red: #b16262;
 
 .link-button {
   padding: 1em;
@@ -15,7 +21,7 @@ $shadow-color: #AAA;
   text-decoration: none;
   color: $primary-color;
 
-  transition: border-color 0.2s ease-in-out;
+  transition: border-color 0.1s ease-in-out;
 
   &:hover {
     border-color: $border-color-dark;

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { ticketUrl } from '../../../../../utils/urlCreators';
 import { priorityIcons, typeIcons } from '../../../../misc/fontAwesomeIcons';
 
+import './ticket.scss';
+
 const Ticket = ({
   id,
   title,

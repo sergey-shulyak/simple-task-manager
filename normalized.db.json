@@ -66,6 +66,15 @@
       "type": "task",
       "status": "Done",
       "boardId": 1
+    },
+    {
+      "id": 5,
+      "title": "Add CSS hot reload",
+      "description": "Sample task description",
+      "priority": "medium",
+      "type": "task",
+      "status": "To do",
+      "boardId": 1
     }
   ]
 }
