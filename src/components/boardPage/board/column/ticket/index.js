@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { ticketUrl } from '../../../../../utils/urlCreators';
-import * as icons from '../../../../misc/fontAwesomeIcons';
-
-const priorityIcons = {
-  high: icons.highPriorityIcon,
-  medium: icons.mediumPriorityIcon,
-  low: icons.lowPriorityIcon
-};
+import { priorityIcons, typeIcons } from '../../../../misc/fontAwesomeIcons';
 
 const Ticket = ({
   id,
@@ -25,6 +19,7 @@ const Ticket = ({
     <p className="ticket__description">{description}</p>
     <p>
       <span className="ticket__field">Type: </span>
+      <span className="ticket__icon">{typeIcons[type]} </span>
       <span className={`ticket__type ticket__type_${type}`}>{type}</span>
     </p>
     <p>
