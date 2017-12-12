@@ -2,7 +2,7 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 import { normalize } from 'normalizr';
 
 import { getBoards, getBoard } from '../api/boards';
-import { boardsSchema } from '../store/schema';
+import { boardSchema, boardsSchema } from '../store/schema';
 import { saveBoardsToStore, saveBoardsError, saveBoardToStore } from '../store/actions/boards';
 
 import * as actions from '../store/actionTypes/boards';
@@ -18,7 +18,7 @@ function* fetchBoards() {
 
 function* fetchBoardById({ payload: { id } }) {
   const board = yield call(getBoard, id);
-  yield put(saveBoardToStore(normalize(board, boardsSchema)));
+  yield put(saveBoardToStore(normalize(board, boardSchema)));
 }
 
 export default function* () {

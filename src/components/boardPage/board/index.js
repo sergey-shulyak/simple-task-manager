@@ -21,13 +21,15 @@ const Board = ({ title, columns, tickets }) => (
 );
 
 Board.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   columns: PropTypes.arrayOf(PropTypes.object),
-  tickets: PropTypes.arrayOf(PropTypes.object).isRequired
+  tickets: PropTypes.arrayOf(PropTypes.object)
 };
 
 Board.defaultProps = {
-  columns: []
+  title: '',
+  columns: [],
+  tickets: []
 };
 
 export default Board;

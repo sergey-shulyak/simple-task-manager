@@ -2,14 +2,14 @@ const path = require('path');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 require('babel-polyfill');
 
-const BUILD_DIR = path.resolve(__dirname, 'public/build');
+const BUILD_DIR = path.resolve(__dirname, 'dist');
 const SRC_DIR = path.resolve(__dirname, 'src');
 
 const config = {
   entry: ['babel-polyfill', `${SRC_DIR}/index.js`],
   output: {
     path: BUILD_DIR,
-    publicPath: '/build/',
+    publicPath: '/',
     filename: 'app.js'
   },
   module: {
