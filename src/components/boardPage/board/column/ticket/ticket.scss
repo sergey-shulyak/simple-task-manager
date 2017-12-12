@@ -1,5 +1,17 @@
 @import '../../../../common';
 
+$type-colors: (
+  "feature": $green,
+  "task": $blue,
+  "bug": $red
+);
+
+$priority-colors: (
+  "low": $green,
+  "medium": $yellow,
+  "high": $red
+);
+
 .ticket {
   padding: 1em;
   padding-bottom: 0;
@@ -26,30 +38,18 @@
   }
 
   &__type {
-    &_feature {
-      color: $green;
-    }
-
-    &_bug {
-      color: $red;
-    }
-
-    &_task {
-      color: $blue;
+    @each $color-name, $color-code in $type-colors {
+      &_#{$color-name} {
+        color: $color-code;
+      }
     }
   }
 
   &__priority {
-    &_low {
-      color: $green;      
-    }
-
-    &_medium {
-      color: $yellow;
-    }
-
-    &_high {
-      color: $red;
+    @each $color-name, $color-code in $priority-colors {
+      &_#{$color-name} {
+        color: $color-code;
+      }
     }
   }
 }
