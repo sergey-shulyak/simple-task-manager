@@ -11,6 +11,26 @@ $green: #578d57;
 $yellow: #c7be3e;
 $red: #b16262;
 
+@mixin transition($property, $duration, $timing){
+  -webkit-transition: $property $duration $timing;
+     -moz-transition: $property $duration $timing;
+      -ms-transition: $property $duration $timing;
+       -o-transition: $property $duration $timing;
+          transition: $property $duration $timing;
+}
+
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+     -moz-transform: $transforms;
+      -ms-transform: $transforms;
+       -o-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
 .link-button {
   padding: 1em;
 
@@ -21,10 +41,9 @@ $red: #b16262;
   text-decoration: none;
   color: $primary-color;
 
-  transition: border-color 0.1s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
 
   &:hover {
     border-color: $border-color-dark;
-    transition: border-color 0.2s ease-in-out;
   }
 }

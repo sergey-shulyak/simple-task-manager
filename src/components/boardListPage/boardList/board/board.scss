@@ -1,27 +1,31 @@
 @import '../../../common';
 
 .board-entry {
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  
-  font-family: $default-font;
+  text-decoration: none;
 
-  transition: border-color 0.1s ease-in-out;
+  &__content {
+    border: 1px solid $border-color;
+    border-radius: 10px;
 
-  &:hover {
-    border-color: $border-color-dark;
-    transition: border-color 0.2s ease-in-out;
+    font-family: $default-font;
+
+    @include transition(border-color, 0.3s, ease-in-out);
+
+    &:hover {
+      border-color: $border-color-dark;
+    }
   }
 
   &__title {
-    font-size: 1.5em;
-    text-decoration: none;
+    margin-top: 0;
+
+    font-weight: normal;
     color: $primary-color;
   }
 
   &__description {
     margin-bottom: 0;
-    
+
     font-size: 1.2em;
     font-weight: lighter;
     color: $secondary-color;
