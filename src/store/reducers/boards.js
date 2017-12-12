@@ -1,11 +1,14 @@
 import { handleActions, combineActions } from 'redux-actions';
-import { saveBoardsToStore, saveBoardsError } from '../actions/boards';
+import * as actions from '../actions/boards';
 
-const defaultState = [];
+const defaultState = {};
 
 const boardsReducer = handleActions({
-  [combineActions(saveBoardsToStore, saveBoardsError)](state, { payload, error }) {
-    return error ? defaultState : payload;
+  [combineActions(actions.saveBoardsToStore, actions.saveBoardsError)](state, { payload, error }) {
+    return error || !payload ? defaultState : payload;
+  },
+  [actions.saveBoardToStore](state, { payload }) {
+    return payload || defaultState;
   }
 }, defaultState);
 
