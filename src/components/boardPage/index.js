@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash.omit';
 import { Link } from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
+import omit from 'lodash/omit';
 
 import Board from './board';
 import { boardsUrl } from '../../utils/urlCreators';
 
 class BoardPage extends Component {
   componentWillMount() {
-    const { board, fetchBoard, fetchTickets } = this.props;
-    if (!board) {
-      fetchBoard(board.id);
+    const { board, fetchBoard, fetchTickets, match } = this.props;
+
+    if (isEmpty(board)) {
+      fetchBoard(match.params.id);
     }
 
-    fetchTickets(board.id);
+    fetchTickets(match.params.id);
   }
 
   render() {
@@ -34,14 +36,16 @@ class BoardPage extends Component {
 }
 
 BoardPage.propTypes = {
-  board: PropTypes.shape({ title: PropTypes.string }).isRequired,
+  board: PropTypes.shape({ title: PropTypes.string }),
   columns: PropTypes.arrayOf(PropTypes.object),
   tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchBoard: PropTypes.func.isRequired,
-  fetchTickets: PropTypes.func.isRequired
+  fetchTickets: PropTypes.func.isRequired,
+  match: PropTypes.shape({ params: PropTypes.object }).isRequired
 };
 
 BoardPage.defaultProps = {
+  board: {},
   columns: []
 };
 
