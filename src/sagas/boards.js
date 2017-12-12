@@ -4,8 +4,6 @@ import { normalize } from 'normalizr';
 import { getBoards, getBoard } from '../api/boards';
 import { boardsSchema } from '../store/schema';
 import { saveBoardsToStore, saveBoardsError, saveBoardToStore } from '../store/actions/boards';
-// import { fetchColumns } from '../store/actions/columns';
-// import { fetchTickets } from '../store/actions/tickets';
 
 import * as actions from '../store/actionTypes/boards';
 
@@ -21,10 +19,6 @@ function* fetchBoards() {
 function* fetchBoardById({ payload: { id } }) {
   const board = yield call(getBoard, id);
   yield put(saveBoardToStore(normalize(board, boardsSchema)));
-  // yield all([
-  // put(fetchColumns(id)),
-  // put(fetchTickets(id))
-  // ]);
 }
 
 export default function* () {

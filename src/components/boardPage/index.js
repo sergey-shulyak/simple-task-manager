@@ -4,28 +4,28 @@ import omit from 'lodash.omit';
 import { Link } from 'react-router-dom';
 
 import Board from './board';
+import { boardsUrl } from '../../utils/urlCreators';
 
 class BoardPage extends Component {
   componentWillMount() {
-    const { board, fetchBoard, fetchTickets, match } = this.props;
+    const { board, fetchBoard, fetchTickets } = this.props;
     if (!board) {
-      fetchBoard(match.params.id);
+      fetchBoard(board.id);
     }
 
-    fetchTickets(match.params.id);
+    fetchTickets(board.id);
   }
 
   render() {
-    const { board, tickets, match } = this.props;
+    const { board, tickets } = this.props;
 
     return (
       <div className="board-page">
-        <Link to="/boards" className="link-button board-page__back-link">Go back</Link>
+        <Link to={boardsUrl()} className="link-button board-page__back-link">Go back</Link>
         <Board
           className="board-page__board"
           columns={board.columns}
           tickets={tickets}
-          match={match}
           {...omit(board, 'columns', 'tickets')}
         />
       </div>
@@ -38,8 +38,7 @@ BoardPage.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object),
   tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchBoard: PropTypes.func.isRequired,
-  fetchTickets: PropTypes.func.isRequired,
-  match: PropTypes.shape({ params: PropTypes.object }).isRequired
+  fetchTickets: PropTypes.func.isRequired
 };
 
 BoardPage.defaultProps = {
