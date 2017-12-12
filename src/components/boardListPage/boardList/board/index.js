@@ -7,10 +7,12 @@ import { boardUrl } from '../../../../utils/urlCreators';
 import './board.scss';
 
 const Board = ({ id, title, description, className }) => (
-  <div className={`board-entry ${className}`}>
-    <Link to={boardUrl(id)} className="board-entry__title">{title}</Link>
-    <p className="board-entry__description">{description}</p>
-  </div>
+  <Link to={boardUrl(id)} className="board-entry">
+    <div className={`board-entry__content ${className}`}>
+      <h2 className="board-entry__title">{title}</h2>
+      <p className="board-entry__description">{description}</p>
+    </div>
+  </Link>
 );
 
 Board.propTypes = {

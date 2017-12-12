@@ -16,20 +16,22 @@ const Ticket = ({
   boardId,
   className
 }) => (
-  <div className={`ticket ${className}`}>
-    <Link to={ticketUrl(boardId, id)} className="ticket__title">{title}</Link>
-    <p className="ticket__description">{description}</p>
-    <p>
-      <span className="ticket__field">Type: </span>
-      <span className="ticket__icon">{typeIcons[type]} </span>
-      <span className={`ticket__type ticket__type_${type}`}>{type}</span>
-    </p>
-    <p>
-      <span className="ticket__field">Priority: </span>
-      <span className="ticket__icon">{priorityIcons[priority]} </span>
-      <span className={`ticket__priority ticket__priority_${priority}`}>{priority}</span>
-    </p>
-  </div>
+  <Link to={ticketUrl(boardId, id)} className="ticket">
+    <div className={`ticket__content ${className}`}>
+      <h3 className="ticket__title">{title}</h3>
+      <p className="ticket__description">{description}</p>
+      <p>
+        <span className="ticket__field">Type: </span>
+        <span className="ticket__icon">{typeIcons[type]} </span>
+        <span className={`ticket__type ticket__type_${type}`}>{type}</span>
+      </p>
+      <p>
+        <span className="ticket__field">Priority: </span>
+        <span className="ticket__icon">{priorityIcons[priority]} </span>
+        <span className={`ticket__priority ticket__priority_${priority}`}>{priority}</span>
+      </p>
+    </div>
+  </Link>
 );
 
 Ticket.propTypes = {
