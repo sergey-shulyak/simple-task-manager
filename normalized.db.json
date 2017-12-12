@@ -54,7 +54,7 @@
       "title": "Do something interesting",
       "description": "Sample task description",
       "priority": "low",
-      "type": "feature",
+      "type": "bug",
       "status": "In progress",
       "boardId": 1
     },
@@ -63,7 +63,7 @@
       "title": "Normalize store",
       "description": "Sample task description",
       "priority": "medium",
-      "type": "feature",
+      "type": "task",
       "status": "Done",
       "boardId": 1
     },

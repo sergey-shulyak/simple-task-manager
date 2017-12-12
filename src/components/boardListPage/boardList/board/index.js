@@ -2,19 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { boardUrl } from '../../../../utils/urlCreators';
+
 import './board.scss';
 
-const Board = ({ title, description, url, className }) => (
+const Board = ({ id, title, description, className }) => (
   <div className={`board-entry ${className}`}>
-    <Link to={url} className="board-entry__title">{title}</Link>
+    <Link to={boardUrl(id)} className="board-entry__title">{title}</Link>
     <p className="board-entry__description">{description}</p>
   </div>
 );
 
 Board.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  url: PropTypes.string.isRequired,
   className: PropTypes.string
 };
 

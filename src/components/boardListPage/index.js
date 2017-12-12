@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import BoardList from './boardList';
 import Board from './boardList/board';
+import { homeUrl } from '../../utils/urlCreators';
 
 import './boardListPage.scss';
 
@@ -13,19 +14,16 @@ class BoardListPage extends Component {
   }
 
   render() {
-    const { boards, match } = this.props;
-
-    // console.dir(boards);
+    const { boards } = this.props;
 
     return (
       <div className="board-list-page">
-        <Link to="/" className="link-button board-list-page__back-link">Go back</Link>
+        <Link to={homeUrl()} className="link-button board-list-page__back-link">Go back</Link>
         <BoardList>
           {boards.map(board => (
             <Board
               className="board-list-page__board"
               key={board.id}
-              url={`${match.url}/${board.id}`}
               {...board}
             />))}
         </BoardList>
@@ -36,8 +34,7 @@ class BoardListPage extends Component {
 
 BoardListPage.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.object),
-  fetchBoards: PropTypes.func.isRequired,
-  match: PropTypes.shape({ url: PropTypes.string }).isRequired
+  fetchBoards: PropTypes.func.isRequired
 };
 
 BoardListPage.defaultProps = {
