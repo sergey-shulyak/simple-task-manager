@@ -9,10 +9,3 @@ export const { fetchBoards, saveBoardsToStore, saveBoardsError } = createActions
   actions.FETCH_BOARDS,
   actions.SAVE_BOARDS_ERROR
 );
-
-export const { fetchBoard, saveBoardToStore } = createActions(
-  {
-    [actions.SAVE_BOARD_TO_STORE]: ({ entities }) => entities.boards
-  },
-  actions.FETCH_BOARD
-);

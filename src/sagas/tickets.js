@@ -2,14 +2,18 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 import { normalize } from 'normalizr';
 
 import { getTickets } from '../api/tickets';
-import { ticketsSchema } from '../store/schema';
-import { saveTicketsToStore } from '../store/actions/tickets';
+import { ticketListSchema } from '../store/schema';
+import { saveTicketsToStore, saveTicketsError } from '../store/actions/tickets';
 
 import * as actions from '../store/actionTypes/tickets';
 
-function* fetchTickets({ payload: { id } }) {
-  const tickets = yield call(getTickets, id);
-  yield put(saveTicketsToStore(normalize(tickets, ticketsSchema)));
+export function* fetchTickets({ payload: { id } }) {
+  try {
+    const tickets = yield call(getTickets, id);
+    yield put(saveTicketsToStore(normalize(tickets, ticketListSchema)));
+  } catch (error) {
+    yield put(saveTicketsError(error));
+  }
 }
 
 export default function* () {

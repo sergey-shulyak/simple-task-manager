@@ -5,7 +5,9 @@ const defaultState = {};
 
 const ticketsReducer = handleActions({
   [combineActions(saveTicketsToStore, saveTicketsError)](state, { payload, error }) {
-    return error || !payload ? defaultState : payload;
+    return error
+      ? { error: payload.message }
+      : payload || defaultState;
   }
 }, defaultState);
 

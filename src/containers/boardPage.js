@@ -1,17 +1,29 @@
 import { connect } from 'react-redux';
 
-import { fetchBoard } from '../store/actions/boards';
+import { fetchBoards } from '../store/actions/boards';
 import { fetchTickets } from '../store/actions/tickets';
 
 import BoardPage from '../components/boardPage';
 
-const mapState = ({ entities: { boards, tickets } }, { match }) => ({
-  board: boards[match.params.id],
-  tickets: Object.values(tickets)
-});
+const mapState = ({ entities: { boards, tickets } }, { match }) => {
+  if (boards.error) {
+    return { error: boards.error, board: [], tickets: [] };
+  } else if (tickets.error) {
+    return {
+      error: tickets.error,
+      board: boards[match.params.id],
+      tickets: []
+    };
+  }
+
+  return {
+    board: boards[match.params.id],
+    tickets: Object.values(tickets)
+  };
+};
 
 const mapDispatch = dispatch => ({
-  fetchBoard: id => dispatch(fetchBoard({ id })),
+  fetchBoards: id => dispatch(fetchBoards({ id })),
   fetchTickets: id => dispatch(fetchTickets({ id }))
 });
 
