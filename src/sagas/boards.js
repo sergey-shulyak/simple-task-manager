@@ -7,7 +7,7 @@ import { setBoardsError } from '../store/actions/ui';
 import * as actions from '../store/actionTypes/boards';
 
 export function* fetchBoards({ payload = {} }) {
-  const isFetchingSingleBoard = !!payload.id;
+  const isFetchingSingleBoard = Boolean(payload.id);
 
   try {
     const data = isFetchingSingleBoard
