@@ -1,24 +1,22 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { normalize } from 'normalizr';
-import isArray from 'lodash/isArray';
 
 import { getBoard, getBoards } from '../api/boards';
-import { boardSchema, boardListSchema } from '../store/schema';
-import { saveBoardsToStore, saveBoardsError } from '../store/actions/boards';
+import { saveBoardsToStore } from '../store/actions/boards';
+import { setBoardsError } from '../store/actions/ui';
 
 import * as actions from '../store/actionTypes/boards';
 
-export function* fetchBoards({ payload }) {
+export function* fetchBoards({ payload = {} }) {
+  const isFetchingSingleBoard = !!payload.id;
+
   try {
-    const boards = payload
+    const data = isFetchingSingleBoard
       ? yield call(getBoard, payload.id)
       : yield call(getBoards);
 
-    yield isArray(boards)
-      ? put(saveBoardsToStore(normalize(boards, boardListSchema)))
-      : put(saveBoardsToStore(normalize(boards, boardSchema)));
+    yield put(saveBoardsToStore(data));
   } catch (error) {
-    yield put(saveBoardsError(error));
+    yield put(setBoardsError(error));
   }
 }
 

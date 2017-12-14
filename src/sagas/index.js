@@ -1,10 +1,8 @@
 import { fork } from 'redux-saga/effects';
-import boards from './boards';
-import tickets from './tickets';
+import entities from './entities';
 
 export default function* rootSaga() {
   yield [
-    fork(boards),
-    fork(tickets)
+    fork(entities)
   ];
 }

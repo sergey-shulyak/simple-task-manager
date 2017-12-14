@@ -37,18 +37,4 @@ describe('Tickets actions', () => {
 
     expect(actualAction).toEqual(expectedAction);
   });
-
-  it('Should create an action to save tickets error', () => {
-    const error = new Error('Unable to fetch tickets');
-
-    const expectedAction = {
-      type: types.SAVE_TICKETS_ERROR,
-      payload: error,
-      error: true
-    };
-
-    const actualAction = actions.saveTicketsError(error);
-
-    expect(actualAction).toEqual(expectedAction);
-  });
 });

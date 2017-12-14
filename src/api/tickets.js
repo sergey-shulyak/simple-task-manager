@@ -1,13 +1,18 @@
+import { normalize } from 'normalizr';
+
 import request from './utils';
+import { ticketListSchema, ticketSchema } from '../store/schema';
 
 const entity = id => `boards/${id}/tickets`;
 
 export function getTickets(id) {
-  return request({ entity: entity(id) });
+  return request({ entity: entity(id) })
+    .then(data => normalize(data, ticketListSchema));
 }
 
 export function getTicket(boardId, id) {
-  return request({ entity: entity(boardId), id });
+  return request({ entity: entity(boardId), id })
+    .then(data => normalize(data, ticketSchema));
 }
 
 export function createTicket(boardId, board) {

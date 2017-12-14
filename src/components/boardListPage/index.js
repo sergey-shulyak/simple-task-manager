@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import BoardList from './boardList';
-import Board from './boardList/board';
+import BoardEntry from './boardList/boardEntry';
 import { homeUrl } from '../../utils/urlCreators';
 
 import './boardListPage.scss';
@@ -21,7 +21,7 @@ class BoardListPage extends Component {
         <Link to={homeUrl()} className="link-button board-list-page__back-link">Go back</Link>
         <BoardList>
           {boards.map(board => (
-            <Board
+            <BoardEntry
               className="board-list-page__board"
               key={board.id}
               {...board}

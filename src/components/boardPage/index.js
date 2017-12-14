@@ -11,10 +11,10 @@ import './boardPage.scss';
 
 class BoardPage extends Component {
   componentWillMount() {
-    const { board, fetchBoards, fetchTickets, match } = this.props;
+    const { board, fetchBoard, fetchTickets, match } = this.props;
 
     if (isEmpty(board)) {
-      fetchBoards(match.params.id);
+      fetchBoard(match.params.id);
     }
 
     fetchTickets(match.params.id);
@@ -40,15 +40,16 @@ class BoardPage extends Component {
 BoardPage.propTypes = {
   board: PropTypes.shape({ title: PropTypes.string }),
   columns: PropTypes.arrayOf(PropTypes.object),
-  tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  fetchBoards: PropTypes.func.isRequired,
+  tickets: PropTypes.arrayOf(PropTypes.object),
+  fetchBoard: PropTypes.func.isRequired,
   fetchTickets: PropTypes.func.isRequired,
   match: PropTypes.shape({ params: PropTypes.object }).isRequired
 };
 
 BoardPage.defaultProps = {
   board: {},
-  columns: []
+  columns: [],
+  tickets: []
 };
 
 export default BoardPage;

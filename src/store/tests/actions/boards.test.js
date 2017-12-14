@@ -52,18 +52,4 @@ describe('Boards actions', () => {
 
     expect(actualAction).toEqual(expectedAction);
   });
-
-  it('Should create an action to save an error', () => {
-    const boardsError = new Error('Unable to fetch boards');
-
-    const expectedAction = {
-      type: types.SAVE_BOARDS_ERROR,
-      payload: boardsError,
-      error: true
-    };
-
-    const actualAction = actions.saveBoardsError(boardsError);
-
-    expect(actualAction).toEqual(expectedAction);
-  });
 });
