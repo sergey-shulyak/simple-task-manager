@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 
 import { setBoardsError, setTicketsError } from '../actions/ui';
-import { setStateProperty } from '../../utils/storeUtils';
+import { setStateProperty } from '../../utils/stateUtils';
 
 const defaultState = {};
 const messageKey = 'message';
