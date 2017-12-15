@@ -1,14 +1,14 @@
 import { schema } from 'normalizr';
 
 const ticketSchema = new schema.Entity('tickets');
-const ticketsSchema = [ticketSchema];
+const ticketListSchema = [ticketSchema];
 
-const boardSchema = new schema.Entity('boards', { ticketsSchema });
-const boardsSchema = [boardSchema];
+const boardSchema = new schema.Entity('boards', { ticketListSchema });
+const boardListSchema = [boardSchema];
 
 export {
   ticketSchema,
-  ticketsSchema,
+  ticketListSchema,
   boardSchema,
-  boardsSchema
+  boardListSchema
 };

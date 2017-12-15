@@ -1,12 +1,12 @@
-import { handleActions, combineActions } from 'redux-actions';
-import { saveTicketsToStore, saveTicketsError } from '../actions/tickets';
+import { handleAction } from 'redux-actions';
+import { saveTicketsToStore } from '../actions/tickets';
 
 const defaultState = {};
 
-const ticketsReducer = handleActions({
-  [combineActions(saveTicketsToStore, saveTicketsError)](state, { payload, error }) {
-    return error || !payload ? defaultState : payload;
-  }
-}, defaultState);
+const ticketsReducer = handleAction(
+  saveTicketsToStore,
+  (state, { payload }) => payload || state,
+  defaultState
+);
 
 export default ticketsReducer;

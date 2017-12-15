@@ -4,7 +4,10 @@ import { fetchBoards } from '../store/actions/boards';
 
 import BoardListPage from '../components/boardListPage';
 
-const mapState = ({ entities: { boards } }) => ({ boards: Object.values(boards) });
+const mapState = state => ({
+  boards: Object.values(state.entities.boards),
+  error: state.ui.errors.boards
+});
 
 const mapDispatch = dispatch => ({
   fetchBoards: () => dispatch(fetchBoards())

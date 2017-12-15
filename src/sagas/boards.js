@@ -1,27 +1,25 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { normalize } from 'normalizr';
 
-import { getBoards, getBoard } from '../api/boards';
-import { boardSchema, boardsSchema } from '../store/schema';
-import { saveBoardsToStore, saveBoardsError, saveBoardToStore } from '../store/actions/boards';
+import { getBoard, getBoards } from '../api/boards';
+import { saveBoardsToStore } from '../store/actions/boards';
+import { setBoardsError } from '../store/actions/ui';
 
 import * as actions from '../store/actionTypes/boards';
 
-function* fetchBoards() {
-  try {
-    const boards = yield call(getBoards);
-    yield put(saveBoardsToStore(normalize(boards, boardsSchema)));
-  } catch (error) {
-    yield put(saveBoardsError(error));
-  }
-}
+export function* fetchBoards({ payload = {} }) {
+  const isFetchingSingleBoard = Boolean(payload.id);
 
-function* fetchBoardById({ payload: { id } }) {
-  const board = yield call(getBoard, id);
-  yield put(saveBoardToStore(normalize(board, boardSchema)));
+  try {
+    const data = isFetchingSingleBoard
+      ? yield call(getBoard, payload.id)
+      : yield call(getBoards);
+
+    yield put(saveBoardsToStore(data));
+  } catch (error) {
+    yield put(setBoardsError(error));
+  }
 }
 
 export default function* () {
   yield takeEvery(actions.FETCH_BOARDS, fetchBoards);
-  yield takeEvery(actions.FETCH_BOARD, fetchBoardById);
 }

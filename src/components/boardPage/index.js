@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
-import omit from 'lodash/omit';
 
 import Board from './board';
 import { boardsUrl } from '../../utils/urlCreators';
@@ -28,9 +27,8 @@ class BoardPage extends Component {
         <Link to={boardsUrl()} className="link-button board-page__back-link">Go back</Link>
         <Board
           className="board-page__board"
-          columns={board.columns}
           tickets={tickets}
-          {...omit(board, 'columns', 'tickets')}
+          {...board}
         />
       </div>
     );
@@ -40,7 +38,7 @@ class BoardPage extends Component {
 BoardPage.propTypes = {
   board: PropTypes.shape({ title: PropTypes.string }),
   columns: PropTypes.arrayOf(PropTypes.object),
-  tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tickets: PropTypes.arrayOf(PropTypes.object),
   fetchBoard: PropTypes.func.isRequired,
   fetchTickets: PropTypes.func.isRequired,
   match: PropTypes.shape({ params: PropTypes.object }).isRequired
@@ -48,7 +46,8 @@ BoardPage.propTypes = {
 
 BoardPage.defaultProps = {
   board: {},
-  columns: []
+  columns: [],
+  tickets: []
 };
 
 export default BoardPage;
