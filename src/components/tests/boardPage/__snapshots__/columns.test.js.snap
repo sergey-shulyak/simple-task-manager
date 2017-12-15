@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Column Should render correctly 1`] = `
+<div
+  className="column custom"
+>
+  <h2
+    className="column__title"
+  >
+    Sample title
+  </h2>
+  <Ticket
+    boardId={42}
+    className="column__ticket"
+    columnId={1}
+    description=""
+    id={1}
+    key="1"
+    priority="medium"
+    title="Test ticket 1"
+    type="task"
+  />
+  <Ticket
+    boardId={42}
+    className="column__ticket"
+    columnId={2}
+    description=""
+    id={2}
+    key="2"
+    priority="medium"
+    title="Test ticket 1"
+    type="task"
+  />
+  <Ticket
+    boardId={42}
+    className="column__ticket"
+    columnId={3}
+    description=""
+    id={3}
+    key="3"
+    priority="medium"
+    title="Test ticket 1"
+    type="task"
+  />
+</div>
+`;

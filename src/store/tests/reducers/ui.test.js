@@ -12,7 +12,7 @@ describe('UI reducer', () => {
       error: true
     };
 
-    const expectedState = { errors: { boards: error.message } };
+    const expectedState = { errors: { boards: error } };
     const actualState = reducer(defaultState, action);
 
     expect(actualState).toEqual(expectedState);
@@ -27,7 +27,7 @@ describe('UI reducer', () => {
       error: true
     };
 
-    const expectedState = { errors: { tickets: error.message } };
+    const expectedState = { errors: { tickets: error } };
     const actualState = reducer(defaultState, action);
 
     expect(actualState).toEqual(expectedState);

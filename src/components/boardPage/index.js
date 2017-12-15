@@ -37,7 +37,6 @@ class BoardPage extends Component {
 
 BoardPage.propTypes = {
   board: PropTypes.shape({ title: PropTypes.string }),
-  columns: PropTypes.arrayOf(PropTypes.object),
   tickets: PropTypes.arrayOf(PropTypes.object),
   fetchBoard: PropTypes.func.isRequired,
   fetchTickets: PropTypes.func.isRequired,
@@ -46,7 +45,6 @@ BoardPage.propTypes = {
 
 BoardPage.defaultProps = {
   board: {},
-  columns: [],
   tickets: []
 };
 

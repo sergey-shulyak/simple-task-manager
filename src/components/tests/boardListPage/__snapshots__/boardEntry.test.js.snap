@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoardEntry Should render correctly 1`] = `
+<Link
+  className="board-entry"
+  replace={false}
+  to="/boards/42"
+>
+  <div
+    className="board-entry__content custom"
+  >
+    <h2
+      className="board-entry__title"
+    >
+      Sample title
+    </h2>
+    <p
+      className="board-entry__description"
+    >
+      Sample description
+    </p>
+  </div>
+</Link>
+`;
