@@ -2,14 +2,13 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 
 import { setBoardsError, setTicketsError } from '../actions/ui';
-import { setStateProperty } from '../../utils/stateUtils';
+import { getPropertyReducer } from '../utils';
 
 const defaultState = {};
-const messageKey = 'message';
 
 const errors = handleActions({
-  [setBoardsError]: setStateProperty('boards', messageKey),
-  [setTicketsError]: setStateProperty('tickets', messageKey)
+  [setBoardsError]: getPropertyReducer('boards'),
+  [setTicketsError]: getPropertyReducer('tickets')
 }, defaultState);
 
 export default combineReducers({
