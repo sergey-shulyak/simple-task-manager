@@ -15,8 +15,8 @@ export function getTicket(boardId, id) {
     .then(data => normalize(data, ticketSchema));
 }
 
-export function createTicket(boardId, board) {
-  return request({ method: 'POST', entity: entity(boardId), body: board });
+export function createTicket(boardId, ticket) {
+  return request({ method: 'POST', entity: entity(boardId), body: ticket });
 }
 
 export function updateTicket(boardId, ticket) {

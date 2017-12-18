@@ -4,5 +4,8 @@ node_modules
 # Ignore bundled application
 dist
 
+# Coverage report
+coverage
+
 # VS Code misc
 .vscode

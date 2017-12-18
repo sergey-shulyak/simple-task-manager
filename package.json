@@ -7,8 +7,9 @@
     "build": "webpack",
     "demo": "webpack-dev-server --host shulyak-macbook.nixsolutions.com --port 5000",
     "dev": "webpack-dev-server --progress",
+    "test": "jest",
     "testWatch": "jest --watch",
-    "test": "jest"
+    "coverageReport": "jest --coverage"
   },
   "repository": {
     "type": "git",
