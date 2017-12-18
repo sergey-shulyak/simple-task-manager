@@ -13,7 +13,7 @@ const Board = ({ title, columns, tickets }) => (
         <Column
           key={column.id}
           className="board__column"
-          tickets={tickets.filter(ticket => ticket.status === column.title)}
+          tickets={tickets.filter(ticket => ticket.columnId === column.id)}
           {...column}
         />))}
     </div>

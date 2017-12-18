@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board Should render correctly 1`] = `
+<div
+  className="board"
+>
+  <h1
+    className="board__title"
+  >
+    Sample title
+  </h1>
+  <div
+    className="board__columns"
+  >
+    <Column
+      className="board__column"
+      id={1}
+      key="1"
+      tickets={
+        Array [
+          Object {
+            "boardId": 42,
+            "columnId": 1,
+            "id": 1,
+            "title": "Test ticket 1",
+            "type": "task",
+          },
+        ]
+      }
+      title="To do"
+    />
+    <Column
+      className="board__column"
+      id={2}
+      key="2"
+      tickets={
+        Array [
+          Object {
+            "boardId": 42,
+            "columnId": 2,
+            "id": 2,
+            "title": "Test ticket 1",
+            "type": "task",
+          },
+        ]
+      }
+      title="In progress"
+    />
+    <Column
+      className="board__column"
+      id={3}
+      key="3"
+      tickets={
+        Array [
+          Object {
+            "boardId": 42,
+            "columnId": 3,
+            "id": 3,
+            "title": "Test ticket 1",
+            "type": "task",
+          },
+        ]
+      }
+      title="Done"
+    />
+  </div>
+</div>
+`;

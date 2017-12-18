@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoardList Should render correctly 1`] = `
+<div
+  className="board-list"
+>
+  <BoardEntry
+    className=""
+    description=""
+    id={1}
+    key="1"
+    title="test"
+  />
+  <BoardEntry
+    className=""
+    description=""
+    id={2}
+    key="2"
+    title="test"
+  />
+  <BoardEntry
+    className=""
+    description=""
+    id={3}
+    key="3"
+    title="test"
+  />
+</div>
+`;
