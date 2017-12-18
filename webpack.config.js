@@ -2,7 +2,7 @@ const path = require('path');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 require('babel-polyfill');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
+const BUILD_DIR = path.resolve(__dirname, 'public/build');
 const SRC_DIR = path.resolve(__dirname, 'src');
 
 const config = {
@@ -10,7 +10,7 @@ const config = {
   output: {
     path: BUILD_DIR,
     publicPath: '/',
-    filename: 'app.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
