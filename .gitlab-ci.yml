@@ -1,0 +1,32 @@
+image: node
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - bash .scripts/build.sh
+  cache:
+    paths:
+      - public/build/
+      - node_modules/
+
+test:
+  stage: test
+  when: on_success
+  script:
+    - bash .scripts/test.sh
+  cache:
+    paths:
+      - public/build/
+
+deploy:
+  stage: deploy
+  when: on_success
+  only:
+    - develop
+  script:
+    - bash .scripts/deploy.sh
