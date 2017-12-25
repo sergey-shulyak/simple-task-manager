@@ -7,11 +7,11 @@ import { columns, tickets } from '../testData';
 import BoardPage from '../../boardPage';
 
 const getProps = overrides => ({
-  board: { id: 42, title: 'Test board', columns },
+  board: { id: '42', title: 'Test board', columns },
   tickets,
   fetchBoard: jest.fn(),
   fetchTickets: jest.fn(),
-  match: { params: { id: 42 } },
+  match: { params: { id: '42' } },
   ...overrides
 });
 

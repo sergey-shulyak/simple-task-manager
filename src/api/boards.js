@@ -5,14 +5,12 @@ import request from './utils';
 
 const entity = 'boards';
 
-export function getBoards() {
-  return request({ entity })
-    .then(data => normalize(data, boardListSchema));
+export async function getBoards() {
+  return normalize(await request({ entity }), boardListSchema);
 }
 
-export function getBoard(id) {
-  return request({ entity, id })
-    .then(data => normalize(data, boardSchema));
+export async function getBoard(id) {
+  return normalize(await request({ entity, id }), boardSchema);
 }
 
 export function createBoard(board) {

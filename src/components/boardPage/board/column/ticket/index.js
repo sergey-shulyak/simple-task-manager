@@ -35,12 +35,12 @@ const Ticket = ({
 );
 
 Ticket.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   priority: PropTypes.oneOf(['high', 'medium', 'low']),
   type: PropTypes.oneOf(['feature', 'task', 'bug']).isRequired,
-  boardId: PropTypes.number.isRequired,
+  boardId: PropTypes.string.isRequired,
   className: PropTypes.string
 };
 

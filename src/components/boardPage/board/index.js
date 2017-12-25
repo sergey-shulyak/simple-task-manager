@@ -5,7 +5,7 @@ import Column from './column';
 
 import './board.scss';
 
-const Board = ({ title, columns, tickets }) => (
+const Board = ({ id, title, columns, tickets }) => (
   <div className="board">
     <h1 className="board__title">{title}</h1>
     <div className="board__columns">
@@ -13,6 +13,7 @@ const Board = ({ title, columns, tickets }) => (
         <Column
           key={column.id}
           className="board__column"
+          boardId={id}
           tickets={tickets.filter(ticket => ticket.columnId === column.id)}
           {...column}
         />))}
@@ -21,12 +22,14 @@ const Board = ({ title, columns, tickets }) => (
 );
 
 Board.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   columns: PropTypes.arrayOf(PropTypes.object),
   tickets: PropTypes.arrayOf(PropTypes.object)
 };
 
 Board.defaultProps = {
+  id: '',
   title: '',
   columns: [],
   tickets: []
