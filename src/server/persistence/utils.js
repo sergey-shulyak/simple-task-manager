@@ -1,8 +1,7 @@
 const { MongoClient } = require('mongodb');
 
-// TODO: Move to .env
-const url = 'mongodb://localhost:27017';
-const DB_NAME = 'taskManager';
+const { DB_HOST, DB_PORT, DB_NAME } = process.env;
+const url = `mongodb://${DB_HOST}:${DB_PORT}`;
 
 const getConnection = () => new Promise(async (resolve, reject) => {
   try {

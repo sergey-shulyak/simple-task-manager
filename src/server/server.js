@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const boards = require('./rest/boards');
@@ -11,4 +13,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.listen(3000, () => console.log('Started server on port 3000'));
+const PORT = process.env.APP_PORT || 3000;
+
+app.listen(PORT, () => console.log('Started server on port 3000'));
