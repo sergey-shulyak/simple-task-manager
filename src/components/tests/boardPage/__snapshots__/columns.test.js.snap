@@ -10,33 +10,33 @@ exports[`Column Should render correctly 1`] = `
     Sample title
   </h2>
   <Ticket
-    boardId={42}
+    boardId="42"
     className="column__ticket"
-    columnId={1}
+    columnId="1"
     description=""
-    id={1}
+    id="1"
     key="1"
     priority="medium"
     title="Test ticket 1"
     type="task"
   />
   <Ticket
-    boardId={42}
+    boardId="42"
     className="column__ticket"
-    columnId={2}
+    columnId="2"
     description=""
-    id={2}
+    id="2"
     key="2"
     priority="medium"
     title="Test ticket 1"
     type="task"
   />
   <Ticket
-    boardId={42}
+    boardId="42"
     className="column__ticket"
-    columnId={3}
+    columnId="3"
     description=""
-    id={3}
+    id="3"
     key="3"
     priority="medium"
     title="Test ticket 1"

@@ -5,7 +5,7 @@ import toJson from 'enzyme-to-json';
 import BoardEntry from '../../boardListPage/boardList/boardEntry';
 
 const props = {
-  id: 42,
+  id: '42',
   title: 'Sample title',
   description: 'Sample description',
   className: 'custom'
