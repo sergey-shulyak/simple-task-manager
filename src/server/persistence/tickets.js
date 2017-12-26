@@ -1,27 +1,28 @@
 const { ObjectId } = require('mongodb');
-const { getBoardsCollection } = require('./boards');
-const { renameId } = require('./utils');
+const { renameId, getCollection } = require('./utils');
 
-const flattenArray = (allTickets, columnTickets) =>
-  [...allTickets, ...columnTickets];
+// const flattenArray = (allTickets, columnTickets) =>
+//   [...allTickets, ...columnTickets];
 
-const ticketsWithColumnId = column => column.tickets.map(ticket => ({
-  ...ticket, columnId: column._id
-}));
+// const ticketsWithColumnId = column => column.tickets.map(ticket => ({
+//   ...ticket, columnId: column._id
+// }));
+
+const getTicketsCollection = () => new Promise(async (resolve, reject) => {
+  try {
+    const ticketsCollection = await getCollection('tickets');
+    resolve(ticketsCollection);
+  } catch (error) {
+    reject(new Error(error));
+  }
+});
 
 const getTickets = boardId => new Promise(async (resolve, reject) => {
   try {
-    const boards = await getBoardsCollection();
-    const _id = new ObjectId(boardId);
+    const bId = new ObjectId(boardId);
+    const ticketsCollection = await getTicketsCollection();
 
-    const board = await boards.findOne(
-      { _id },
-      { projection: { 'columns._id': 1, 'columns.tickets': 1 } }
-    );
-
-    const tickets = board.columns
-      .map(ticketsWithColumnId)
-      .reduce(flattenArray);
+    const tickets = await ticketsCollection.find({ boardId: bId }).toArray();
 
     resolve(renameId(...tickets));
   } catch (error) {
@@ -31,21 +32,67 @@ const getTickets = boardId => new Promise(async (resolve, reject) => {
 
 const createTicket = (boardId, ticket) => new Promise(async (resolve, reject) => {
   try {
-    const _id = new ObjectId(boardId);
-    const boards = await getBoardsCollection();
+    const bId = new ObjectId(boardId);
+    const ticketsCollection = await getTicketsCollection();
 
-    const { columnId, ...ticketData } = ticket;
-    const cId = new ObjectId(columnId);
+    const { ops } = await ticketsCollection.insertOne({
+      ...ticket, boardId: bId
+    });
+    const createdTicket = ops[0];
 
-    const { modifiedCount } = await boards.updateOne(
-      { _id, 'columns._id': cId },
-      { $push: { 'columns.$.tickets': ticketData } }
-    );
-
-    resolve({ modified: modifiedCount > 0 });
+    resolve(createdTicket);
   } catch (error) {
     reject(new Error(error));
   }
 });
 
-module.exports = { getTickets, createTicket };
+const getTicket = id => new Promise(async (resolve, reject) => {
+  try {
+    const _id = new ObjectId(id);
+    const ticketsCollection = await getTicketsCollection();
+
+    const ticket = await ticketsCollection.findOne({ _id });
+
+    resolve(renameId(ticket));
+  } catch (error) {
+    reject(new Error(error));
+  }
+});
+
+const updateTicket = ticket => new Promise(async (resolve, reject) => {
+  try {
+    const { id, ...data } = ticket;
+    const _id = new ObjectId(id);
+
+    const ticketsCollection = await getTicketsCollection();
+
+    const { modifiedCount } = await ticketsCollection.updateOne({ _id }, {
+      $set: { ...data }
+    });
+
+    resolve({ id, modified: modifiedCount > 0 });
+  } catch (error) {
+    reject(new Error(error));
+  }
+});
+
+const deleteTicket = id => new Promise(async (resolve, reject) => {
+  try {
+    const ticketCollection = await getTicketsCollection();
+    const _id = new ObjectId(id);
+
+    const { deletedCount } = await ticketCollection.deleteOne({ _id });
+
+    resolve({ id, deleted: deletedCount > 0 });
+  } catch (error) {
+    reject(new Error(error));
+  }
+});
+
+module.exports = {
+  getTickets,
+  createTicket,
+  getTicket,
+  updateTicket,
+  deleteTicket
+};

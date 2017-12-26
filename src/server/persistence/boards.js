@@ -13,10 +13,7 @@ const getBoardsCollection = () => new Promise(async (resolve, reject) => {
 const getBoards = () => new Promise(async (resolve, reject) => {
   try {
     const boardCollection = await getBoardsCollection();
-
-    const boards = await boardCollection.find()
-      .project({ 'columns.tickets': 0 })
-      .toArray();
+    const boards = await boardCollection.find().toArray();
 
     resolve(renameId(...boards));
   } catch (error) {
@@ -24,10 +21,10 @@ const getBoards = () => new Promise(async (resolve, reject) => {
   }
 });
 
-const getBoard = boardId => new Promise(async (resolve, reject) => {
+const getBoard = id => new Promise(async (resolve, reject) => {
   try {
     const boardCollection = await getBoardsCollection();
-    const _id = new ObjectId(boardId);
+    const _id = new ObjectId(id);
 
     const board = await boardCollection.findOne(
       { _id },
