@@ -3,19 +3,16 @@ const { MongoClient } = require('mongodb');
 const { DB_HOST, DB_PORT, DB_NAME } = process.env;
 const url = `mongodb://${DB_HOST}:${DB_PORT}`;
 
-const getConnection = () => new Promise(async (resolve, reject) => {
-  try {
-    resolve(await MongoClient.connect(url));
-  } catch (error) {
-    reject(new Error(error));
-  }
-});
+let db;
 
-const getDatabase = dbName => new Promise(async (resolve, reject) => {
+const getDatabase = () => new Promise(async (resolve, reject) => {
   try {
-    const connection = await getConnection();
+    if (!db) {
+      const connection = await MongoClient.connect(url);
+      db = await connection.db(DB_NAME);
+    }
 
-    resolve(connection.db(dbName));
+    resolve(db);
   } catch (error) {
     reject(new Error(error));
   }
@@ -23,7 +20,7 @@ const getDatabase = dbName => new Promise(async (resolve, reject) => {
 
 const getCollection = colName => new Promise(async (resolve, reject) => {
   try {
-    const database = await getDatabase(DB_NAME);
+    const database = await getDatabase();
 
     resolve(database.collection(colName));
   } catch (error) {
@@ -45,7 +42,6 @@ const renameId = (...entities) => entities.map((entity) => {
 });
 
 module.exports = {
-  getConnection,
   getDatabase,
   getCollection,
   renameId
