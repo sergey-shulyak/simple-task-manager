@@ -26,10 +26,7 @@ const getBoard = id => new Promise(async (resolve, reject) => {
     const boardCollection = await getBoardsCollection();
     const _id = new ObjectId(id);
 
-    const board = await boardCollection.findOne(
-      { _id },
-      { projection: { 'columns.tickets': 0 } }
-    );
+    const board = await boardCollection.findOne({ _id });
 
     resolve(...renameId(board));
   } catch (error) {

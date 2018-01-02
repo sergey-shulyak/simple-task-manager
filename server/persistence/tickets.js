@@ -1,13 +1,6 @@
 const { ObjectId } = require('mongodb');
 const { renameId, getCollection } = require('./utils');
 
-// const flattenArray = (allTickets, columnTickets) =>
-//   [...allTickets, ...columnTickets];
-
-// const ticketsWithColumnId = column => column.tickets.map(ticket => ({
-//   ...ticket, columnId: column._id
-// }));
-
 const getTicketsCollection = () => new Promise(async (resolve, reject) => {
   try {
     const ticketsCollection = await getCollection('tickets');
@@ -53,7 +46,7 @@ const getTicket = id => new Promise(async (resolve, reject) => {
 
     const ticket = await ticketsCollection.findOne({ _id });
 
-    resolve(renameId(ticket));
+    resolve(...renameId(ticket));
   } catch (error) {
     reject(new Error(error));
   }
