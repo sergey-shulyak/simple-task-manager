@@ -1,6 +1,4 @@
-import { API_HOST, API_PORT } from '../../properties.json';
-
-const API = `http://${API_HOST}:${API_PORT}/api`;
+const API = `http://${process.env.API_HOST}:${process.env.API_PORT}/api`;
 const headers = { 'Content-Type': 'application/json' };
 
 export default function request({

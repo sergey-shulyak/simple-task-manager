@@ -23,6 +23,16 @@ else
   exit 1
 fi
 
+echo "Starting server"
+
+if ssh "$SERVER_USER@$SERVER_HOST" -p $SERVER_SSH_PORT npm start --prefix "$SERVER_DESTINATION/$PROJECT_NAME/$SERVER_DIR"
+then
+  echo "Done"
+else
+  echo "ERROR: Failed to start server in $SERVER_DIR"
+  exit 1
+fi
+
 echo "Creating symlink for web application root"
 if ssh "$SERVER_USER@$SERVER_HOST" -p $SERVER_SSH_PORT ln -sfn "$SERVER_DESTINATION/$PROJECT_NAME" "/home/$SERVER_USER/www/$PROJECT_NAME"
 then
