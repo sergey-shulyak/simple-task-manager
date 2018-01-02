@@ -1,7 +1,15 @@
 #!/bin/bash
 
-echo "Checking code style with eslint"
+echo "Installing testing tools"
+if npm install --only=dev
+then
+  echo "Done"
+else
+  echo "ERROR: Failed to install testing tools"
+  exit 1
+fi
 
+echo "Checking code style with eslint"
 if npm run lint
 then
   echo "Done"
@@ -11,7 +19,6 @@ else
 fi
 
 echo "Running unit tests"
-
 if npm test
 then
   echo "Done"

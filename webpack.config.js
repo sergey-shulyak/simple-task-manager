@@ -1,3 +1,4 @@
+const { DefinePlugin } = require('webpack');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -54,6 +55,11 @@ const config = {
 
 if (isProduction()) {
   config.plugins.push(
+    new DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new UglifyJsPlugin({ parallel: true }),
     new OptimizeCssAssets()
   );

@@ -1,16 +1,14 @@
 {
   "name": "simple-task-manager",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Skill-up project to learn React/Redux",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress",
-    "demo": "webpack-dev-server --host shulyak-macbook.nixsolutions.com --port 5000",
     "dev": "webpack-dev-server -w -d --hot --progress",
-    "lint": "eslint src/**/*.js",
-    "test": "jest --coverage",
     "testWatch": "jest --watch",
-    "testUpdateSnapshots": "jest --updateSnapshot"
+    "test": "jest --coverage",
+    "lint": "eslint src/**/*.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
