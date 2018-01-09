@@ -2,7 +2,11 @@
   margin: 2em;
 
   &__back-link {
-    float: left;    
+    position: sticky;
+  }
+
+  &__new-board-link {
+    margin: 40%;
   }
 
   &__board {

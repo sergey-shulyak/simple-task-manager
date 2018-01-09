@@ -1,10 +1,10 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-import { getTickets } from '../api/tickets';
-import { saveTicketsToStore } from '../store/actions/tickets';
-import { setTicketsError } from '../store/actions/ui';
+import { getTickets } from '../../api/tickets';
+import { saveTicketsToStore } from '../../store/actions/tickets';
+import { setTicketsError } from '../../store/actions/ui';
 
-import * as actions from '../store/actionTypes/tickets';
+import * as actions from '../../store/actionTypes/tickets';
 
 export function* fetchTickets({ payload: { id } }) {
   try {

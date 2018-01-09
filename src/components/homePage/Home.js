@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { boardsUrl } from '../utils/urlCreators';
+import { boardsUrl } from '../../utils/urlCreators';
 
-import './app.scss';
+import './home.scss';
 
 const App = () => (
   <div className="home-page">

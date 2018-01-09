@@ -1,2 +1,4 @@
 export const FETCH_BOARDS = 'FETCH_BOARDS';
 export const SAVE_BOARDS_TO_STORE = 'SAVE_BOARDS_TO_STORE';
+export const CREATE_BOARD = 'CREATE_BOARD';
+export const DELETE_BOARD = 'DELETE_BOARD';

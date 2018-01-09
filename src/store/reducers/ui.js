@@ -1,16 +1,25 @@
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
+import { handleActions, combineActions } from 'redux-actions';
 
-import { setBoardsError, setTicketsError } from '../actions/ui';
-import { getPropertyReducer } from '../utils';
+import * as actions from '../actions/ui';
+import * as reducers from '../utils';
 
 const defaultState = {};
 
 const errors = handleActions({
-  [setBoardsError]: getPropertyReducer('boards'),
-  [setTicketsError]: getPropertyReducer('tickets')
+  [actions.setBoardsError]: reducers.getPropertyReducer('boards'),
+  [actions.setTicketsError]: reducers.getPropertyReducer('tickets')
+}, defaultState);
+
+const modals = handleActions({
+  [combineActions(actions.showNewBoardModal, actions.hideNewBoardModal)]:
+    reducers.getModalPropertyReducer('newBoard', 'isShown'),
+  [actions.updateNewBoardModalData]: reducers.getModalDataPropertyReducer('newBoard'),
+  [combineActions(actions.showDeleteBoardModal, actions.hideDeleteBoardModal)]:
+    reducers.getModalReducer('deleteBoard')
 }, defaultState);
 
 export default combineReducers({
+  modals,
   errors
 });

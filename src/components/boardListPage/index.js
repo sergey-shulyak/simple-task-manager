@@ -19,11 +19,17 @@ class BoardListPage extends Component {
     return (
       <div className="board-list-page">
         <Link to={homeUrl()} className="link-button board-list-page__back-link">Go back</Link>
+        <a
+          className="link-button board-list-page__new-board-link"
+          onClick={this.props.showNewBoardModal}
+        >New board
+        </a>
         <BoardList>
           {boards.map(board => (
             <BoardEntry
               className="board-list-page__board"
               key={board.id}
+              showDeleteModal={this.props.showDeleteBoardModal}
               {...board}
             />))}
         </BoardList>
@@ -34,7 +40,9 @@ class BoardListPage extends Component {
 
 BoardListPage.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.object),
-  fetchBoards: PropTypes.func.isRequired
+  fetchBoards: PropTypes.func.isRequired,
+  showNewBoardModal: PropTypes.func.isRequired,
+  showDeleteBoardModal: PropTypes.func.isRequired
 };
 
 BoardListPage.defaultProps = {

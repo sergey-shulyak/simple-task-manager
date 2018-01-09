@@ -1,13 +1,13 @@
-@import './common';
+@import '../common';
 
 .home-page {
-  margin: auto;
+  margin: 15% auto;
   padding: 1em;
 
   width: 50%;
   height: 100%;
   min-width: max-content;
-  
+
   font-family: $default-font;
   text-align: center;
 
