@@ -4,20 +4,24 @@ import serialize from 'form-serialize';
 
 import Modal from './base';
 
-const handleSubmit = (event, createBoard) => {
+const handleSubmit = (event, props) => {
   event.preventDefault();
 
   const formData = serialize(event.target, { hash: true });
-  createBoard(formData);
+  if (props.isEdit) {
+    props.updateBoard({ id: props.data.id, ...formData });
+  } else {
+    props.createBoard(formData);
+  }
 };
 
 const NewBoardModal = props => (
   <Modal
-    title="New Board"
+    title={props.isEdit ? `Edit ${props.data.title}` : 'New Board'}
     isShown={props.isShown}
     handleClose={props.handleClose}
     content={
-      <form onSubmit={event => handleSubmit(event, props.createBoard)} method="POST">
+      <form onSubmit={event => handleSubmit(event, props)} method="POST">
         <label htmlFor="title"><p>Title:</p></label>
         <input
           id="title"
@@ -43,17 +47,22 @@ const NewBoardModal = props => (
 
 NewBoardModal.propTypes = {
   isShown: PropTypes.bool,
+  isEdit: PropTypes.bool,
+  title: PropTypes.string,
   data: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string
   }),
   handleClose: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
-  createBoard: PropTypes.func.isRequired
+  createBoard: PropTypes.func.isRequired,
+  updateBoard: PropTypes.func.isRequired
 };
 
 NewBoardModal.defaultProps = {
   isShown: false,
+  isEdit: false,
+  title: '',
   data: {}
 };
 

@@ -6,10 +6,20 @@ import { boardUrl } from '../../../../utils/urlCreators';
 
 import './board.scss';
 
-const handleClick = (event, props) => {
+const handleDeleteButtonClick = (event, props) => {
   event.preventDefault();
 
   props.showDeleteModal({ id: props.id, title: props.title });
+};
+
+const handleEditButtonClick = (event, props) => {
+  event.preventDefault();
+
+  props.showEditModal({
+    id: props.id,
+    title: props.title,
+    description: props.description
+  });
 };
 
 const BoardEntry = props => (
@@ -17,7 +27,10 @@ const BoardEntry = props => (
     <div className={`board-entry__content ${props.className}`}>
       <h2 className="board-entry__title">{props.title}</h2>
       <p className="board-entry__description">{props.description}</p>
-      <button name="deleteBoard" onClick={event => handleClick(event, props)}>
+      <button name="editBoard" onClick={event => handleEditButtonClick(event, props)}>
+        <i className="fa fa-pencil" aria-hidden="true" />
+      </button>
+      <button name="deleteBoard" onClick={event => handleDeleteButtonClick(event, props)}>
         <i className="fa fa-trash" aria-hidden="true" />
       </button>
     </div>

@@ -6,6 +6,7 @@ export const {
   saveBoardsToStore,
   fetchBoards,
   createBoard,
+  updateBoard,
   deleteBoard
 } = createActions(
   {
@@ -13,5 +14,6 @@ export const {
   },
   actions.FETCH_BOARDS,
   actions.CREATE_BOARD,
+  actions.UPDATE_BOARD,
   actions.DELETE_BOARD
 );

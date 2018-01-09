@@ -13,6 +13,8 @@ class BoardListPage extends Component {
     this.props.fetchBoards();
   }
 
+  handleNewBoardButtonClick = (event, props) => props.showNewBoardModal();
+
   render() {
     const { boards } = this.props;
 
@@ -21,7 +23,7 @@ class BoardListPage extends Component {
         <Link to={homeUrl()} className="link-button board-list-page__back-link">Go back</Link>
         <a
           className="link-button board-list-page__new-board-link"
-          onClick={this.props.showNewBoardModal}
+          onClick={e => this.handleNewBoardButtonClick(e, this.props)}
         >New board
         </a>
         <BoardList>
@@ -29,6 +31,7 @@ class BoardListPage extends Component {
             <BoardEntry
               className="board-list-page__board"
               key={board.id}
+              showEditModal={this.props.showNewBoardModal}
               showDeleteModal={this.props.showDeleteBoardModal}
               {...board}
             />))}

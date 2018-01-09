@@ -4,11 +4,6 @@ import Layout from '../components/layout';
 import * as uiActions from '../store/actions/ui';
 import * as boardsActions from '../store/actions/boards';
 
-// const withPreventDefault = (event, handler) => {
-//   event.preventDefault();
-//   return handler(event);
-// };
-
 const mapState = ({ ui }) => ({
   modals: ui.modals
 });
@@ -16,8 +11,9 @@ const mapState = ({ ui }) => ({
 const mapDispatch = dispatch => ({
   closeNewBoardModal: () => dispatch(uiActions.hideNewBoardModal()),
   updateNewBoardModalData: event => dispatch(uiActions.updateNewBoardModalData(event)),
-  createBoard: board => dispatch(boardsActions.createBoard(board)),
   closeDeleteBoardModal: () => dispatch(uiActions.hideDeleteBoardModal()),
+  createBoard: board => dispatch(boardsActions.createBoard(board)),
+  updateBoard: board => dispatch(boardsActions.updateBoard(board)),
   deleteBoard: id => dispatch(boardsActions.deleteBoard(id))
 });
 

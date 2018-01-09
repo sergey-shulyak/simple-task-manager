@@ -1,6 +1,6 @@
 import { all, takeEvery, call, put } from 'redux-saga/effects';
 
-import { getBoard, getBoards, createBoard, deleteBoard } from '../../api/boards';
+import { getBoard, getBoards, createBoard, deleteBoard, updateBoard } from '../../api/boards';
 import { fetchBoards, saveBoardsToStore } from '../../store/actions/boards';
 import { hideNewBoardModal, hideDeleteBoardModal, setBoardsError } from '../../store/actions/ui';
 
@@ -32,9 +32,20 @@ export function* createBoardSaga({ payload = {} }) {
   }
 }
 
+export function* updateBoardSaga({ payload = {} }) {
+  try {
+    yield call(updateBoard, payload);
+
+    yield put(hideNewBoardModal());
+    yield put(fetchBoards());
+  } catch (error) {
+    // TODO: Add some toast
+    yield put(setBoardsError(error));
+  }
+}
+
 export function* deleteBoardSaga({ payload = {} }) {
   try {
-    console.log(payload);
     yield call(deleteBoard, payload);
 
     yield put(hideDeleteBoardModal());
@@ -49,6 +60,7 @@ export default function* () {
   yield all([
     takeEvery(actions.FETCH_BOARDS, fetchBoardsSaga),
     takeEvery(actions.CREATE_BOARD, createBoardSaga),
+    takeEvery(actions.UPDATE_BOARD, updateBoardSaga),
     takeEvery(actions.DELETE_BOARD, deleteBoardSaga)
   ]);
 }

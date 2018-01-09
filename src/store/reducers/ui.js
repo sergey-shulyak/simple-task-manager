@@ -13,10 +13,10 @@ const errors = handleActions({
 
 const modals = handleActions({
   [combineActions(actions.showNewBoardModal, actions.hideNewBoardModal)]:
-    reducers.getModalPropertyReducer('newBoard', 'isShown'),
+    reducers.getPropertyReducer('newBoard'),
   [actions.updateNewBoardModalData]: reducers.getModalDataPropertyReducer('newBoard'),
   [combineActions(actions.showDeleteBoardModal, actions.hideDeleteBoardModal)]:
-    reducers.getModalReducer('deleteBoard')
+    reducers.getPropertyReducer('deleteBoard')
 }, defaultState);
 
 export default combineReducers({

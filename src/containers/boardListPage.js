@@ -12,8 +12,8 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   fetchBoards: () => dispatch(fetchBoards()),
-  showNewBoardModal: () => dispatch(showNewBoardModal()),
-  showDeleteBoardModal: boardTitle => dispatch(showDeleteBoardModal(boardTitle))
+  showNewBoardModal: data => dispatch(showNewBoardModal(data)),
+  showDeleteBoardModal: data => dispatch(showDeleteBoardModal(data))
 });
 
 export default connect(mapState, mapDispatch)(BoardListPage);
