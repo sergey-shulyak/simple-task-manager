@@ -15,7 +15,7 @@ const handleSubmit = (event, props) => {
   }
 };
 
-const NewBoardModal = props => (
+const EditBoardModal = props => (
   <Modal
     title={props.isEdit ? `Edit ${props.data.title}` : 'New Board'}
     isShown={props.isShown}
@@ -28,7 +28,7 @@ const NewBoardModal = props => (
           name="title"
           type="text"
           placeholder="Type some title"
-          value={props.data.title}
+          defaultValue={props.data.title}
           onChange={props.handleChange} />
 
         <label htmlFor="description"><p>Description:</p></label>
@@ -37,7 +37,7 @@ const NewBoardModal = props => (
           name="description"
           type="text"
           placeholder="Type some description"
-          value={props.data.description}
+          defaultValue={props.data.description}
           onChange={props.handleChange} />
 
         <p><input id="submit" type="submit" value="Save" /></p>
@@ -45,7 +45,7 @@ const NewBoardModal = props => (
   />
 );
 
-NewBoardModal.propTypes = {
+EditBoardModal.propTypes = {
   isShown: PropTypes.bool,
   isEdit: PropTypes.bool,
   title: PropTypes.string,
@@ -59,11 +59,11 @@ NewBoardModal.propTypes = {
   updateBoard: PropTypes.func.isRequired
 };
 
-NewBoardModal.defaultProps = {
+EditBoardModal.defaultProps = {
   isShown: false,
   isEdit: false,
   title: '',
   data: {}
 };
 
-export default NewBoardModal;
+export default EditBoardModal;

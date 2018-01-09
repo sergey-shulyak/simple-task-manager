@@ -1,28 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NewBoardModal from '../modals/NewBoard';
+import EditBoardModal from '../modals/EditBoard';
 import DeleteBoardModal from '../modals/DeleteBoard';
 
 import './layout.scss';
+
+const modalNames = {
+  EDIT_BOARD: 'editBoard',
+  DELETE_BOARD: 'deleteBoard'
+};
 
 const getModalProperty = (modals, modalName, propName) =>
   modals[modalName] && modals[modalName][propName];
 
 const Layout = ({ modals, ...props }) => (
   <div className="layout">
-    <NewBoardModal
-      isShown={getModalProperty(modals, 'newBoard', 'isShown')}
-      isEdit={Boolean(getModalProperty(modals, 'newBoard', 'data')
-        && getModalProperty(modals, 'newBoard', 'data').id)}
-      data={getModalProperty(modals, 'newBoard', 'data')}
-      handleClose={props.closeNewBoardModal}
-      handleChange={props.updateNewBoardModalData}
+    <EditBoardModal
+      isShown={getModalProperty(modals, modalNames.EDIT_BOARD, 'isShown')}
+      isEdit={Boolean(getModalProperty(modals, modalNames.EDIT_BOARD, 'data')
+        && getModalProperty(modals, modalNames.EDIT_BOARD, 'data').id)}
+      data={getModalProperty(modals, modalNames.EDIT_BOARD, 'data')}
+      handleClose={props.closeEditBoardModal}
+      handleChange={props.updateEditBoardModalData}
       updateBoard={props.updateBoard}
       createBoard={props.createBoard} />
     <DeleteBoardModal
-      isShown={getModalProperty(modals, 'deleteBoard', 'isShown')}
-      data={getModalProperty(modals, 'deleteBoard', 'data')}
+      isShown={getModalProperty(modals, modalNames.DELETE_BOARD, 'isShown')}
+      data={getModalProperty(modals, modalNames.DELETE_BOARD, 'data')}
       handleClose={props.closeDeleteBoardModal}
       deleteBoard={props.deleteBoard} />
     {props.children}
@@ -32,8 +37,8 @@ const Layout = ({ modals, ...props }) => (
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
   modals: PropTypes.objectOf(PropTypes.object).isRequired,
-  closeNewBoardModal: PropTypes.func.isRequired,
-  updateNewBoardModalData: PropTypes.func.isRequired,
+  closeEditBoardModal: PropTypes.func.isRequired,
+  updateEditBoardModalData: PropTypes.func.isRequired,
   closeDeleteBoardModal: PropTypes.func.isRequired,
   createBoard: PropTypes.func.isRequired,
   updateBoard: PropTypes.func.isRequired,

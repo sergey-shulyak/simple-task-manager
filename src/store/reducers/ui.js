@@ -12,9 +12,9 @@ const errors = handleActions({
 }, defaultState);
 
 const modals = handleActions({
-  [combineActions(actions.showNewBoardModal, actions.hideNewBoardModal)]:
-    reducers.getPropertyReducer('newBoard'),
-  [actions.updateNewBoardModalData]: reducers.getModalDataPropertyReducer('newBoard'),
+  [combineActions(actions.showEditBoardModal, actions.hideEditBoardModal)]:
+    reducers.getPropertyReducer('editBoard'),
+  [actions.updateEditBoardModalData]: reducers.getModalDataPropertyReducer('editBoard'),
   [combineActions(actions.showDeleteBoardModal, actions.hideDeleteBoardModal)]:
     reducers.getPropertyReducer('deleteBoard')
 }, defaultState);

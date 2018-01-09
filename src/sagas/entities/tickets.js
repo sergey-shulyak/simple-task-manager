@@ -11,7 +11,7 @@ export function* fetchTickets({ payload: { id } }) {
     const data = yield call(getTickets, id);
     yield put(saveTicketsToStore(data));
   } catch (error) {
-    yield put(setTicketsError(error));
+    yield put(setTicketsError(error.message));
   }
 }
 

@@ -13,7 +13,7 @@ class BoardListPage extends Component {
     this.props.fetchBoards();
   }
 
-  handleNewBoardButtonClick = (event, props) => props.showNewBoardModal();
+  handleNewBoardButtonClick = (event, props) => props.showEditBoardModal();
 
   render() {
     const { boards } = this.props;
@@ -31,7 +31,7 @@ class BoardListPage extends Component {
             <BoardEntry
               className="board-list-page__board"
               key={board.id}
-              showEditModal={this.props.showNewBoardModal}
+              showEditModal={this.props.showEditBoardModal}
               showDeleteModal={this.props.showDeleteBoardModal}
               {...board}
             />))}
@@ -44,7 +44,7 @@ class BoardListPage extends Component {
 BoardListPage.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.object),
   fetchBoards: PropTypes.func.isRequired,
-  showNewBoardModal: PropTypes.func.isRequired,
+  showEditBoardModal: PropTypes.func.isRequired,
   showDeleteBoardModal: PropTypes.func.isRequired
 };
 

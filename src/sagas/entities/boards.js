@@ -2,7 +2,7 @@ import { all, takeEvery, call, put } from 'redux-saga/effects';
 
 import { getBoard, getBoards, createBoard, deleteBoard, updateBoard } from '../../api/boards';
 import { fetchBoards, saveBoardsToStore } from '../../store/actions/boards';
-import { hideNewBoardModal, hideDeleteBoardModal, setBoardsError } from '../../store/actions/ui';
+import { hideEditBoardModal, hideDeleteBoardModal, setBoardsError } from '../../store/actions/ui';
 
 import * as actions from '../../store/actionTypes/boards';
 
@@ -16,7 +16,7 @@ export function* fetchBoardsSaga({ payload = {} }) {
 
     yield put(saveBoardsToStore(data));
   } catch (error) {
-    yield put(setBoardsError(error));
+    yield put(setBoardsError(error.message));
   }
 }
 
@@ -24,11 +24,11 @@ export function* createBoardSaga({ payload = {} }) {
   try {
     yield call(createBoard, payload);
 
-    yield put(hideNewBoardModal());
+    yield put(hideEditBoardModal());
     yield put(fetchBoards());
   } catch (error) {
     // TODO: Add some toast
-    yield put(setBoardsError(error));
+    yield put(setBoardsError(error.message));
   }
 }
 
@@ -36,11 +36,11 @@ export function* updateBoardSaga({ payload = {} }) {
   try {
     yield call(updateBoard, payload);
 
-    yield put(hideNewBoardModal());
+    yield put(hideEditBoardModal());
     yield put(fetchBoards());
   } catch (error) {
     // TODO: Add some toast
-    yield put(setBoardsError(error));
+    yield put(setBoardsError(error.message));
   }
 }
 
@@ -52,7 +52,7 @@ export function* deleteBoardSaga({ payload = {} }) {
     yield put(fetchBoards());
   } catch (error) {
     // TODO: Add some toast
-    yield put(setBoardsError(error));
+    yield put(setBoardsError(error.message));
   }
 }
 

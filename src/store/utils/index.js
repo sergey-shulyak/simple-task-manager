@@ -1,5 +1,8 @@
 export const getPropertyReducer = prop =>
-  (state, { payload }) => ({ ...state, [prop]: payload });
+  (state, { payload }) => {
+    console.log('Payload', payload);
+    return ({ ...state, [prop]: payload });
+  }
 
 export const getModalDataPropertyReducer = modalName =>
   (state, { payload }) => ({

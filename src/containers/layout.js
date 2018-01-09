@@ -9,8 +9,8 @@ const mapState = ({ ui }) => ({
 });
 
 const mapDispatch = dispatch => ({
-  closeNewBoardModal: () => dispatch(uiActions.hideNewBoardModal()),
-  updateNewBoardModalData: event => dispatch(uiActions.updateNewBoardModalData(event)),
+  closeEditBoardModal: () => dispatch(uiActions.hideEditBoardModal()),
+  updateEditBoardModalData: event => dispatch(uiActions.updateEditBoardModalData(event)),
   closeDeleteBoardModal: () => dispatch(uiActions.hideDeleteBoardModal()),
   createBoard: board => dispatch(boardsActions.createBoard(board)),
   updateBoard: board => dispatch(boardsActions.updateBoard(board)),
