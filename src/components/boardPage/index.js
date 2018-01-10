@@ -24,7 +24,7 @@ class BoardPage extends Component {
 
     return (
       <div className="board-page">
-        <Link to={boardsUrl()} className="link-button board-page__back-link">Go back</Link>
+        <Link to={boardsUrl()} className="board-page__back-link">Go back</Link>
         <Board
           className="board-page__board"
           tickets={tickets}

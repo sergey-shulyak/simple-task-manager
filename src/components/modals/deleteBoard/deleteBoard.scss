@@ -13,11 +13,12 @@
   }
 
   &__button {
+    @include link-button($secondary-color);
     font-size: 1em;
 
     &_yes {
       margin-right: 1em;
-      color: $red !important;
+      color: $red;
     }
   }
 }

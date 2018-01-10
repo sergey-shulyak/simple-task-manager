@@ -39,22 +39,24 @@
   }
 
   &__edit {
+    @include link-button($yellow);
     grid-column-start: 2;
     grid-row-start: 1;
 
-    padding: 0.5em !important;
+    padding: 0.5em;
 
     font-size: 1em;
-    color: $yellow !important;
+    color: $yellow;
   }
 
   &__delete {
+    @include link-button($red);
     grid-column-start: 2;
     grid-row-start: 2;
 
-    padding: 0.5em !important;
+    padding: 0.5em;
 
     font-size: 1em;
-    color: $red !important;
+    color: $red;
   }
 }

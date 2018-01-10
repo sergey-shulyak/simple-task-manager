@@ -20,9 +20,9 @@ class BoardListPage extends Component {
 
     return (
       <div className="board-list-page">
-        <Link to={homeUrl()} className="link-button board-list-page__back-link">Go back</Link>
+        <Link to={homeUrl()} className="board-list-page__back-link">Go back</Link>
         <a
-          className="link-button board-list-page__new-board-link"
+          className="board-list-page__new-board-link"
           onClick={e => this.handleNewBoardButtonClick(e, this.props)}
         >New board
         </a>

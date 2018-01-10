@@ -5,7 +5,7 @@ exports[`BoardListPage Should render correctly 1`] = `
   className="board-page"
 >
   <Link
-    className="link-button board-page__back-link"
+    className="board-page__back-link"
     replace={false}
     to="/boards"
   >

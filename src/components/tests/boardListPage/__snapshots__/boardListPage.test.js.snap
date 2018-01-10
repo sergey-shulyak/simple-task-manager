@@ -5,14 +5,14 @@ exports[`BoardListPage Should render correctly 1`] = `
   className="board-list-page"
 >
   <Link
-    className="link-button board-list-page__back-link"
+    className="board-list-page__back-link"
     replace={false}
     to="/"
   >
     Go back
   </Link>
   <a
-    className="link-button board-list-page__new-board-link"
+    className="board-list-page__new-board-link"
     onClick={[Function]}
   >
     New board

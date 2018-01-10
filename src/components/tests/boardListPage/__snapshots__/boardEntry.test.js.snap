@@ -20,7 +20,7 @@ exports[`BoardEntry Should render correctly 1`] = `
       Sample description
     </p>
     <button
-      className="link-button board-entry__edit"
+      className="board-entry__edit"
       onClick={[Function]}
     >
       <i
@@ -30,7 +30,7 @@ exports[`BoardEntry Should render correctly 1`] = `
        Edit
     </button>
     <button
-      className="link-button board-entry__delete"
+      className="board-entry__delete"
       onClick={[Function]}
     >
       <i

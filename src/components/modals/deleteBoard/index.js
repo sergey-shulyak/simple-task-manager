@@ -24,11 +24,11 @@ const DeleteBoardModal = props => (
         </p>
         <div className="delete-board__button-container">
           <button
-            className="link-button delete-board__button delete-board__button_yes"
+            className="delete-board__button delete-board__button_yes"
             onClick={event => handleDelete(event, props)}> Yes
           </button>
           <button
-            className="link-button delete-board__button delete-board__button_no"
+            className="delete-board__button delete-board__button_no"
             onClick={props.handleClose}>No
           </button>
         </div>

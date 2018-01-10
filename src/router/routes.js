@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Layout from '../containers/layout';
-import Home from '../components/homePage/Home';
+import Home from '../components/homePage';
 import BoardListPage from '../containers/boardListPage';
 import BoardPage from '../containers/boardPage';
 

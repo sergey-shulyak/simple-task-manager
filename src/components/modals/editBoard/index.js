@@ -46,7 +46,7 @@ const EditBoardModal = props => (
           onChange={props.handleChange} />
 
         <input
-          className="link-button edit-board__submit"
+          className="edit-board__submit"
           id="submit"
           type="submit"
           value={props.isEdit ? 'Update' : 'Save'} />

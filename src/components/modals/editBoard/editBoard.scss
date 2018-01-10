@@ -21,9 +21,9 @@
   }
 
   &__submit {
+    @include link-button($green);
     display: block;
     margin: 1em auto 0;
     font-size: 1em;
-    color: $green !important;
   }
 }
