@@ -45,6 +45,7 @@
   &__edit {
     @include button($yellow);
     width: 100%;
+    padding: 0.5em;
     font-size: 1em;
   }
 
@@ -52,6 +53,7 @@
     @include button($red);
     width: 100%;
     margin-top: 1em;
+    padding: 0.5em;
     font-size: 1em;
   }
 }
