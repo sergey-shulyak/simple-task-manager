@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Modal from './base';
 
+import './deleteBoard.scss';
+
 const handleDelete = (event, props) => {
   event.preventDefault();
 
@@ -11,16 +13,25 @@ const handleDelete = (event, props) => {
 
 const DeleteBoardModal = props => (
   <Modal
+    className="delete-board"
     title="Delete Board"
     isShown={props.isShown}
     handleClose={props.handleClose}
     content={
       <div>
-        <p>Are you sure you want to delete {props.data.title}</p>
-        <button name="yes" onClick={event => handleDelete(event, props)}>
-          Yes
-        </button>
-        <button name="no" onClick={props.handleClose}>No</button>
+        <p className="delete-board__message">Are you sure you want to
+          <span className="delete-board__accent"> delete {props.data.title}</span>?
+        </p>
+        <div className="delete-board__button-container">
+          <button
+            className="link-button delete-board__button delete-board__button_yes"
+            onClick={event => handleDelete(event, props)}> Yes
+          </button>
+          <button
+            className="link-button delete-board__button delete-board__button_no"
+            onClick={props.handleClose}>No
+          </button>
+        </div>
       </div>
     }
   />

@@ -41,6 +41,8 @@ $red: #b16262;
   text-decoration: none;
   color: $primary-color;
 
+  cursor: pointer;
+
   transition: border-color 0.2s ease-in-out;
 
   &:hover {

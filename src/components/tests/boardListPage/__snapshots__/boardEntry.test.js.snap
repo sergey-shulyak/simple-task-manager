@@ -19,6 +19,24 @@ exports[`BoardEntry Should render correctly 1`] = `
     >
       Sample description
     </p>
+    <button
+      name="editBoard"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-pencil"
+      />
+    </button>
+    <button
+      name="deleteBoard"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-trash"
+      />
+    </button>
   </div>
 </Link>
 `;

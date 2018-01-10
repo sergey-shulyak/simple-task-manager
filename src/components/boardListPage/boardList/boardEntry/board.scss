@@ -4,6 +4,12 @@
   text-decoration: none;
 
   &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0.5em;
+    align-items: flex-start;
+
     border: 1px solid $border-color;
     border-radius: 10px;
 
@@ -17,17 +23,38 @@
   }
 
   &__title {
-    margin-top: 0;
-
+    grid-column-start: 1;
+    margin: 0;
     font-weight: normal;
     color: $primary-color;
   }
 
   &__description {
-    margin-bottom: 0;
+    grid-column-start: 1;
+    margin: 0;
 
     font-size: 1.2em;
     font-weight: lighter;
     color: $secondary-color;
+  }
+
+  &__edit {
+    grid-column-start: 2;
+    grid-row-start: 1;
+
+    padding: 0.5em !important;
+
+    font-size: 1em;
+    color: $yellow !important;
+  }
+
+  &__delete {
+    grid-column-start: 2;
+    grid-row-start: 2;
+
+    padding: 0.5em !important;
+
+    font-size: 1em;
+    color: $red !important;
   }
 }

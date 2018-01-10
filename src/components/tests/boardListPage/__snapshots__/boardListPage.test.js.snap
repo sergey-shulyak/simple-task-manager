@@ -11,6 +11,12 @@ exports[`BoardListPage Should render correctly 1`] = `
   >
     Go back
   </Link>
+  <a
+    className="link-button board-list-page__new-board-link"
+    onClick={[Function]}
+  >
+    New board
+  </a>
   <BoardList>
     <BoardEntry
       className="board-list-page__board"

@@ -3,17 +3,17 @@
 
   &__back-link {
     position: sticky;
+    top: 1em;
   }
 
   &__new-board-link {
-    margin: 40%;
+    position: sticky;
+    top: 1em;
+    left : 9em;
   }
 
-  &__board {
-    margin: 1em auto;
-    padding: 1em;
-
-    width: 50%;
-    min-width: max-content;
+  &__board-list {
+    margin: -3em auto;
+    width: 40%;
   }
 }

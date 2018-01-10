@@ -6,7 +6,7 @@ import './modal.scss';
 const Modal = props =>
   (props.isShown ?
     <div className="background">
-      <div className="modal">
+      <div className={`modal ${props.className}`}>
         <div className="modal__header">
           <h2 className="modal__title">
             {props.title}
@@ -23,6 +23,7 @@ const Modal = props =>
     </div> : null);
 
 Modal.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   content: PropTypes.element.isRequired,
   isShown: PropTypes.bool,
@@ -30,6 +31,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
+  className: '',
   isShown: false
 };
 

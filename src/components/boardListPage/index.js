@@ -26,10 +26,10 @@ class BoardListPage extends Component {
           onClick={e => this.handleNewBoardButtonClick(e, this.props)}
         >New board
         </a>
-        <BoardList>
+        <BoardList className="board-list-page__board-list">
           {boards.map(board => (
             <BoardEntry
-              className="board-list-page__board"
+              className="board-list__board"
               key={board.id}
               showEditModal={this.props.showEditBoardModal}
               showDeleteModal={this.props.showDeleteBoardModal}

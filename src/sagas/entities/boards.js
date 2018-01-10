@@ -27,7 +27,6 @@ export function* createBoardSaga({ payload = {} }) {
     yield put(hideEditBoardModal());
     yield put(fetchBoards());
   } catch (error) {
-    // TODO: Add some toast
     yield put(setBoardsError(error.message));
   }
 }
@@ -39,7 +38,6 @@ export function* updateBoardSaga({ payload = {} }) {
     yield put(hideEditBoardModal());
     yield put(fetchBoards());
   } catch (error) {
-    // TODO: Add some toast
     yield put(setBoardsError(error.message));
   }
 }
@@ -51,7 +49,6 @@ export function* deleteBoardSaga({ payload = {} }) {
     yield put(hideDeleteBoardModal());
     yield put(fetchBoards());
   } catch (error) {
-    // TODO: Add some toast
     yield put(setBoardsError(error.message));
   }
 }

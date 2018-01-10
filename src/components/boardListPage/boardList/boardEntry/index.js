@@ -27,11 +27,15 @@ const BoardEntry = props => (
     <div className={`board-entry__content ${props.className}`}>
       <h2 className="board-entry__title">{props.title}</h2>
       <p className="board-entry__description">{props.description}</p>
-      <button name="editBoard" onClick={event => handleEditButtonClick(event, props)}>
-        <i className="fa fa-pencil" aria-hidden="true" />
+      <button
+        className="link-button board-entry__edit"
+        onClick={event => handleEditButtonClick(event, props)}>
+        <i className="fa fa-pencil" aria-hidden="true" /> Edit
       </button>
-      <button name="deleteBoard" onClick={event => handleDeleteButtonClick(event, props)}>
-        <i className="fa fa-trash" aria-hidden="true" />
+      <button
+        className="link-button board-entry__delete"
+        onClick={event => handleDeleteButtonClick(event, props)}>
+        <i className="fa fa-trash" aria-hidden="true" /> Delete
       </button>
     </div>
   </Link>
