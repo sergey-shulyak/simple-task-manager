@@ -23,20 +23,24 @@ const handleEditButtonClick = (event, props) => {
 };
 
 const BoardEntry = props => (
-  <Link to={boardUrl(props.id)} className="board-entry">
-    <div className={`board-entry__content ${props.className}`}>
-      <h2 className="board-entry__title">{props.title}</h2>
-      <p className="board-entry__description">{props.description}</p>
-      <button
-        className="board-entry__edit"
-        onClick={event => handleEditButtonClick(event, props)}>
-        <i className="fa fa-pencil" aria-hidden="true" /> Edit
-      </button>
-      <button
-        className="board-entry__delete"
-        onClick={event => handleDeleteButtonClick(event, props)}>
-        <i className="fa fa-trash" aria-hidden="true" /> Delete
-      </button>
+  <Link to={boardUrl(props.id)} className="board-entry__wrapper">
+    <div className={`board-entry ${props.className}`}>
+      <div className="board-entry__info">
+        <h2 className="board-entry__title">{props.title}</h2>
+        <p className="board-entry__description">{props.description}</p>
+      </div>
+      <div className="board-entry__controls">
+        <button
+          className="board-entry__edit"
+          onClick={event => handleEditButtonClick(event, props)}>
+          <i className="fa fa-pencil" aria-hidden="true" /> Edit
+        </button>
+        <button
+          className="board-entry__delete"
+          onClick={event => handleDeleteButtonClick(event, props)}>
+          <i className="fa fa-trash" aria-hidden="true" /> Delete
+        </button>
+      </div>
     </div>
   </Link>
 );
