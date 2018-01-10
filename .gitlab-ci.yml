@@ -32,6 +32,7 @@ deploy:
   only:
     - develop
     - feature/NJE-98
+    - feature/NJE-99
   script:
     - bash .scripts/deploy.sh
   cache:
