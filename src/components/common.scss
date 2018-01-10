@@ -31,7 +31,7 @@ $red: #b16262;
   @include transform(scale($scale));
 }
 
-@mixin link-button($color) {
+%link-button {
   padding: 1em;
 
   border: 1px solid $border-color;
@@ -39,7 +39,6 @@ $red: #b16262;
 
   font-family: $default-font;
   text-decoration: none;
-  color: $color;
 
   cursor: pointer;
 
@@ -48,4 +47,10 @@ $red: #b16262;
   &:hover {
     border-color: $border-color-dark;
   }
+}
+
+@mixin button($color) {
+  @extend %link-button;
+  color: $color;
+  border-color: $color;
 }

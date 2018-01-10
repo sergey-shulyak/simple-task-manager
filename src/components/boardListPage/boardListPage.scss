@@ -4,13 +4,13 @@
   margin: 2em;
 
   &__back-link {
-    @include link-button($secondary-color);
+    @include button($secondary-color);
     position: sticky;
     top: 1em;
   }
 
   &__new-board-link {
-    @include link-button($green);
+    @include button($green);
     position: sticky;
     top: 1em;
     left : 9em;

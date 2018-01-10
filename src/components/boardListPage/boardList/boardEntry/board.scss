@@ -39,7 +39,7 @@
   }
 
   &__edit {
-    @include link-button($yellow);
+    @include button($yellow);
     grid-column-start: 2;
     grid-row-start: 1;
 
@@ -50,7 +50,7 @@
   }
 
   &__delete {
-    @include link-button($red);
+    @include button($red);
     grid-column-start: 2;
     grid-row-start: 2;
 

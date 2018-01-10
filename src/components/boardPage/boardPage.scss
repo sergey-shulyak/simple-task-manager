@@ -4,7 +4,7 @@
   margin: 2em;
 
   &__back-link {
-    @include link-button($secondary-color);
+    @include button($secondary-color);
     position: absolute;
     left: 2em;
   }

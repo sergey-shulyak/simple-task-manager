@@ -21,6 +21,6 @@
   }
 
   &__view-boards {
-    @include link-button($primary-color);
+    @include button($primary-color);
   }
 }

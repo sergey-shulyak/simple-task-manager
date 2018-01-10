@@ -13,7 +13,7 @@
   }
 
   &__button {
-    @include link-button($secondary-color);
+    @include button($secondary-color);
     font-size: 1em;
 
     &_yes {
