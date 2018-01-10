@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Modal from './base';
+import Modal from '../base';
 
 import './deleteBoard.scss';
 

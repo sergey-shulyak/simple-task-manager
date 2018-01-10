@@ -6,7 +6,7 @@ import { setTicketsError } from '../../store/actions/ui';
 
 import * as actions from '../../store/actionTypes/tickets';
 
-export function* fetchTickets({ payload: { id } }) {
+export function* fetchTicketsSaga({ payload: { id } }) {
   try {
     const data = yield call(getTickets, id);
     yield put(saveTicketsToStore(data));
@@ -16,5 +16,5 @@ export function* fetchTickets({ payload: { id } }) {
 }
 
 export default function* () {
-  yield takeEvery(actions.FETCH_TICKETS, fetchTickets);
+  yield takeEvery(actions.FETCH_TICKETS, fetchTicketsSaga);
 }

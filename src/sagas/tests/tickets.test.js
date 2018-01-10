@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects';
 import { normalize } from 'normalizr';
 
-import { fetchTickets } from '../tickets';
+import { fetchTicketsSaga } from '../entities/tickets';
 import { getTickets } from '../../api/tickets';
 import * as types from '../../store/actionTypes/tickets';
 import { SET_TICKETS_ERROR } from '../../store/actionTypes/ui';
@@ -24,7 +24,7 @@ describe('Ticket sagas', () => {
       putSaveTickets: put({ type: types.SAVE_TICKETS_TO_STORE, payload: data.entities.tickets })
     };
 
-    const saga = fetchTickets(action);
+    const saga = fetchTicketsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetTickets);
     expect(saga.next(data).value).toEqual(expectedResults.putSaveTickets);
@@ -39,12 +39,11 @@ describe('Ticket sagas', () => {
       callGetTickets: call(getTickets, id),
       putSetError: put({
         type: SET_TICKETS_ERROR,
-        error: true,
-        payload: expect.any(Error)
+        payload: expect.any(String)
       })
     };
 
-    const saga = fetchTickets(action);
+    const saga = fetchTicketsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetTickets);
     expect(saga.next().value).toMatchObject(expectedResults.putSetError);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import serialize from 'form-serialize';
 
-import Modal from './base';
+import Modal from '../base';
 
 import './editBoard.scss';
 

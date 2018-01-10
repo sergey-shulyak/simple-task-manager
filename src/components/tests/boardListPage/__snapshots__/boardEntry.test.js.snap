@@ -20,22 +20,24 @@ exports[`BoardEntry Should render correctly 1`] = `
       Sample description
     </p>
     <button
-      name="editBoard"
+      className="link-button board-entry__edit"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
         className="fa fa-pencil"
       />
+       Edit
     </button>
     <button
-      name="deleteBoard"
+      className="link-button board-entry__delete"
       onClick={[Function]}
     >
       <i
         aria-hidden="true"
         className="fa fa-trash"
       />
+       Delete
     </button>
   </div>
 </Link>

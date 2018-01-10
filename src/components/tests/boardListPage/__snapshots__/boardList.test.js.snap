@@ -2,13 +2,14 @@
 
 exports[`BoardList Should render correctly 1`] = `
 <div
-  className="board-list"
+  className="board-list "
 >
   <BoardEntry
     className=""
     description=""
     id="1"
     key="1"
+    showDeleteModal={[Function]}
     title="test"
   />
   <BoardEntry
@@ -16,6 +17,7 @@ exports[`BoardList Should render correctly 1`] = `
     description=""
     id="2"
     key="2"
+    showDeleteModal={[Function]}
     title="test"
   />
   <BoardEntry
@@ -23,6 +25,7 @@ exports[`BoardList Should render correctly 1`] = `
     description=""
     id="3"
     key="3"
+    showDeleteModal={[Function]}
     title="test"
   />
 </div>
