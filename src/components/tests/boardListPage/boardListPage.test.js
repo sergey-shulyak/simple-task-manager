@@ -5,9 +5,9 @@ import toJson from 'enzyme-to-json';
 import BoardListPage from '../../boardListPage';
 
 const boards = [
-  { id: 1, title: 'Test 1' },
-  { id: 2, title: 'Test 2' },
-  { id: 3, title: 'Test 3' }
+  { id: '1', title: 'Test 1' },
+  { id: '2', title: 'Test 2' },
+  { id: '3', title: 'Test 3' }
 ];
 
 const props = {

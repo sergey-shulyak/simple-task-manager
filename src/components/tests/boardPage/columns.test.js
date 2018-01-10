@@ -9,7 +9,8 @@ import Column from '../../boardPage/board/column';
 const props = {
   title: 'Sample title',
   tickets,
-  className: 'custom'
+  className: 'custom',
+  boardId: '42'
 };
 
 describe('Column', () => {

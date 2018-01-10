@@ -13,15 +13,16 @@ exports[`Board Should render correctly 1`] = `
     className="board__columns"
   >
     <Column
+      boardId=""
       className="board__column"
-      id={1}
+      id="1"
       key="1"
       tickets={
         Array [
           Object {
-            "boardId": 42,
-            "columnId": 1,
-            "id": 1,
+            "boardId": "42",
+            "columnId": "1",
+            "id": "1",
             "title": "Test ticket 1",
             "type": "task",
           },
@@ -30,15 +31,16 @@ exports[`Board Should render correctly 1`] = `
       title="To do"
     />
     <Column
+      boardId=""
       className="board__column"
-      id={2}
+      id="2"
       key="2"
       tickets={
         Array [
           Object {
-            "boardId": 42,
-            "columnId": 2,
-            "id": 2,
+            "boardId": "42",
+            "columnId": "2",
+            "id": "2",
             "title": "Test ticket 1",
             "type": "task",
           },
@@ -47,15 +49,16 @@ exports[`Board Should render correctly 1`] = `
       title="In progress"
     />
     <Column
+      boardId=""
       className="board__column"
-      id={3}
+      id="3"
       key="3"
       tickets={
         Array [
           Object {
-            "boardId": 42,
-            "columnId": 3,
-            "id": 3,
+            "boardId": "42",
+            "columnId": "3",
+            "id": "3",
             "title": "Test ticket 1",
             "type": "task",
           },

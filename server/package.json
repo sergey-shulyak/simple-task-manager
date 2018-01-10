@@ -1,0 +1,26 @@
+{
+  "name": "simple-task-manager-server",
+  "version": "1.0.0",
+  "description": "Skill-up project server to learn React/Redux",
+  "main": "server.js",
+  "scripts": {
+    "start": "clear && node server.js",
+    "dev": "clear && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://nix.githost.io/jsui-skillup/njs-1411-fe.git"
+  },
+  "author": "Sergey Shulyak",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.0-rc0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.3"
+  }
+}

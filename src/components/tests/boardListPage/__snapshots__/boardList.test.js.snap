@@ -7,21 +7,21 @@ exports[`BoardList Should render correctly 1`] = `
   <BoardEntry
     className=""
     description=""
-    id={1}
+    id="1"
     key="1"
     title="test"
   />
   <BoardEntry
     className=""
     description=""
-    id={2}
+    id="2"
     key="2"
     title="test"
   />
   <BoardEntry
     className=""
     description=""
-    id={3}
+    id="3"
     key="3"
     title="test"
   />

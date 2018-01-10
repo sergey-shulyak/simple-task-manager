@@ -5,12 +5,12 @@ import toJson from 'enzyme-to-json';
 import Ticket from '../../boardPage/board/column/ticket';
 
 const props = {
-  id: 42,
+  id: '42',
   title: 'Sample title',
   description: 'Sample description',
   priority: 'medium',
   type: 'task',
-  boardId: 24,
+  boardId: '24',
   className: 'custom'
 };
 

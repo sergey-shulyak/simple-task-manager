@@ -16,7 +16,7 @@ const BoardEntry = ({ id, title, description, className }) => (
 );
 
 BoardEntry.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   className: PropTypes.string

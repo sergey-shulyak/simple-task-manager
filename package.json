@@ -9,7 +9,8 @@
     "dev": "webpack-dev-server --progress",
     "lint": "eslint src/**/*.js",
     "test": "jest --coverage",
-    "testWatch": "jest --watch"
+    "testWatch": "jest --watch",
+    "testUpdateSnapshots": "jest --updateSnapshot"
   },
   "repository": {
     "type": "git",

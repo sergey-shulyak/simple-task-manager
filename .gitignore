@@ -9,3 +9,6 @@ coverage
 
 # VS Code misc
 .vscode
+
+# Dev Mongo storage
+db

@@ -16,40 +16,40 @@ exports[`BoardListPage Should render correctly 1`] = `
     columns={
       Array [
         Object {
-          "id": 1,
+          "id": "1",
           "title": "To do",
         },
         Object {
-          "id": 2,
+          "id": "2",
           "title": "In progress",
         },
         Object {
-          "id": 3,
+          "id": "3",
           "title": "Done",
         },
       ]
     }
-    id={42}
+    id="42"
     tickets={
       Array [
         Object {
-          "boardId": 42,
-          "columnId": 1,
-          "id": 1,
+          "boardId": "42",
+          "columnId": "1",
+          "id": "1",
           "title": "Test ticket 1",
           "type": "task",
         },
         Object {
-          "boardId": 42,
-          "columnId": 2,
-          "id": 2,
+          "boardId": "42",
+          "columnId": "2",
+          "id": "2",
           "title": "Test ticket 1",
           "type": "task",
         },
         Object {
-          "boardId": 42,
-          "columnId": 3,
-          "id": 3,
+          "boardId": "42",
+          "columnId": "3",
+          "id": "3",
           "title": "Test ticket 1",
           "type": "task",
         },
