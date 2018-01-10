@@ -17,8 +17,8 @@
     font-size: 1em;
 
     &_yes {
+      @include button($red);
       margin-right: 1em;
-      color: $red;
     }
   }
 }
