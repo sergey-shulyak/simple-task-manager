@@ -5,43 +5,43 @@ const api = require('../persistence/boards');
 const router = express.Router();
 
 router.route('/boards')
-  .get(async (req, res) => {
+  .get(async (req, res, next) => {
     try {
       res.json(await api.getBoards());
     } catch (error) {
-      res.send(new Error(error));
+      next(error);
     }
   })
-  .post(async (req, res) => {
+  .post(async (req, res, next) => {
     try {
       const board = req.body;
 
       res.json(await api.createBoard(board));
     } catch (error) {
-      res.send(new Error(error));
+      next(error);
     }
   });
 
 router.route('/boards/:boardId')
-  .get(async (req, res) => {
+  .get(async (req, res, next) => {
     try {
       res.json(await api.getBoard(req.params.boardId));
     } catch (error) {
-      res.send(new Error(error));
+      next(error);
     }
   })
-  .put(async (req, res) => {
+  .put(async (req, res, next) => {
     try {
       res.json(await api.updateBoard(req.body));
     } catch (error) {
-      res.send(new Error(error));
+      next(error);
     }
   })
-  .delete(async (req, res) => {
+  .delete(async (req, res, next) => {
     try {
       res.json(await api.deleteBoard(req.params.boardId));
     } catch (error) {
-      res.send(new Error(error));
+      next(error);
     }
   });
 

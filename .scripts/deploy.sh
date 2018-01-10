@@ -14,8 +14,8 @@ mkdir -p ~/.ssh
 echo "Done"
 
 echo "Deploying project to $SERVER_HOST"
-
-if rsync -azv -e "ssh -p $SERVER_SSH_PORT" public/ "$SERVER_USER@$SERVER_HOST:$SERVER_DESTINATION/$PROJECT_NAME"
+if rsync -azv -e "ssh -p $SERVER_SSH_PORT" public server \
+  "$SERVER_USER@$SERVER_HOST:$SERVER_DESTINATION/$PROJECT_NAME" --delete
 then
   echo "Done"
 else
@@ -23,8 +23,21 @@ else
   exit 1
 fi
 
+echo "Starting server"
+if ssh "$SERVER_USER@$SERVER_HOST" -p $SERVER_SSH_PORT <<RESTART
+  pkill -U $UID node
+  bash -c "cd $SERVER_DESTINATION/$PROJECT_NAME/server; nohup npm start > server.log 2>&1 &"
+RESTART
+then
+  echo "Done"
+else
+  echo "ERROR: Failed to start server in $SERVER_DIR"
+  exit 1
+fi
+
 echo "Creating symlink for web application root"
-if ssh "$SERVER_USER@$SERVER_HOST" -p $SERVER_SSH_PORT ln -sfn "$SERVER_DESTINATION/$PROJECT_NAME" "/home/$SERVER_USER/www/$PROJECT_NAME"
+if ssh "$SERVER_USER@$SERVER_HOST" -p $SERVER_SSH_PORT \
+  ln -sfn "$SERVER_DESTINATION/$PROJECT_NAME/public /home/$SERVER_USER/www/$PROJECT_NAME"
 then
   echo "Done"
   echo "Project deployed succesfully"

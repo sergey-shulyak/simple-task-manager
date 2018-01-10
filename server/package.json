@@ -1,11 +1,10 @@
 {
   "name": "simple-task-manager-server",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Skill-up project server to learn React/Redux",
   "main": "server.js",
   "scripts": {
-    "start": "clear && node server.js",
-    "dev": "clear && nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",

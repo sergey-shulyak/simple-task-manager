@@ -10,8 +10,10 @@ build:
   script:
     - bash .scripts/build.sh
   cache:
+    policy: push
     paths:
-      - public/build/
+      - server/
+      - public/
       - node_modules/
 
 test:
@@ -21,12 +23,19 @@ test:
     - bash .scripts/test.sh
   cache:
     paths:
-      - public/build/
+      - server/
+      - public/
 
 deploy:
   stage: deploy
   when: on_success
   only:
     - develop
+    - feature/NJE-98
   script:
     - bash .scripts/deploy.sh
+  cache:
+    policy: pull
+    paths:
+      - server/
+      - public/

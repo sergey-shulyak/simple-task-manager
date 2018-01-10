@@ -2,7 +2,11 @@
 node_modules
 
 # Ignore bundled application
-build
+app.js
+styles.css
+
+# Environment
+.env
 
 # Coverage report
 coverage
