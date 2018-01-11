@@ -8,4 +8,10 @@
     position: absolute;
     left: 2em;
   }
+
+  &__new-ticket-link {
+    @include button($green);
+    position: absolute;
+    left: 9em;
+  }
 }

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Modal from '../base';
 
+import modalNames from '../modalNames';
+
 import './deleteBoard.scss';
 
 const handleDelete = (event, props) => {
@@ -16,7 +18,7 @@ const DeleteBoardModal = props => (
     className="delete-board"
     title="Delete Board"
     isShown={props.isShown}
-    handleClose={props.handleClose}
+    handleClose={() => props.handleClose(modalNames.DELETE_BOARD)}
     content={
       <div>
         <p className="delete-board__message">Are you sure you want to

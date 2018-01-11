@@ -4,31 +4,36 @@ import PropTypes from 'prop-types';
 import EditBoardModal from '../modals/editBoard';
 import DeleteBoardModal from '../modals/deleteBoard';
 
+import modalNames from '../modals/modalNames';
+
 import './layout.scss';
 
-const modalNames = {
-  EDIT_BOARD: 'editBoard',
-  DELETE_BOARD: 'deleteBoard'
-};
-
-const getModalProperty = (modals, modalName, propName) =>
+const getModalProperty = (propName, modalName, modals) =>
   modals[modalName] && modals[modalName][propName];
+
+const getData = (modalName, modals) =>
+  getModalProperty('data', modalName, modals);
+
+const isShown = (modalName, modals) =>
+  getModalProperty('isShown', modalName, modals);
+
+const isEdit = (modalName, modals) =>
+  Boolean(getData(modalName, modals) && getData(modalName, modals).id);
 
 const Layout = ({ modals, ...props }) => (
   <div className="layout">
     <EditBoardModal
-      isShown={getModalProperty(modals, modalNames.EDIT_BOARD, 'isShown')}
-      isEdit={Boolean(getModalProperty(modals, modalNames.EDIT_BOARD, 'data')
-        && getModalProperty(modals, modalNames.EDIT_BOARD, 'data').id)}
-      data={getModalProperty(modals, modalNames.EDIT_BOARD, 'data')}
-      handleClose={props.closeEditBoardModal}
-      handleChange={props.updateEditBoardModalData}
+      isShown={isShown(modalNames.EDIT_BOARD, modals)}
+      isEdit={isEdit(modalNames.EDIT_BOARD, modals)}
+      data={getData(modalNames.EDIT_BOARD, modals)}
+      handleClose={props.hideModal}
+      handleChange={props.updateModalData}
       updateBoard={props.updateBoard}
       createBoard={props.createBoard} />
     <DeleteBoardModal
-      isShown={getModalProperty(modals, modalNames.DELETE_BOARD, 'isShown')}
-      data={getModalProperty(modals, modalNames.DELETE_BOARD, 'data')}
-      handleClose={props.closeDeleteBoardModal}
+      isShown={isShown(modalNames.DELETE_BOARD, modals)}
+      data={getData(modalNames.DELETE_BOARD, modals)}
+      handleClose={props.hideModal}
       deleteBoard={props.deleteBoard} />
     {props.children}
   </div>
@@ -37,9 +42,8 @@ const Layout = ({ modals, ...props }) => (
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
   modals: PropTypes.objectOf(PropTypes.object).isRequired,
-  closeEditBoardModal: PropTypes.func.isRequired,
-  updateEditBoardModalData: PropTypes.func.isRequired,
-  closeDeleteBoardModal: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired,
+  updateModalData: PropTypes.func.isRequired,
   createBoard: PropTypes.func.isRequired,
   updateBoard: PropTypes.func.isRequired,
   deleteBoard: PropTypes.func.isRequired

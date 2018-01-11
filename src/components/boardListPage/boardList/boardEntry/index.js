@@ -4,18 +4,20 @@ import { Link } from 'react-router-dom';
 
 import { boardUrl } from '../../../../utils/urlCreators';
 
+import modalNames from '../../../modals/modalNames';
+
 import './board.scss';
 
 const handleDeleteButtonClick = (event, props) => {
   event.preventDefault();
 
-  props.showDeleteModal({ id: props.id, title: props.title });
+  props.showModal(modalNames.DELETE_BOARD, { id: props.id, title: props.title });
 };
 
 const handleEditButtonClick = (event, props) => {
   event.preventDefault();
 
-  props.showEditModal({
+  props.showModal(modalNames.EDIT_BOARD, {
     id: props.id,
     title: props.title,
     description: props.description
@@ -50,7 +52,7 @@ BoardEntry.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   className: PropTypes.string,
-  showDeleteModal: PropTypes.func.isRequired
+  showModal: PropTypes.func.isRequired
 };
 
 BoardEntry.defaultProps = {

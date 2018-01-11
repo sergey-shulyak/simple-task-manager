@@ -4,6 +4,8 @@ import serialize from 'form-serialize';
 
 import Modal from '../base';
 
+import modalNames from '../modalNames';
+
 import './editBoard.scss';
 
 const handleSubmit = (event, props) => {
@@ -17,12 +19,18 @@ const handleSubmit = (event, props) => {
   }
 };
 
+const handleChange = (event, props) => {
+  const data = { [event.target.name]: event.target.value };
+  console.log(data);
+  props.handleChange(modalNames.EDIT_BOARD, data);
+};
+
 const EditBoardModal = props => (
   <Modal
     className="edit-board"
     title={props.isEdit ? `Edit ${props.data.title}` : 'New Board'}
     isShown={props.isShown}
-    handleClose={props.handleClose}
+    handleClose={() => props.handleClose(modalNames.EDIT_BOARD)}
     content={
       <form onSubmit={event => handleSubmit(event, props)} method="POST">
         <label htmlFor="title" className="edit-board__label">Title</label>
@@ -33,7 +41,7 @@ const EditBoardModal = props => (
           type="text"
           placeholder="Type some title"
           defaultValue={props.data.title}
-          onChange={props.handleChange} />
+          onChange={event => handleChange(event, props)} />
 
         <label htmlFor="description" className="edit-board__label">Description</label>
         <input
@@ -43,7 +51,7 @@ const EditBoardModal = props => (
           type="text"
           placeholder="Type some description"
           defaultValue={props.data.description}
-          onChange={props.handleChange} />
+          onChange={event => handleChange(event, props)} />
 
         <input
           className="edit-board__submit"

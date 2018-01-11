@@ -1,11 +1,14 @@
 export const getPropertyReducer = prop =>
   (state, { payload }) => ({ ...state, [prop]: payload });
 
-export const getModalDataPropertyReducer = modalName =>
-  (state, { payload }) => ({
+export const getModalReducer = () =>
+  (state, { payload, meta }) => ({ ...state, [meta.modalName]: payload });
+
+export const getModalDataPropertyReducer = () =>
+  (state, { payload, meta }) => ({
     ...state,
-    [modalName]: {
-      ...state[modalName],
-      data: { ...state[modalName].data, ...payload }
+    [meta.modalName]: {
+      ...state[meta.modalName],
+      data: { ...state[meta.modalName].data, ...payload }
     }
   });

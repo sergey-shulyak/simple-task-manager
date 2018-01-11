@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchBoards } from '../store/actions/boards';
-import { showEditBoardModal, showDeleteBoardModal } from '../store/actions/ui';
+import { showModal } from '../store/actions/ui';
 
 import BoardListPage from '../components/boardListPage';
 
@@ -12,8 +12,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   fetchBoards: () => dispatch(fetchBoards()),
-  showEditBoardModal: data => dispatch(showEditBoardModal(data)),
-  showDeleteBoardModal: data => dispatch(showDeleteBoardModal(data))
+  showModal: (modalName, data) => dispatch(showModal(modalName, data))
 });
 
 export default connect(mapState, mapDispatch)(BoardListPage);
