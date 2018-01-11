@@ -21,7 +21,6 @@ const handleSubmit = (event, props) => {
 
 const handleChange = (event, props) => {
   const data = { [event.target.name]: event.target.value };
-  console.log(data);
   props.handleChange(modalNames.EDIT_BOARD, data);
 };
 

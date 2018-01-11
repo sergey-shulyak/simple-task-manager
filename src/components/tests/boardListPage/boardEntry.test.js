@@ -9,7 +9,7 @@ const props = {
   title: 'Sample title',
   description: 'Sample description',
   className: 'custom',
-  showDeleteModal: jest.fn()
+  showModal: jest.fn()
 };
 
 describe('BoardEntry', () => {

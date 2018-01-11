@@ -12,8 +12,7 @@ const boards = [
 
 const props = {
   fetchBoards: jest.fn(),
-  showEditBoardModal: jest.fn(),
-  showDeleteBoardModal: jest.fn(),
+  showModal: jest.fn(),
   boards
 };
 
