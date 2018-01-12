@@ -55,7 +55,7 @@ export function* deleteBoardSaga({ payload = {} }) {
     yield call(deleteBoard, payload);
 
     yield put(hideModal(modalNames.DELETE_BOARD));
-    yield call(toasts.showInfoToast, `Board ${payload.title} removed`);
+    yield call(toasts.showInfoToast, 'Board removed');
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
