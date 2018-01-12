@@ -20,7 +20,8 @@ const handleEditButtonClick = (event, props) => {
   props.showModal(modalNames.EDIT_BOARD, {
     id: props.id,
     title: props.title,
-    description: props.description
+    description: props.description,
+    columns: props.columns.map(column => column.title).join(', ')
   });
 };
 

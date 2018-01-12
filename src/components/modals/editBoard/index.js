@@ -52,6 +52,16 @@ const EditBoardModal = props => (
           defaultValue={props.data.description}
           onChange={event => handleChange(event, props)} />
 
+        <label htmlFor="columns" className="edit-board__label">Columns</label>
+        <input
+          className="edit-board__input"
+          id="columns"
+          name="columns"
+          type="text"
+          placeholder="Column titles, separated by comma (e.g. To Do, In Progress, Done)"
+          defaultValue={props.data.columns}
+          onChange={event => handleChange(event, props)} />
+
         <input
           className="edit-board__submit"
           id="submit"
@@ -67,7 +77,8 @@ EditBoardModal.propTypes = {
   title: PropTypes.string,
   data: PropTypes.shape({
     title: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
+    columns: PropTypes.string
   }),
   handleClose: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,

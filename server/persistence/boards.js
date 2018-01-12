@@ -34,11 +34,44 @@ const getBoard = id => new Promise(async (resolve, reject) => {
   }
 });
 
+const generateDefaultColumns = () => ([
+  {
+    _id: new ObjectId(),
+    title: 'To Do'
+  },
+  {
+    _id: new ObjectId(),
+    title: 'In Progress'
+  },
+  {
+    _id: new ObjectId(),
+    title: 'Done'
+  }
+]);
+
+const populateColumnsWithIdOrDefault = (columns) => {
+  if (columns.length === 0) {
+    return generateDefaultColumns();
+  }
+
+  return columns.map(({ id = new ObjectId(), ...props }) => ({
+    _id: id,
+    ...props
+  }));
+};
+
+
 const createBoard = board => new Promise(async (resolve, reject) => {
   try {
     const boardCollection = await getBoardsCollection();
 
-    const { ops } = await boardCollection.insertOne(board);
+    const { columns, ...props } = board;
+    const columnsWithIds = populateColumnsWithIdOrDefault(columns);
+
+    const { ops } = await boardCollection.insertOne({
+      ...props, columns: columnsWithIds
+    });
+
     const createdBoard = ops[0];
 
     resolve(createdBoard);
@@ -49,13 +82,15 @@ const createBoard = board => new Promise(async (resolve, reject) => {
 
 const updateBoard = board => new Promise(async (resolve, reject) => {
   try {
-    const { id, ...rest } = board;
+    const { id, columns, ...rest } = board;
     const _id = new ObjectId(id);
+
+    const columnsWithId = populateColumnsWithIdOrDefault(columns);
 
     const boardCollection = await getBoardsCollection();
 
     const { modifiedCount } = await boardCollection.updateOne({ _id }, {
-      $set: { ...rest }
+      $set: { ...rest, columns: columnsWithId }
     });
 
     resolve({ id, modified: modifiedCount > 0 });
