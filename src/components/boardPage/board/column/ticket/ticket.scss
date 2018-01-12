@@ -15,6 +15,7 @@ $priority-colors: (
 .ticket {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: stretch;
 
   padding: 1em;
@@ -35,7 +36,7 @@ $priority-colors: (
   }
 
   &__info {
-    flex-grow: 4;
+    flex-grow: 1;
   }
 
   &__title {
@@ -66,6 +67,7 @@ $priority-colors: (
 
   &__controls {
     max-width: max-content;
+    margin-bottom: 1em;
   }
 
   &__edit {
@@ -78,7 +80,7 @@ $priority-colors: (
   &__delete {
     @include button($red);
     width: 100%;
-    margin-top: 1em;
+    margin-top: 0.5em;
     padding: 0.5em;
     font-size: 1em;
   }

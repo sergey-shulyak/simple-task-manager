@@ -4,10 +4,9 @@ import { getTickets, createTicket, updateTicket, deleteTicket } from '../../api/
 
 import { saveTicketsToStore, fetchTickets } from '../../store/actions/tickets';
 import * as ui from '../../store/actions/ui';
-
 import * as actions from '../../store/actionTypes/tickets';
-
 import modalNames from '../../components/modals/modalNames';
+import * as toasts from '../utils';
 
 export function* fetchTicketsSaga({ payload: { id } }) {
   try {
@@ -15,6 +14,7 @@ export function* fetchTicketsSaga({ payload: { id } }) {
     yield put(saveTicketsToStore(data));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
+    yield call(toasts.showErrorToast, 'Failed to fetch tickets');
   }
 }
 
@@ -23,9 +23,11 @@ export function* createTicketSaga({ payload = {}, meta = {} }) {
     yield call(createTicket, meta.boardId, payload);
 
     yield put(ui.hideModal(modalNames.EDIT_TICKET));
+    yield call(toasts.showInfoToast, `Ticket ${payload.title} created`);
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
+    yield call(toasts.showErrorToast, `Failed to create ticket ${payload.title}`);
   }
 }
 
@@ -34,9 +36,11 @@ export function* updateTicketSaga({ payload = {}, meta = {} }) {
     yield call(updateTicket, payload);
 
     yield put(ui.hideModal(modalNames.EDIT_TICKET));
+    yield call(toasts.showInfoToast, `Ticket ${payload.title} updated`);
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
+    yield call(toasts.showErrorToast, `Failed to update ticket ${payload.title}`);
   }
 }
 
@@ -45,9 +49,11 @@ export function* deleteTicketSaga({ payload = {}, meta = {} }) {
     yield call(deleteTicket, payload.ticketId);
 
     yield put(ui.hideModal(modalNames.DELETE_TICKET));
+    yield call(toasts.showInfoToast, 'Ticket removed');
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
+    yield call(toasts.showErrorToast, 'Failed to remove ticket');
   }
 }
 

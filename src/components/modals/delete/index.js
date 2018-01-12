@@ -15,8 +15,8 @@ const DeleteModal = props => (
     handleClose={props.handleClose}
     content={
       <div>
-        <p className="delete-modal__message">Are you sure you want to
-          <span className="delete-board__accent"> delete {props.data.title}</span>?
+        <p className="delete-modal__message">Are you sure you want to delete
+          <span className="delete-board__accent"> {props.data.title}</span>?
         </p>
         <div className="delete-modal__button-container">
           <button

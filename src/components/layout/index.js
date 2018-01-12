@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
 
 import EditBoardModal from '../modals/editBoard';
 import DeleteModal from '../modals/delete';
@@ -33,6 +34,7 @@ const getDeleteTicketHandler = deleteTicket => (event, props) => {
 
 const Layout = ({ modals, ...props }) => (
   <div className="layout">
+    <ToastContainer autoClose={3000} hideProgressBar newestOnTop />
     <EditBoardModal
       isShown={isShown(modalNames.EDIT_BOARD, modals)}
       isEdit={isEdit(modalNames.EDIT_BOARD, modals)}
