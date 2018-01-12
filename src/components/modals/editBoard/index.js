@@ -90,7 +90,11 @@ EditBoardModal.defaultProps = {
   isShown: false,
   isEdit: false,
   title: '',
-  data: {}
+  data: {
+    title: '',
+    description: '',
+    columns: ''
+  }
 };
 
 export default EditBoardModal;

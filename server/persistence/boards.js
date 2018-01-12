@@ -49,17 +49,22 @@ const generateDefaultColumns = () => ([
   }
 ]);
 
-const populateColumnsWithIdOrDefault = (columns) => {
+const populateColumnsWithIdOrDefault = (columns, existingColumns = []) => {
   if (columns.length === 0) {
     return generateDefaultColumns();
   }
 
-  return columns.map(({ id = new ObjectId(), ...props }) => ({
+  const idsByTitles = existingColumns
+    .reduce((result, column) => ({ ...result, [column.title]: column.id }), {});
+
+  const columnsWithExistingIds = columns
+    .map(column => ({ id: idsByTitles[column.title], ...column }));
+
+  return columnsWithExistingIds.map(({ id = new ObjectId(), ...props }) => ({
     _id: id,
     ...props
   }));
 };
-
 
 const createBoard = board => new Promise(async (resolve, reject) => {
   try {
@@ -85,10 +90,10 @@ const updateBoard = board => new Promise(async (resolve, reject) => {
     const { id, columns, ...rest } = board;
     const _id = new ObjectId(id);
 
-    const columnsWithId = populateColumnsWithIdOrDefault(columns);
+    const existingColumns = (await getBoard(id)).columns;
+    const columnsWithId = populateColumnsWithIdOrDefault(columns, existingColumns);
 
     const boardCollection = await getBoardsCollection();
-
     const { modifiedCount } = await boardCollection.updateOne({ _id }, {
       $set: { ...rest, columns: columnsWithId }
     });

@@ -2,6 +2,10 @@ import { createActions } from 'redux-actions';
 
 import * as actions from '../actionTypes/boards';
 
+const mapColumnStringToArray = columns => (columns
+  ? columns.split(',').map(title => ({ title: title.trim() }))
+  : []);
+
 export const {
   saveBoardsToStore,
   fetchBoards,
@@ -12,13 +16,13 @@ export const {
   {
     [actions.FETCH_BOARDS]: id => ({ id }),
     [actions.SAVE_BOARDS_TO_STORE]: ({ entities }) => entities.boards,
-    [actions.CREATE_BOARD]: board => ({
+    [actions.CREATE_BOARD]: ({ columns, ...board }) => ({
       ...board,
-      columns: board.columns.split(',').map(title => ({ title: title.trim() }))
+      columns: mapColumnStringToArray(columns)
     }),
-    [actions.UPDATE_BOARD]: board => ({
+    [actions.UPDATE_BOARD]: ({ columns, ...board }) => ({
       ...board,
-      columns: board.columns.split(',').map(title => ({ title: title.trim() }))
+      columns: mapColumnStringToArray(columns)
     })
   },
   actions.DELETE_BOARD
