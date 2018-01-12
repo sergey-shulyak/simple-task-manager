@@ -6,7 +6,7 @@ import Modal from '../base';
 
 import modalNames from '../modalNames';
 
-import './editBoard.scss';
+import './editBoardModal.scss';
 
 const handleSubmit = (event, props) => {
   event.preventDefault();
@@ -21,7 +21,6 @@ const handleSubmit = (event, props) => {
 
 const handleChange = (event, props) => {
   const data = { [event.target.name]: event.target.value };
-  console.log(data);
   props.handleChange(modalNames.EDIT_BOARD, data);
 };
 

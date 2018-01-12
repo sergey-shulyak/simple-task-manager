@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const boards = require('./rest/boards');
+const tickets = require('./rest/tickets');
 
 const app = express();
 
@@ -26,7 +27,7 @@ const errorSender = (err, req, res, next) => {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(requestLogger);
-app.use('/api', boards);
+app.use('/api', boards, tickets);
 app.use(errorLogger);
 app.use(errorSender);
 

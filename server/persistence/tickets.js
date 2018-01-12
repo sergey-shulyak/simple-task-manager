@@ -54,13 +54,14 @@ const getTicket = id => new Promise(async (resolve, reject) => {
 
 const updateTicket = ticket => new Promise(async (resolve, reject) => {
   try {
-    const { id, ...data } = ticket;
+    const { id, boardId, ...data } = ticket;
     const _id = new ObjectId(id);
+    const bId = new ObjectId(boardId);
 
     const ticketsCollection = await getTicketsCollection();
 
     const { modifiedCount } = await ticketsCollection.updateOne({ _id }, {
-      $set: { ...data }
+      $set: { ...data, boardId: bId }
     });
 
     resolve({ id, modified: modifiedCount > 0 });

@@ -13,21 +13,29 @@ $priority-colors: (
 );
 
 .ticket {
-  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
 
-  &__content {
-    padding: 1em;
-    padding-bottom: 0;
-    border: 1px solid $border-color;
-    border-radius: 10px;
+  padding: 1em;
+  padding-bottom: 0;
+  border: 1px solid $border-color;
+  border-radius: 10px;
 
-    color: $secondary-color;
+  color: $secondary-color;
 
-    @include transition(border-color, 0.3s, ease-in-out);
+  @include transition(border-color, 0.3s, ease-in-out);
 
-    &:hover {
-      border-color: $border-color-dark;
-    }
+  &:hover {
+    border-color: $border-color-dark;
+  }
+
+  &__wrapper {
+    text-decoration: none;
+  }
+
+  &__info {
+    flex-grow: 4;
   }
 
   &__title {
@@ -54,5 +62,24 @@ $priority-colors: (
         color: $color-code;
       }
     }
+  }
+
+  &__controls {
+    max-width: max-content;
+  }
+
+  &__edit {
+    @include button($yellow);
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1em;
+  }
+
+  &__delete {
+    @include button($red);
+    width: 100%;
+    margin-top: 1em;
+    padding: 0.5em;
+    font-size: 1em;
   }
 }

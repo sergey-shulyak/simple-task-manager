@@ -10,9 +10,9 @@ export const {
   deleteBoard
 } = createActions(
   {
+    [actions.FETCH_BOARDS]: id => ({ id }),
     [actions.SAVE_BOARDS_TO_STORE]: ({ entities }) => entities.boards
   },
-  actions.FETCH_BOARDS,
   actions.CREATE_BOARD,
   actions.UPDATE_BOARD,
   actions.DELETE_BOARD
