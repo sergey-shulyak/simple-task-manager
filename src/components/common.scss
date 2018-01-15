@@ -27,16 +27,13 @@ $red: #b16262;
           transform: $transforms;
 }
 
-@mixin scale($scale) {
-  @include transform(scale($scale));
-}
-
 %link-button {
   padding: 1em;
 
   border: 1px solid $border-color;
   border-radius: 5px;
 
+  background-color: white;
   font-family: $default-font;
   text-decoration: none;
 
@@ -52,4 +49,93 @@ $red: #b16262;
 @mixin button($color) {
   @extend %link-button;
   color: $color;
+}
+
+@mixin modal-form {
+  &__label {
+    display: block;
+    margin: 1em 0 0.5em;
+
+    font-weight: lighter;
+    font-size: 1.3em;
+    color: $primary-color;
+  }
+
+  &__input {
+    padding: 0.5em;
+    border: 1px solid $border-color;
+    width: 100%;
+    box-sizing: border-box;
+
+    font-size: 1em;
+    color: $secondary-color;
+    background-color: white;
+  }
+
+  &__submit {
+    @include button($green);
+    display: block;
+    margin: 1em auto 0;
+    font-size: 1em;
+  }
+}
+
+@mixin card {
+  &__wrapper {
+    text-decoration: none;
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  padding: 1em;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+
+  font-family: $default-font;
+  color: $secondary-color;
+
+  @include transition(border-color, 0.3s, ease-in-out);
+
+  &:hover {
+    border-color: $border-color-dark;
+  }
+
+  &__info {
+    flex-grow: 4;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: normal;
+    color: $primary-color;
+  }
+
+  &__description {
+    margin: 1em 0 0;
+
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: $secondary-color;
+  }
+
+  &__controls {
+    max-width: max-content;
+  }
+
+  &__edit {
+    @include button($secondary-color);
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1em;
+  }
+
+  &__delete {
+    @include button($red);
+    width: 100%;
+    margin-top: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+  }
 }
