@@ -6,6 +6,11 @@ const mapColumnStringToArray = columns => (columns
   ? columns.split(',').map(title => ({ title: title.trim() }))
   : []);
 
+const boardWithTransformedColumns = ({ columns, ...board }) => ({
+  ...board,
+  columns: mapColumnStringToArray(columns)
+});
+
 export const {
   saveBoardsToStore,
   fetchBoards,
@@ -16,14 +21,8 @@ export const {
   {
     [actions.FETCH_BOARDS]: id => ({ id }),
     [actions.SAVE_BOARDS_TO_STORE]: ({ entities }) => entities.boards,
-    [actions.CREATE_BOARD]: ({ columns, ...board }) => ({
-      ...board,
-      columns: mapColumnStringToArray(columns)
-    }),
-    [actions.UPDATE_BOARD]: ({ columns, ...board }) => ({
-      ...board,
-      columns: mapColumnStringToArray(columns)
-    })
+    [actions.CREATE_BOARD]: boardWithTransformedColumns,
+    [actions.UPDATE_BOARD]: boardWithTransformedColumns
   },
   actions.DELETE_BOARD
 );

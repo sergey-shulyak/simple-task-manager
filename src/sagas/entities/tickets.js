@@ -1,59 +1,60 @@
 import { all, takeEvery, call, put } from 'redux-saga/effects';
 
-import { getTickets, createTicket, updateTicket, deleteTicket } from '../../api/tickets';
+import * as api from '../../api/tickets';
+import * as actions from '../../store/actionTypes/tickets';
 
 import { saveTicketsToStore, fetchTickets } from '../../store/actions/tickets';
-import * as ui from '../../store/actions/ui';
-import * as actions from '../../store/actionTypes/tickets';
+import { hideModal, setTicketsError } from '../../store/actions/ui';
+
 import modalNames from '../../components/modals/modalNames';
-import * as toasts from '../utils';
+import { showInfoToast, showErrorToast } from '../utils';
 
 export function* fetchTicketsSaga({ payload: { id } }) {
   try {
-    const data = yield call(getTickets, id);
+    const data = yield call(api.getTickets, id);
     yield put(saveTicketsToStore(data));
   } catch (error) {
-    yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, 'Failed to fetch tickets', error);
+    yield put(setTicketsError(error.message));
+    yield call(showErrorToast, 'Failed to fetch tickets', error);
   }
 }
 
 export function* createTicketSaga({ payload = {}, meta = {} }) {
   try {
-    yield call(createTicket, meta.boardId, payload);
+    yield call(api.createTicket, meta.boardId, payload);
 
-    yield put(ui.hideModal(modalNames.EDIT_TICKET));
-    yield call(toasts.showInfoToast, `Ticket ${payload.title} created`);
+    yield put(hideModal(modalNames.EDIT_TICKET));
+    yield call(showInfoToast, `Ticket ${payload.title} created`);
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
-    yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to create ticket ${payload.title}`, error);
+    yield put(setTicketsError(error.message));
+    yield call(showErrorToast, `Failed to create ticket ${payload.title}`, error);
   }
 }
 
 export function* updateTicketSaga({ payload = {}, meta = {} }) {
   try {
-    yield call(updateTicket, payload);
+    yield call(api.updateTicket, payload);
 
-    yield put(ui.hideModal(modalNames.EDIT_TICKET));
-    yield call(toasts.showInfoToast, `Ticket ${payload.title} updated`);
+    yield put(hideModal(modalNames.EDIT_TICKET));
+    yield call(showInfoToast, `Ticket ${payload.title} updated`);
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
-    yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to update ticket ${payload.title}`, error);
+    yield put(setTicketsError(error.message));
+    yield call(showErrorToast, `Failed to update ticket ${payload.title}`, error);
   }
 }
 
 export function* deleteTicketSaga({ payload = {}, meta = {} }) {
   try {
-    yield call(deleteTicket, payload.ticketId);
+    yield call(api.deleteTicket, payload.ticketId);
 
-    yield put(ui.hideModal(modalNames.DELETE_TICKET));
-    yield call(toasts.showInfoToast, 'Ticket removed');
+    yield put(hideModal(modalNames.DELETE_TICKET));
+    yield call(showInfoToast, 'Ticket removed');
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
-    yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, 'Failed to remove ticket', error);
+    yield put(setTicketsError(error.message));
+    yield call(showErrorToast, 'Failed to remove ticket', error);
   }
 }
 
