@@ -6,7 +6,7 @@ import Modal from '../base';
 
 import modalNames from '../modalNames';
 
-import './editBoardModal.scss';
+import './editBoard.scss';
 
 const handleSubmit = (event, props) => {
   event.preventDefault();

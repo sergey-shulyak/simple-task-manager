@@ -12,7 +12,7 @@ export default async function request({
   const responseBody = response.json();
 
   if (!response.ok) {
-    throw new Error(`${(await responseBody).error}`);
+    throw new Error(response.statusText);
   }
 
   return responseBody;

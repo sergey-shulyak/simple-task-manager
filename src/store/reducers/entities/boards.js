@@ -1,5 +1,5 @@
 import { handleAction } from 'redux-actions';
-import { saveBoardsToStore } from '../actions/boards';
+import { saveBoardsToStore } from '../../actions/boards';
 
 const defaultState = {};
 

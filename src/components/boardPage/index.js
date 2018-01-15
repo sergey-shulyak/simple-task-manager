@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Board from './board';
-import { boardsUrl } from '../../utils/urlCreators';
+import { BOARDS_URL } from '../../utils/urlCreators';
 
 import modalNames from '../modals/modalNames';
 
@@ -25,7 +25,7 @@ class BoardPage extends Component {
 
     return (
       <div className="board-page">
-        <Link to={boardsUrl()} className="board-page__back-link">Go back</Link>
+        <Link to={BOARDS_URL} className="board-page__back-link">Go back</Link>
         <button
           className="board-page__new-ticket-link"
           onClick={e => this.handleNewTicketButtonClick(e, this.props)}

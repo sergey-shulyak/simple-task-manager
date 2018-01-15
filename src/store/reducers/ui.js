@@ -13,8 +13,8 @@ const errors = handleActions({
 
 const modals = handleActions({
   [combineActions(actions.showModal, actions.hideModal)]:
-    reducers.getModalReducer(),
-  [actions.updateModalData]: reducers.getModalDataPropertyReducer()
+    reducers.modalReducer,
+  [actions.updateModalData]: reducers.modalDataPropertyReducer
 }, defaultState);
 
 export default combineReducers({
