@@ -15,7 +15,7 @@ const getDatabase = () => new Promise(async (resolve, reject) => {
 
     resolve(db);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -25,7 +25,7 @@ const getCollection = colName => new Promise(async (resolve, reject) => {
 
     resolve(database.collection(colName));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 

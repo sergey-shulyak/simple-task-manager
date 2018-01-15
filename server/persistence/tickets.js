@@ -6,7 +6,7 @@ const getTicketsCollection = () => new Promise(async (resolve, reject) => {
     const ticketsCollection = await getCollection('tickets');
     resolve(ticketsCollection);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -19,7 +19,7 @@ const getTickets = boardId => new Promise(async (resolve, reject) => {
 
     resolve(renameId(...tickets));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -35,7 +35,7 @@ const createTicket = (boardId, ticket) => new Promise(async (resolve, reject) =>
 
     resolve(createdTicket);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -48,24 +48,25 @@ const getTicket = id => new Promise(async (resolve, reject) => {
 
     resolve(...renameId(ticket));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
 const updateTicket = ticket => new Promise(async (resolve, reject) => {
   try {
-    const { id, ...data } = ticket;
+    const { id, boardId, ...data } = ticket;
     const _id = new ObjectId(id);
+    const bId = new ObjectId(boardId);
 
     const ticketsCollection = await getTicketsCollection();
 
     const { modifiedCount } = await ticketsCollection.updateOne({ _id }, {
-      $set: { ...data }
+      $set: { ...data, boardId: bId }
     });
 
     resolve({ id, modified: modifiedCount > 0 });
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -78,7 +79,7 @@ const deleteTicket = id => new Promise(async (resolve, reject) => {
 
     resolve({ id, deleted: deletedCount > 0 });
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 

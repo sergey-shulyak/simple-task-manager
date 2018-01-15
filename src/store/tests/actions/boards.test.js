@@ -4,10 +4,22 @@ import * as actions from '../../actions/boards';
 describe('Boards actions', () => {
   it('Should create an action to fetch boards', () => {
     const expectedAction = {
-      type: types.FETCH_BOARDS
+      type: types.FETCH_BOARDS,
+      payload: {}
     };
 
     const actualAction = actions.fetchBoards();
+
+    expect(actualAction).toEqual(expectedAction);
+  });
+
+  it('Should create an action to fetch boards', () => {
+    const expectedAction = {
+      type: types.FETCH_BOARDS,
+      payload: { id: '1' }
+    };
+
+    const actualAction = actions.fetchBoards('1');
 
     expect(actualAction).toEqual(expectedAction);
   });

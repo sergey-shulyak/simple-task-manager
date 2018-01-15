@@ -26,6 +26,20 @@ router.route('/tickets/:ticketId')
     } catch (error) {
       next(error);
     }
+  })
+  .put(async (req, res, next) => {
+    try {
+      res.json(await api.updateTicket(req.body));
+    } catch (error) {
+      next(error);
+    }
+  })
+  .delete(async (req, res, next) => {
+    try {
+      res.json(await api.deleteTicket(req.params.ticketId));
+    } catch (error) {
+      next(error);
+    }
   });
 
 module.exports = router;

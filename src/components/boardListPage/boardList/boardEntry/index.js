@@ -20,7 +20,8 @@ const handleEditButtonClick = (event, props) => {
   props.showModal(modalNames.EDIT_BOARD, {
     id: props.id,
     title: props.title,
-    description: props.description
+    description: props.description,
+    columns: props.columns.map(column => column.title).join(', ')
   });
 };
 
@@ -35,12 +36,12 @@ const BoardEntry = props => (
         <button
           className="board-entry__edit"
           onClick={event => handleEditButtonClick(event, props)}>
-          <i className="fa fa-pencil" aria-hidden="true" /> Edit
+          <i className="fa fa-pencil" aria-hidden="true" />
         </button>
         <button
           className="board-entry__delete"
           onClick={event => handleDeleteButtonClick(event, props)}>
-          <i className="fa fa-trash" aria-hidden="true" /> Delete
+          <i className="fa fa-trash" aria-hidden="true" />
         </button>
       </div>
     </div>

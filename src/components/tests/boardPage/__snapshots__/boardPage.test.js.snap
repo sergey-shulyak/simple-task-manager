@@ -11,12 +11,12 @@ exports[`BoardListPage Should render correctly 1`] = `
   >
     Go back
   </Link>
-  <a
+  <button
     className="board-page__new-ticket-link"
     onClick={[Function]}
   >
     New ticket
-  </a>
+  </button>
   <Board
     className="board-page__board"
     columns={
@@ -36,12 +36,14 @@ exports[`BoardListPage Should render correctly 1`] = `
       ]
     }
     id="42"
+    showModal={[Function]}
     tickets={
       Array [
         Object {
           "boardId": "42",
           "columnId": "1",
           "id": "1",
+          "priority": "high",
           "title": "Test ticket 1",
           "type": "task",
         },
@@ -49,6 +51,7 @@ exports[`BoardListPage Should render correctly 1`] = `
           "boardId": "42",
           "columnId": "2",
           "id": "2",
+          "priority": "low",
           "title": "Test ticket 1",
           "type": "task",
         },
@@ -56,6 +59,7 @@ exports[`BoardListPage Should render correctly 1`] = `
           "boardId": "42",
           "columnId": "3",
           "id": "3",
+          "priority": "medium",
           "title": "Test ticket 1",
           "type": "task",
         },

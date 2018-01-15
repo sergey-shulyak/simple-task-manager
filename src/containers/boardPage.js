@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchBoards } from '../store/actions/boards';
 import { fetchTickets } from '../store/actions/tickets';
+import { showModal } from '../store/actions/ui';
 
 import BoardPage from '../components/boardPage';
 
@@ -16,8 +17,9 @@ const mapState = (state, ownProps) => {
 };
 
 const mapDispatch = dispatch => ({
-  fetchBoard: id => dispatch(fetchBoards({ id })),
-  fetchTickets: id => dispatch(fetchTickets({ id }))
+  fetchBoard: id => dispatch(fetchBoards(id)),
+  fetchTickets: id => dispatch(fetchTickets(id)),
+  showModal: (modalName, data) => dispatch(showModal(modalName, data))
 });
 
 export default connect(mapState, mapDispatch)(BoardPage);

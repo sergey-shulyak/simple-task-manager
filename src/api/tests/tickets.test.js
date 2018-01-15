@@ -17,15 +17,13 @@ describe('Tickets API', () => {
     expect(actualData).toEqual(expectedData);
   });
 
-  it('Should fetch ticket by boardId and id and normalize it', async () => {
-    const boardId = 1;
+  it('Should fetch ticket by id and normalize it', async () => {
     const id = 3;
 
-    const matchingTicket = data.tickets.find(ticket =>
-      ticket.boardId === boardId && ticket.id === id);
+    const matchingTicket = data.tickets.find(ticket => ticket.id === id);
 
     const expectedData = normalize(matchingTicket, ticketSchema);
-    const actualData = await api.getTicket(boardId, id);
+    const actualData = await api.getTicket(id);
 
     expect(actualData).toEqual(expectedData);
   });
@@ -48,10 +46,9 @@ describe('Tickets API', () => {
   });
 
   it('Should delete ticket from server', async () => {
-    const boardId = 1;
     const id = 2;
 
-    const actualData = await api.deleteTicket(boardId, id);
+    const actualData = await api.deleteTicket(id);
 
     expect(actualData).toEqual(id);
   });

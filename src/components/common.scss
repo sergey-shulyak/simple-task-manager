@@ -52,5 +52,4 @@ $red: #b16262;
 @mixin button($color) {
   @extend %link-button;
   color: $color;
-  border-color: $color;
 }

@@ -7,6 +7,8 @@ import { hideModal, setBoardsError } from '../../store/actions/ui';
 import * as actions from '../../store/actionTypes/boards';
 import modalNames from '../../components/modals/modalNames';
 
+import * as toasts from '../utils';
+
 export function* fetchBoardsSaga({ payload = {} }) {
   const isFetchingSingleBoard = Boolean(payload.id);
 
@@ -18,6 +20,7 @@ export function* fetchBoardsSaga({ payload = {} }) {
     yield put(saveBoardsToStore(data));
   } catch (error) {
     yield put(setBoardsError(error.message));
+    yield call(toasts.showErrorToast, 'Failed to fetch boards', error);
   }
 }
 
@@ -26,9 +29,11 @@ export function* createBoardSaga({ payload = {} }) {
     yield call(createBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
+    yield call(toasts.showInfoToast, `Board ${payload.title} created`);
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
+    yield call(toasts.showErrorToast, `Failed to create board ${payload.title}`, error);
   }
 }
 
@@ -37,9 +42,11 @@ export function* updateBoardSaga({ payload = {} }) {
     yield call(updateBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
+    yield call(toasts.showInfoToast, `Board ${payload.title} updated`);
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
+    yield call(toasts.showErrorToast, `Failed to update board ${payload.title}`, error);
   }
 }
 
@@ -48,9 +55,11 @@ export function* deleteBoardSaga({ payload = {} }) {
     yield call(deleteBoard, payload);
 
     yield put(hideModal(modalNames.DELETE_BOARD));
+    yield call(toasts.showInfoToast, 'Board removed');
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
+    yield call(toasts.showErrorToast, `Failed to remove board ${payload.title}`, error);
   }
 }
 

@@ -7,6 +7,8 @@ import * as types from '../../store/actionTypes/tickets';
 import { SET_TICKETS_ERROR } from '../../store/actionTypes/ui';
 import { ticketListSchema } from '../../store/schema';
 
+import * as toasts from '../utils';
+
 describe('Ticket sagas', () => {
   it('Should fetch tickets and save them on id provided', () => {
     const id = 42;
@@ -40,13 +42,15 @@ describe('Ticket sagas', () => {
       putSetError: put({
         type: SET_TICKETS_ERROR,
         payload: expect.any(String)
-      })
+      }),
+      callShowErrorToast: call(toasts.showErrorToast, expect.any(String), expect.any(Error))
     };
 
     const saga = fetchTicketsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetTickets);
     expect(saga.next().value).toMatchObject(expectedResults.putSetError);
+    expect(saga.next().value).toMatchObject(expectedResults.callShowErrorToast);
     expect(saga.next().done).toBe(true);
   });
 });
