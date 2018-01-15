@@ -5,12 +5,18 @@ exports[`BoardListPage Should render correctly 1`] = `
   className="board-page"
 >
   <Link
-    className="link-button board-page__back-link"
+    className="board-page__back-link"
     replace={false}
     to="/boards"
   >
     Go back
   </Link>
+  <a
+    className="board-page__new-ticket-link"
+    onClick={[Function]}
+  >
+    New ticket
+  </a>
   <Board
     className="board-page__board"
     columns={

@@ -1,0 +1,24 @@
+@import '../../common';
+
+.delete-board {
+  &__accent {
+    color: $red;
+    font-weight: bolder;
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: center;
+    margin: 1em auto 0;
+  }
+
+  &__button {
+    @include button($secondary-color);
+    font-size: 1em;
+
+    &_yes {
+      @include button($red);
+      margin-right: 1em;
+    }
+  }
+}

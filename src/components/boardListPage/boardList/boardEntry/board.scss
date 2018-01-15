@@ -1,33 +1,59 @@
 @import '../../../common';
 
 .board-entry {
-  text-decoration: none;
+  &__wrapper {
+    text-decoration: none;
+  }
 
-  &__content {
-    border: 1px solid $border-color;
-    border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
 
-    font-family: $default-font;
+  border: 1px solid $border-color;
+  border-radius: 10px;
 
-    @include transition(border-color, 0.3s, ease-in-out);
+  font-family: $default-font;
 
-    &:hover {
-      border-color: $border-color-dark;
-    }
+  @include transition(border-color, 0.3s, ease-in-out);
+
+  &:hover {
+    border-color: $border-color-dark;
+  }
+
+  &__info {
+    flex-grow: 4;
   }
 
   &__title {
-    margin-top: 0;
-
+    margin: 0;
     font-weight: normal;
     color: $primary-color;
   }
 
   &__description {
-    margin-bottom: 0;
+    margin: 1em 0 0;
 
     font-size: 1.2em;
     font-weight: lighter;
     color: $secondary-color;
+  }
+
+  &__controls {
+    max-width: max-content;
+  }
+
+  &__edit {
+    @include button($yellow);
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1em;
+  }
+
+  &__delete {
+    @include button($red);
+    width: 100%;
+    margin-top: 1em;
+    padding: 0.5em;
+    font-size: 1em;
   }
 }

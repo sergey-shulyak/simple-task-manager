@@ -1,4 +1,4 @@
-const { DefinePlugin } = require('webpack');
+const { DefinePlugin, NamedModulesPlugin } = require('webpack');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -24,12 +24,6 @@ const config = {
     rules: [
       { test: /\.js$/, include: SRC_DIR, use: 'babel-loader' },
       {
-        test: /\.js$/,
-        include: SRC_DIR,
-        loader: 'eslint-loader',
-        options: { failOnError: false }
-      },
-      {
         test: /\.(s?)css$/,
         use: ExtractTextPlugin.extract({
           use: ['css-loader', 'sass-loader'],
@@ -42,8 +36,7 @@ const config = {
     new Dotenv({
       path: path.join(__dirname, '.env'),
       secure: true
-    }),
-    new ExtractTextPlugin('styles.css')
+    })
   ],
   devServer: {
     contentBase: BUILD_DIR,
@@ -54,7 +47,15 @@ const config = {
 };
 
 if (isProduction()) {
+  config.module.rules.push({
+    test: /\.js$/,
+    include: SRC_DIR,
+    loader: 'eslint-loader',
+    options: { failOnError: true }
+  });
+
   config.plugins.push(
+    new ExtractTextPlugin('styles.css'),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -64,7 +65,11 @@ if (isProduction()) {
     new OptimizeCssAssets()
   );
 } else {
-  config.plugins.push(new FriendlyErrorsPlugin());
+  config.plugins.push(
+    new NamedModulesPlugin(),
+    new ExtractTextPlugin({ disable: true }),
+    new FriendlyErrorsPlugin()
+  );
 }
 
 module.exports = config;

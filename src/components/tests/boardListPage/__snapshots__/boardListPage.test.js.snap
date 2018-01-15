@@ -5,32 +5,43 @@ exports[`BoardListPage Should render correctly 1`] = `
   className="board-list-page"
 >
   <Link
-    className="link-button board-list-page__back-link"
+    className="board-list-page__back-link"
     replace={false}
     to="/"
   >
     Go back
   </Link>
-  <BoardList>
+  <a
+    className="board-list-page__new-board-link"
+    onClick={[Function]}
+  >
+    New board
+  </a>
+  <BoardList
+    className="board-list-page__board-list"
+  >
     <BoardEntry
-      className="board-list-page__board"
+      className="board-list__board"
       description=""
       id="1"
       key="1"
+      showModal={[Function]}
       title="Test 1"
     />
     <BoardEntry
-      className="board-list-page__board"
+      className="board-list__board"
       description=""
       id="2"
       key="2"
+      showModal={[Function]}
       title="Test 2"
     />
     <BoardEntry
-      className="board-list-page__board"
+      className="board-list__board"
       description=""
       id="3"
       key="3"
+      showModal={[Function]}
       title="Test 3"
     />
   </BoardList>

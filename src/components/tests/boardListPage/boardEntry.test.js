@@ -8,7 +8,8 @@ const props = {
   id: '42',
   title: 'Sample title',
   description: 'Sample description',
-  className: 'custom'
+  className: 'custom',
+  showModal: jest.fn()
 };
 
 describe('BoardEntry', () => {

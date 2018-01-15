@@ -4,13 +4,45 @@ import { Link } from 'react-router-dom';
 
 import { boardUrl } from '../../../../utils/urlCreators';
 
+import modalNames from '../../../modals/modalNames';
+
 import './board.scss';
 
-const BoardEntry = ({ id, title, description, className }) => (
-  <Link to={boardUrl(id)} className="board-entry">
-    <div className={`board-entry__content ${className}`}>
-      <h2 className="board-entry__title">{title}</h2>
-      <p className="board-entry__description">{description}</p>
+const handleDeleteButtonClick = (event, props) => {
+  event.preventDefault();
+
+  props.showModal(modalNames.DELETE_BOARD, { id: props.id, title: props.title });
+};
+
+const handleEditButtonClick = (event, props) => {
+  event.preventDefault();
+
+  props.showModal(modalNames.EDIT_BOARD, {
+    id: props.id,
+    title: props.title,
+    description: props.description
+  });
+};
+
+const BoardEntry = props => (
+  <Link to={boardUrl(props.id)} className="board-entry__wrapper">
+    <div className={`board-entry ${props.className}`}>
+      <div className="board-entry__info">
+        <h2 className="board-entry__title">{props.title}</h2>
+        <p className="board-entry__description">{props.description}</p>
+      </div>
+      <div className="board-entry__controls">
+        <button
+          className="board-entry__edit"
+          onClick={event => handleEditButtonClick(event, props)}>
+          <i className="fa fa-pencil" aria-hidden="true" /> Edit
+        </button>
+        <button
+          className="board-entry__delete"
+          onClick={event => handleDeleteButtonClick(event, props)}>
+          <i className="fa fa-trash" aria-hidden="true" /> Delete
+        </button>
+      </div>
     </div>
   </Link>
 );
@@ -19,7 +51,8 @@ BoardEntry.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  showModal: PropTypes.func.isRequired
 };
 
 BoardEntry.defaultProps = {

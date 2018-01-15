@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects';
 import { normalize } from 'normalizr';
 
-import { fetchBoards } from '../boards';
+import { fetchBoardsSaga } from '../entities/boards';
 import { getBoards, getBoard } from '../../api/boards';
 import * as types from '../../store/actionTypes/boards';
 import { SET_BOARDS_ERROR } from '../../store/actionTypes/ui';
@@ -22,7 +22,7 @@ describe('Boards sagas', () => {
       putSaveBoards: put({ type: types.SAVE_BOARDS_TO_STORE, payload: data.entities.boards })
     };
 
-    const saga = fetchBoards(action);
+    const saga = fetchBoardsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetBoards);
     expect(saga.next(data).value).toEqual(expectedResults.putSaveBoards);
@@ -44,7 +44,7 @@ describe('Boards sagas', () => {
       putSaveBoards: put({ type: types.SAVE_BOARDS_TO_STORE, payload: data.entities.boards })
     };
 
-    const saga = fetchBoards(action);
+    const saga = fetchBoardsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetBoard);
     expect(saga.next(data).value).toEqual(expectedResults.putSaveBoards);
@@ -58,12 +58,11 @@ describe('Boards sagas', () => {
       callGetBoards: call(getBoards),
       putSetError: put({
         type: SET_BOARDS_ERROR,
-        error: true,
-        payload: expect.any(Error)
+        payload: expect.any(String)
       })
     };
 
-    const saga = fetchBoards(action);
+    const saga = fetchBoardsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetBoards);
     expect(saga.next().value).toMatchObject(expectedResults.putSetError);

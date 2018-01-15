@@ -5,10 +5,14 @@ import toJson from 'enzyme-to-json';
 import BoardList from '../../boardListPage/boardList';
 import BoardEntry from '../../boardListPage/boardList/boardEntry';
 
+const props = {
+  showModal: jest.fn()
+};
+
 const children = [
-  <BoardEntry key="1" id="1" title="test" />,
-  <BoardEntry key="2" id="2" title="test" />,
-  <BoardEntry key="3" id="3" title="test" />
+  <BoardEntry key="1" id="1" title="test" {...props} />,
+  <BoardEntry key="2" id="2" title="test" {...props} />,
+  <BoardEntry key="3" id="3" title="test" {...props} />
 ];
 
 describe('BoardList', () => {

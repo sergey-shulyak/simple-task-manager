@@ -6,6 +6,8 @@ import BoardList from './boardList';
 import BoardEntry from './boardList/boardEntry';
 import { homeUrl } from '../../utils/urlCreators';
 
+import modalNames from '../modals/modalNames';
+
 import './boardListPage.scss';
 
 class BoardListPage extends Component {
@@ -13,17 +15,25 @@ class BoardListPage extends Component {
     this.props.fetchBoards();
   }
 
+  handleNewBoardButtonClick = (event, props) => props.showModal(modalNames.EDIT_BOARD);
+
   render() {
     const { boards } = this.props;
 
     return (
       <div className="board-list-page">
-        <Link to={homeUrl()} className="link-button board-list-page__back-link">Go back</Link>
-        <BoardList>
+        <Link to={homeUrl()} className="board-list-page__back-link">Go back</Link>
+        <a
+          className="board-list-page__new-board-link"
+          onClick={e => this.handleNewBoardButtonClick(e, this.props)}
+        >New board
+        </a>
+        <BoardList className="board-list-page__board-list">
           {boards.map(board => (
             <BoardEntry
-              className="board-list-page__board"
+              className="board-list__board"
               key={board.id}
+              showModal={this.props.showModal}
               {...board}
             />))}
         </BoardList>
@@ -34,7 +44,8 @@ class BoardListPage extends Component {
 
 BoardListPage.propTypes = {
   boards: PropTypes.arrayOf(PropTypes.object),
-  fetchBoards: PropTypes.func.isRequired
+  fetchBoards: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired
 };
 
 BoardListPage.defaultProps = {

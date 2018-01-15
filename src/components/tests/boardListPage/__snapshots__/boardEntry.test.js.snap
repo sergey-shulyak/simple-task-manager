@@ -2,23 +2,51 @@
 
 exports[`BoardEntry Should render correctly 1`] = `
 <Link
-  className="board-entry"
+  className="board-entry__wrapper"
   replace={false}
   to="/boards/42"
 >
   <div
-    className="board-entry__content custom"
+    className="board-entry custom"
   >
-    <h2
-      className="board-entry__title"
+    <div
+      className="board-entry__info"
     >
-      Sample title
-    </h2>
-    <p
-      className="board-entry__description"
+      <h2
+        className="board-entry__title"
+      >
+        Sample title
+      </h2>
+      <p
+        className="board-entry__description"
+      >
+        Sample description
+      </p>
+    </div>
+    <div
+      className="board-entry__controls"
     >
-      Sample description
-    </p>
+      <button
+        className="board-entry__edit"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="fa fa-pencil"
+        />
+         Edit
+      </button>
+      <button
+        className="board-entry__delete"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="fa fa-trash"
+        />
+         Delete
+      </button>
+    </div>
   </div>
 </Link>
 `;

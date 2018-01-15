@@ -12,6 +12,7 @@ const boards = [
 
 const props = {
   fetchBoards: jest.fn(),
+  showModal: jest.fn(),
   boards
 };
 

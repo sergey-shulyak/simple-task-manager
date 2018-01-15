@@ -1,2 +1,6 @@
 export const SET_BOARDS_ERROR = 'SET_BOARDS_ERROR';
 export const SET_TICKETS_ERROR = 'SET_TICKETS_ERROR';
+
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';
+export const UPDATE_MODAL_DATA = 'UPDATE_MODAL_DATA';
