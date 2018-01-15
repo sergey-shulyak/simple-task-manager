@@ -1,5 +1,5 @@
 const { ObjectId } = require('mongodb');
-const { getCollection, renameId } = require('./utils');
+const { getCollection, renameId, populateColumnsWithIdOrDefault } = require('./utils');
 
 const getBoardsCollection = () => new Promise(async (resolve, reject) => {
   try {
@@ -33,38 +33,6 @@ const getBoard = id => new Promise(async (resolve, reject) => {
     reject(error);
   }
 });
-
-const generateDefaultColumns = () => ([
-  {
-    _id: new ObjectId(),
-    title: 'To Do'
-  },
-  {
-    _id: new ObjectId(),
-    title: 'In Progress'
-  },
-  {
-    _id: new ObjectId(),
-    title: 'Done'
-  }
-]);
-
-const populateColumnsWithIdOrDefault = (columns, existingColumns = []) => {
-  if (columns.length === 0) {
-    return generateDefaultColumns();
-  }
-
-  const idsByTitles = existingColumns
-    .reduce((result, column) => ({ ...result, [column.title]: column.id }), {});
-
-  const columnsWithExistingIds = columns
-    .map(column => ({ id: idsByTitles[column.title], ...column }));
-
-  return columnsWithExistingIds.map(({ id = new ObjectId(), ...props }) => ({
-    _id: id,
-    ...props
-  }));
-};
 
 const createBoard = board => new Promise(async (resolve, reject) => {
   try {
