@@ -6,7 +6,7 @@ const getTicketsCollection = () => new Promise(async (resolve, reject) => {
     const ticketsCollection = await getCollection('tickets');
     resolve(ticketsCollection);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -19,7 +19,7 @@ const getTickets = boardId => new Promise(async (resolve, reject) => {
 
     resolve(renameId(...tickets));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -35,7 +35,7 @@ const createTicket = (boardId, ticket) => new Promise(async (resolve, reject) =>
 
     resolve(createdTicket);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -48,7 +48,7 @@ const getTicket = id => new Promise(async (resolve, reject) => {
 
     resolve(...renameId(ticket));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -66,7 +66,7 @@ const updateTicket = ticket => new Promise(async (resolve, reject) => {
 
     resolve({ id, modified: modifiedCount > 0 });
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -79,7 +79,7 @@ const deleteTicket = id => new Promise(async (resolve, reject) => {
 
     resolve({ id, deleted: deletedCount > 0 });
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 

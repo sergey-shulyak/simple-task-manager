@@ -6,7 +6,7 @@ const getBoardsCollection = () => new Promise(async (resolve, reject) => {
     const boardCollection = await getCollection('boards');
     resolve(boardCollection);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -17,7 +17,7 @@ const getBoards = () => new Promise(async (resolve, reject) => {
 
     resolve(renameId(...boards));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -30,7 +30,7 @@ const getBoard = id => new Promise(async (resolve, reject) => {
 
     resolve(...renameId(board));
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -81,7 +81,7 @@ const createBoard = board => new Promise(async (resolve, reject) => {
 
     resolve(createdBoard);
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -100,7 +100,7 @@ const updateBoard = board => new Promise(async (resolve, reject) => {
 
     resolve({ id, modified: modifiedCount > 0 });
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
@@ -113,7 +113,7 @@ const deleteBoard = id => new Promise(async (resolve, reject) => {
 
     resolve({ id, deleted: deletedCount > 0 });
   } catch (error) {
-    reject(new Error(error));
+    reject(error);
   }
 });
 
