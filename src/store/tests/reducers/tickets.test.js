@@ -1,5 +1,5 @@
 import * as types from '../../actionTypes/tickets';
-import reducer from '../../reducers/tickets';
+import reducer from '../../reducers/entities/tickets';
 
 describe('Tickets reducer', () => {
   const defaultState = {};

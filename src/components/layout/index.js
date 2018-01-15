@@ -35,6 +35,7 @@ const getDeleteTicketHandler = deleteTicket => (event, props) => {
 const Layout = ({ modals, ...props }) => (
   <div className="layout">
     <ToastContainer autoClose={3000} hideProgressBar newestOnTop />
+
     <EditBoardModal
       isShown={isShown(modalNames.EDIT_BOARD, modals)}
       isEdit={isEdit(modalNames.EDIT_BOARD, modals)}
@@ -43,12 +44,14 @@ const Layout = ({ modals, ...props }) => (
       handleChange={props.updateModalData}
       updateBoard={props.updateBoard}
       createBoard={props.createBoard} />
+
     <DeleteModal
       title="Delete Board"
       isShown={isShown(modalNames.DELETE_BOARD, modals)}
       data={getData(modalNames.DELETE_BOARD, modals)}
       handleClose={() => props.hideModal(modalNames.DELETE_BOARD)}
       handleDelete={getDeleteBoardHandler(props.deleteBoard)} />
+
     <EditTicketModal
       isShown={isShown(modalNames.EDIT_TICKET, modals)}
       isEdit={isEdit(modalNames.EDIT_TICKET, modals)}
@@ -58,6 +61,7 @@ const Layout = ({ modals, ...props }) => (
       createTicket={props.createTicket}
       updateTicket={props.updateTicket}
       board={props.board} />
+
     <DeleteModal
       title="Delete Ticket"
       isShown={isShown(modalNames.DELETE_TICKET, modals)}

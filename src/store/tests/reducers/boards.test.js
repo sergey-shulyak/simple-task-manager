@@ -1,5 +1,5 @@
 import * as types from '../../actionTypes/boards';
-import reducer from '../../reducers/boards';
+import reducer from '../../reducers/entities/boards';
 
 describe('Boards reducer', () => {
   const defaultState = {};
