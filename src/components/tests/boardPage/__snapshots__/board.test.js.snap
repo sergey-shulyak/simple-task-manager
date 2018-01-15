@@ -17,12 +17,14 @@ exports[`Board Should render correctly 1`] = `
       className="board__column"
       id="1"
       key="1"
+      showModal={[Function]}
       tickets={
         Array [
           Object {
             "boardId": "42",
             "columnId": "1",
             "id": "1",
+            "priority": "high",
             "title": "Test ticket 1",
             "type": "task",
           },
@@ -35,12 +37,14 @@ exports[`Board Should render correctly 1`] = `
       className="board__column"
       id="2"
       key="2"
+      showModal={[Function]}
       tickets={
         Array [
           Object {
             "boardId": "42",
             "columnId": "2",
             "id": "2",
+            "priority": "low",
             "title": "Test ticket 1",
             "type": "task",
           },
@@ -53,12 +57,14 @@ exports[`Board Should render correctly 1`] = `
       className="board__column"
       id="3"
       key="3"
+      showModal={[Function]}
       tickets={
         Array [
           Object {
             "boardId": "42",
             "columnId": "3",
             "id": "3",
+            "priority": "medium",
             "title": "Test ticket 1",
             "type": "task",
           },

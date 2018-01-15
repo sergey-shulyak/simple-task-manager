@@ -25,8 +25,7 @@ exports[`BoardListPage Should render correctly 1`] = `
       description=""
       id="1"
       key="1"
-      showDeleteModal={[Function]}
-      showEditModal={[Function]}
+      showModal={[Function]}
       title="Test 1"
     />
     <BoardEntry
@@ -34,8 +33,7 @@ exports[`BoardListPage Should render correctly 1`] = `
       description=""
       id="2"
       key="2"
-      showDeleteModal={[Function]}
-      showEditModal={[Function]}
+      showModal={[Function]}
       title="Test 2"
     />
     <BoardEntry
@@ -43,8 +41,7 @@ exports[`BoardListPage Should render correctly 1`] = `
       description=""
       id="3"
       key="3"
-      showDeleteModal={[Function]}
-      showEditModal={[Function]}
+      showModal={[Function]}
       title="Test 3"
     />
   </BoardList>

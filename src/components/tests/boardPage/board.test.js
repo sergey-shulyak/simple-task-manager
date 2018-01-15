@@ -10,7 +10,8 @@ const props = {
   title: 'Sample title',
   columns,
   tickets,
-  className: 'custom'
+  className: 'custom',
+  showModal: jest.fn()
 };
 
 describe('Board', () => {

@@ -20,7 +20,7 @@ export function* fetchBoardsSaga({ payload = {} }) {
     yield put(saveBoardsToStore(data));
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(toasts.showErrorToast, 'Failed to fetch boards');
+    yield call(toasts.showErrorToast, 'Failed to fetch boards', error);
   }
 }
 
@@ -33,7 +33,7 @@ export function* createBoardSaga({ payload = {} }) {
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to create board ${payload.title}`);
+    yield call(toasts.showErrorToast, `Failed to create board ${payload.title}`, error);
   }
 }
 
@@ -46,7 +46,7 @@ export function* updateBoardSaga({ payload = {} }) {
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to update board ${payload.title}`);
+    yield call(toasts.showErrorToast, `Failed to update board ${payload.title}`, error);
   }
 }
 
@@ -59,7 +59,7 @@ export function* deleteBoardSaga({ payload = {} }) {
     yield put(fetchBoards());
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to remove board ${payload.title}`);
+    yield call(toasts.showErrorToast, `Failed to remove board ${payload.title}`, error);
   }
 }
 

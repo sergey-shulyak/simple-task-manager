@@ -8,6 +8,7 @@ export const tickets = [
   {
     id: '1',
     title: 'Test ticket 1',
+    priority: 'high',
     type: 'task',
     boardId: '42',
     columnId: '1'
@@ -15,6 +16,7 @@ export const tickets = [
   {
     id: '2',
     title: 'Test ticket 1',
+    priority: 'low',
     type: 'task',
     boardId: '42',
     columnId: '2'
@@ -22,6 +24,7 @@ export const tickets = [
   {
     id: '3',
     title: 'Test ticket 1',
+    priority: 'medium',
     type: 'task',
     boardId: '42',
     columnId: '3'

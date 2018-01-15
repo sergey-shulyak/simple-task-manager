@@ -34,7 +34,6 @@ exports[`BoardEntry Should render correctly 1`] = `
           aria-hidden="true"
           className="fa fa-pencil"
         />
-         Edit
       </button>
       <button
         className="board-entry__delete"
@@ -44,7 +43,6 @@ exports[`BoardEntry Should render correctly 1`] = `
           aria-hidden="true"
           className="fa fa-trash"
         />
-         Delete
       </button>
     </div>
   </div>

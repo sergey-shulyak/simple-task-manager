@@ -16,7 +16,8 @@ exports[`Column Should render correctly 1`] = `
     description=""
     id="1"
     key="1"
-    priority="medium"
+    priority="high"
+    showModal={[Function]}
     title="Test ticket 1"
     type="task"
   />
@@ -27,7 +28,8 @@ exports[`Column Should render correctly 1`] = `
     description=""
     id="2"
     key="2"
-    priority="medium"
+    priority="low"
+    showModal={[Function]}
     title="Test ticket 1"
     type="task"
   />
@@ -39,6 +41,7 @@ exports[`Column Should render correctly 1`] = `
     id="3"
     key="3"
     priority="medium"
+    showModal={[Function]}
     title="Test ticket 1"
     type="task"
   />

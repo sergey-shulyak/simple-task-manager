@@ -7,7 +7,7 @@ describe('Tickets actions', () => {
 
     const expectedAction = {
       type: types.FETCH_TICKETS,
-      payload: boardId
+      payload: { id: boardId }
     };
 
     const actualAction = actions.fetchTickets(boardId);

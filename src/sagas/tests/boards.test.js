@@ -7,6 +7,8 @@ import * as types from '../../store/actionTypes/boards';
 import { SET_BOARDS_ERROR } from '../../store/actionTypes/ui';
 import { boardListSchema, boardSchema } from '../../store/schema';
 
+import * as toasts from '../utils';
+
 describe('Boards sagas', () => {
   it('Should fetch boards and save them on no payload', () => {
     const boards = [
@@ -59,13 +61,15 @@ describe('Boards sagas', () => {
       putSetError: put({
         type: SET_BOARDS_ERROR,
         payload: expect.any(String)
-      })
+      }),
+      callShowErrorToast: call(toasts.showErrorToast, expect.any(String), expect.any(Error))
     };
 
     const saga = fetchBoardsSaga(action);
 
     expect(saga.next().value).toEqual(expectedResults.callGetBoards);
     expect(saga.next().value).toMatchObject(expectedResults.putSetError);
+    expect(saga.next().value).toMatchObject(expectedResults.callShowErrorToast);
     expect(saga.next().done).toBe(true);
   });
 });

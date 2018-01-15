@@ -14,7 +14,7 @@ export function* fetchTicketsSaga({ payload: { id } }) {
     yield put(saveTicketsToStore(data));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, 'Failed to fetch tickets');
+    yield call(toasts.showErrorToast, 'Failed to fetch tickets', error);
   }
 }
 
@@ -27,7 +27,7 @@ export function* createTicketSaga({ payload = {}, meta = {} }) {
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to create ticket ${payload.title}`);
+    yield call(toasts.showErrorToast, `Failed to create ticket ${payload.title}`, error);
   }
 }
 
@@ -40,7 +40,7 @@ export function* updateTicketSaga({ payload = {}, meta = {} }) {
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, `Failed to update ticket ${payload.title}`);
+    yield call(toasts.showErrorToast, `Failed to update ticket ${payload.title}`, error);
   }
 }
 
@@ -53,7 +53,7 @@ export function* deleteTicketSaga({ payload = {}, meta = {} }) {
     yield put(fetchTickets(meta.boardId));
   } catch (error) {
     yield put(ui.setTicketsError(error.message));
-    yield call(toasts.showErrorToast, 'Failed to remove ticket');
+    yield call(toasts.showErrorToast, 'Failed to remove ticket', error);
   }
 }
 

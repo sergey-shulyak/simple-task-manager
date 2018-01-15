@@ -6,7 +6,7 @@ import BoardList from '../../boardListPage/boardList';
 import BoardEntry from '../../boardListPage/boardList/boardEntry';
 
 const props = {
-  showDeleteModal: jest.fn()
+  showModal: jest.fn()
 };
 
 const children = [

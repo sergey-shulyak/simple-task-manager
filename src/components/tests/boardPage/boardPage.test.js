@@ -12,6 +12,7 @@ const getProps = overrides => ({
   fetchBoard: jest.fn(),
   fetchTickets: jest.fn(),
   match: { params: { id: '42' } },
+  showModal: jest.fn(),
   ...overrides
 });
 

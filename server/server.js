@@ -20,7 +20,7 @@ const errorLogger = (err, req, res, next) => {
 
 /* eslint-disable no-unused-vars */
 const errorSender = (err, req, res, next) => {
-  res.status(500).json({ error: 'Server error occured' });
+  res.status(500).json({ error: err.message });
 };
 /* eslint-enable */
 

@@ -9,7 +9,7 @@ exports[`BoardList Should render correctly 1`] = `
     description=""
     id="1"
     key="1"
-    showDeleteModal={[Function]}
+    showModal={[Function]}
     title="test"
   />
   <BoardEntry
@@ -17,7 +17,7 @@ exports[`BoardList Should render correctly 1`] = `
     description=""
     id="2"
     key="2"
-    showDeleteModal={[Function]}
+    showModal={[Function]}
     title="test"
   />
   <BoardEntry
@@ -25,7 +25,7 @@ exports[`BoardList Should render correctly 1`] = `
     description=""
     id="3"
     key="3"
-    showDeleteModal={[Function]}
+    showModal={[Function]}
     title="test"
   />
 </div>
