@@ -21,37 +21,37 @@ export function* fetchTicketsSaga({ payload: { id } }) {
 
 export function* createTicketSaga({ payload = {}, meta = {} }) {
   try {
-    yield call(api.createTicket, meta.boardId, payload);
+    const createdTicket = yield call(api.createTicket, meta.boardId, payload);
 
     yield put(hideModal(modalNames.EDIT_TICKET));
     yield put(fetchTickets(meta.boardId));
-    yield call(showInfoToast, `Ticket ${payload.title} created`);
+    yield call(showInfoToast, `Ticket «${createdTicket.title}» created`);
   } catch (error) {
     yield put(setTicketsError(error.message));
-    yield call(showErrorToast, `Failed to create ticket ${payload.title}`, error);
+    yield call(showErrorToast, `Failed to create ticket «${payload.title}»`, error);
   }
 }
 
 export function* updateTicketSaga({ payload = {}, meta = {} }) {
   try {
-    yield call(api.updateTicket, payload);
+    const { updatedTicket } = yield call(api.updateTicket, payload);
 
     yield put(hideModal(modalNames.EDIT_TICKET));
     yield put(fetchTickets(meta.boardId));
-    yield call(showInfoToast, `Ticket ${payload.title} updated`);
+    yield call(showInfoToast, `Ticket «${updatedTicket.title}» updated`);
   } catch (error) {
     yield put(setTicketsError(error.message));
-    yield call(showErrorToast, `Failed to update ticket ${payload.title}`, error);
+    yield call(showErrorToast, `Failed to update ticket «${payload.title}»`, error);
   }
 }
 
 export function* deleteTicketSaga({ payload = {}, meta = {} }) {
   try {
-    yield call(api.deleteTicket, payload.ticketId);
+    const { deletedTicket } = yield call(api.deleteTicket, payload.ticketId);
 
     yield put(hideModal(modalNames.DELETE_TICKET));
     yield put(fetchTickets(meta.boardId));
-    yield call(showInfoToast, 'Ticket removed');
+    yield call(showInfoToast, `Ticket «${deletedTicket.title}» removed`);
   } catch (error) {
     yield put(setTicketsError(error.message));
     yield call(showErrorToast, 'Failed to remove ticket', error);

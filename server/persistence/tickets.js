@@ -43,20 +43,29 @@ const updateTicket = ticket => new Promise(rejectOnError(async (resolve) => {
 
   const ticketsCollection = await getTicketsCollection();
 
-  const { modifiedCount } = await ticketsCollection.updateOne({ _id }, {
+  const { ok, value } = await ticketsCollection.findOneAndUpdate({ _id }, {
     $set: { ...data, boardId: bId }
   });
 
-  resolve({ id, modified: modifiedCount > 0 });
+  resolve({ modified: ok === 1, updatedTicket: value });
 }));
 
 const deleteTicket = id => new Promise(rejectOnError(async (resolve) => {
   const ticketCollection = await getTicketsCollection();
   const _id = new ObjectId(id);
 
-  const { deletedCount } = await ticketCollection.deleteOne({ _id });
+  const { ok, value } = await ticketCollection.findOneAndDelete({ _id });
 
-  resolve({ id, deleted: deletedCount > 0 });
+  resolve({ deleted: ok === 1, deletedTicket: value });
+}));
+
+const deleteBoardTickets = bId => new Promise(rejectOnError(async (resolve) => {
+  const ticketCollection = await getTicketsCollection();
+  const boardId = new ObjectId(bId);
+
+  const { deletedCount } = await ticketCollection.deleteMany({ boardId });
+
+  resolve({ deletedCount });
 }));
 
 module.exports = {
@@ -64,5 +73,6 @@ module.exports = {
   createTicket,
   getTicket,
   updateTicket,
-  deleteTicket
+  deleteTicket,
+  deleteBoardTickets
 };

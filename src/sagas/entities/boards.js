@@ -26,40 +26,40 @@ export function* fetchBoardsSaga({ payload = {} }) {
 
 export function* createBoardSaga({ payload = {} }) {
   try {
-    yield call(api.createBoard, payload);
+    const createdBoard = yield call(api.createBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
     yield put(fetchBoards());
-    yield call(showInfoToast, `Board ${payload.title} created`);
+    yield call(showInfoToast, `Board «${createdBoard.title}» created`);
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(showErrorToast, `Failed to create board ${payload.title}`, error);
+    yield call(showErrorToast, `Failed to create board «${payload.title}»`, error);
   }
 }
 
 export function* updateBoardSaga({ payload = {} }) {
   try {
-    yield call(api.updateBoard, payload);
+    const { updatedBoard } = yield call(api.updateBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
     yield put(fetchBoards());
-    yield call(showInfoToast, `Board ${payload.title} updated`);
+    yield call(showInfoToast, `Board «${updatedBoard.title}» updated`);
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(showErrorToast, `Failed to update board ${payload.title}`, error);
+    yield call(showErrorToast, `Failed to update board «${payload.title}»`, error);
   }
 }
 
 export function* deleteBoardSaga({ payload = {} }) {
   try {
-    yield call(api.deleteBoard, payload);
+    const { deletedBoard } = yield call(api.deleteBoard, payload);
 
     yield put(hideModal(modalNames.DELETE_BOARD));
     yield put(fetchBoards());
-    yield call(showInfoToast, 'Board removed');
+    yield call(showInfoToast, `Board «${deletedBoard.title}» removed`);
   } catch (error) {
     yield put(setBoardsError(error.message));
-    yield call(showErrorToast, `Failed to remove board ${payload.title}`, error);
+    yield call(showErrorToast, 'Failed to remove board', error);
   }
 }
 
