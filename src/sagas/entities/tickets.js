@@ -24,8 +24,8 @@ export function* createTicketSaga({ payload = {}, meta = {} }) {
     yield call(api.createTicket, meta.boardId, payload);
 
     yield put(hideModal(modalNames.EDIT_TICKET));
-    yield call(showInfoToast, `Ticket ${payload.title} created`);
     yield put(fetchTickets(meta.boardId));
+    yield call(showInfoToast, `Ticket ${payload.title} created`);
   } catch (error) {
     yield put(setTicketsError(error.message));
     yield call(showErrorToast, `Failed to create ticket ${payload.title}`, error);
@@ -37,8 +37,8 @@ export function* updateTicketSaga({ payload = {}, meta = {} }) {
     yield call(api.updateTicket, payload);
 
     yield put(hideModal(modalNames.EDIT_TICKET));
-    yield call(showInfoToast, `Ticket ${payload.title} updated`);
     yield put(fetchTickets(meta.boardId));
+    yield call(showInfoToast, `Ticket ${payload.title} updated`);
   } catch (error) {
     yield put(setTicketsError(error.message));
     yield call(showErrorToast, `Failed to update ticket ${payload.title}`, error);
@@ -50,8 +50,8 @@ export function* deleteTicketSaga({ payload = {}, meta = {} }) {
     yield call(api.deleteTicket, payload.ticketId);
 
     yield put(hideModal(modalNames.DELETE_TICKET));
-    yield call(showInfoToast, 'Ticket removed');
     yield put(fetchTickets(meta.boardId));
+    yield call(showInfoToast, 'Ticket removed');
   } catch (error) {
     yield put(setTicketsError(error.message));
     yield call(showErrorToast, 'Failed to remove ticket', error);
