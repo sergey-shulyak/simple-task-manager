@@ -29,8 +29,8 @@ export function* createBoardSaga({ payload = {} }) {
     yield call(api.createBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
-    yield call(showInfoToast, `Board ${payload.title} created`);
     yield put(fetchBoards());
+    yield call(showInfoToast, `Board ${payload.title} created`);
   } catch (error) {
     yield put(setBoardsError(error.message));
     yield call(showErrorToast, `Failed to create board ${payload.title}`, error);
@@ -42,8 +42,8 @@ export function* updateBoardSaga({ payload = {} }) {
     yield call(api.updateBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
-    yield call(showInfoToast, `Board ${payload.title} updated`);
     yield put(fetchBoards());
+    yield call(showInfoToast, `Board ${payload.title} updated`);
   } catch (error) {
     yield put(setBoardsError(error.message));
     yield call(showErrorToast, `Failed to update board ${payload.title}`, error);
@@ -55,8 +55,8 @@ export function* deleteBoardSaga({ payload = {} }) {
     yield call(api.deleteBoard, payload);
 
     yield put(hideModal(modalNames.DELETE_BOARD));
-    yield call(showInfoToast, 'Board removed');
     yield put(fetchBoards());
+    yield call(showInfoToast, 'Board removed');
   } catch (error) {
     yield put(setBoardsError(error.message));
     yield call(showErrorToast, `Failed to remove board ${payload.title}`, error);

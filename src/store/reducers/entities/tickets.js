@@ -5,7 +5,7 @@ const defaultState = {};
 
 const ticketsReducer = handleAction(
   saveTicketsToStore,
-  (state, { payload }) => payload || state,
+  (state, { payload }) => payload || defaultState,
   defaultState
 );
 
