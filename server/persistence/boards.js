@@ -1,4 +1,5 @@
 const { ObjectId } = require('mongodb');
+const { deleteBoardTickets } = require('./tickets');
 const {
   rejectOnError,
   getCollection,
@@ -50,20 +51,21 @@ const updateBoard = board => new Promise(rejectOnError(async (resolve) => {
   const columnsWithId = populateColumnsWithIdOrDefault(columns, existingColumns);
 
   const boardCollection = await getBoardsCollection();
-  const { modifiedCount } = await boardCollection.updateOne({ _id }, {
+  const { ok, value } = await boardCollection.findOneAndUpdate({ _id }, {
     $set: { ...rest, columns: columnsWithId }
   });
 
-  resolve({ id, modified: modifiedCount > 0 });
+  resolve({ modified: ok === 1, updatedBoard: value });
 }));
 
 const deleteBoard = id => new Promise(rejectOnError(async (resolve) => {
   const boardCollection = await getBoardsCollection();
   const _id = new ObjectId(id);
 
-  const { deletedCount } = await boardCollection.deleteOne({ _id });
+  await deleteBoardTickets(id);
+  const { ok, value } = await boardCollection.findOneAndDelete({ _id });
 
-  resolve({ id, deleted: deletedCount > 0 });
+  resolve({ deleted: ok === 1, deletedBoard: value });
 }));
 
 module.exports = {
