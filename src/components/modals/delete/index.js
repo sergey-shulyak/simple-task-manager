@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import Modal from '../base';
 
-import modalNames from '../modalNames';
-
-import './deleteModal.scss';
+import './delete.scss';
 
 const DeleteModal = props => (
   <Modal
@@ -16,16 +14,16 @@ const DeleteModal = props => (
     content={
       <div>
         <p className="delete-modal__message">Are you sure you want to delete
-          <span className="delete-board__accent"> {props.data.title}</span>?
+          <span className="delete-modal__accent"> {props.data.title}</span>?
         </p>
         <div className="delete-modal__button-container">
           <button
-            className="delete-modal__button delete-board__button_yes"
+            className="delete-modal__button delete-modal__button_yes"
             onClick={event => props.handleDelete(event, props)}> Yes
           </button>
           <button
-            className="delete-modal__button delete-modal__button_no"
-            onClick={() => props.handleClose(modalNames.DELETE_BOARD)}>No
+            className="delete-modal__button"
+            onClick={props.handleClose}>No
           </button>
         </div>
       </div>
