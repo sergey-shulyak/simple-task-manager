@@ -1,92 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Ticket Should render correctly 1`] = `
-<Link
-  className="ticket__wrapper"
-  replace={false}
-  to="/boards/24/tickets/42"
+<div
+  className="ticket custom"
 >
   <div
-    className="ticket custom"
+    className="ticket__info"
   >
-    <div
-      className="ticket__info"
+    <h3
+      className="ticket__title"
     >
-      <h3
-        className="ticket__title"
-      >
-        Sample title
-      </h3>
-      <p
-        className="ticket__description"
-      >
-        Sample description
-      </p>
-      <p>
-        <span
-          className="ticket__field"
-        >
-          Type: 
-        </span>
-        <span
-          className="ticket__icon"
-        >
-          <i
-            aria-hidden="true"
-            className="fa fa-wrench"
-          />
-           
-        </span>
-        <span
-          className="ticket__type ticket__type_task"
-        >
-          task
-        </span>
-      </p>
-      <p>
-        <span
-          className="ticket__field"
-        >
-          Priority: 
-        </span>
-        <span
-          className="ticket__icon"
-        >
-          <i
-            aria-hidden="true"
-            className="fa fa-angle-up"
-          />
-           
-        </span>
-        <span
-          className="ticket__priority ticket__priority_medium"
-        >
-          medium
-        </span>
-      </p>
-    </div>
-    <div
-      className="ticket__controls"
+      Sample title
+    </h3>
+    <p
+      className="ticket__description"
     >
-      <button
-        className="ticket__edit"
-        onClick={[Function]}
+      Sample description
+    </p>
+    <p>
+      <span
+        className="ticket__field"
+      >
+        Type: 
+      </span>
+      <span
+        className="ticket__icon"
       >
         <i
           aria-hidden="true"
-          className="fa fa-pencil"
+          className="fa fa-wrench"
         />
-      </button>
-      <button
-        className="ticket__delete"
-        onClick={[Function]}
+         
+      </span>
+      <span
+        className="ticket__type ticket__type_task"
+      >
+        task
+      </span>
+    </p>
+    <p>
+      <span
+        className="ticket__field"
+      >
+        Priority: 
+      </span>
+      <span
+        className="ticket__icon"
       >
         <i
           aria-hidden="true"
-          className="fa fa-trash"
+          className="fa fa-angle-up"
         />
-      </button>
-    </div>
+         
+      </span>
+      <span
+        className="ticket__priority ticket__priority_medium"
+      >
+        medium
+      </span>
+    </p>
   </div>
-</Link>
+  <div
+    className="ticket__controls"
+  >
+    <button
+      className="ticket__edit"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-pencil"
+      />
+    </button>
+    <button
+      className="ticket__delete"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="fa fa-trash"
+      />
+    </button>
+  </div>
+</div>
 `;
