@@ -46,12 +46,12 @@ const Ticket = props => (
       <button
         className="ticket__edit"
         onClick={event => handleEditButtonClick(event, props)} >
-        <i className="fa fa-pencil" aria-hidden="true" />
+        <i className="fas fa-edit" aria-hidden="true" />
       </button>
       <button
         className="ticket__delete"
         onClick={event => handleDeleteButtonClick(event, props)} >
-        <i className="fa fa-trash" aria-hidden="true" />
+        <i className="fas fa-trash" aria-hidden="true" />
       </button>
     </div>
   </div>

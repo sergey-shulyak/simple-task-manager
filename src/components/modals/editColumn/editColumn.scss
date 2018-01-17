@@ -1,0 +1,5 @@
+@import '../../common';
+
+.edit-column {
+  @include modal-form;
+}

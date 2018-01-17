@@ -2,11 +2,6 @@
 
 .board {
   font-family: $default-font;
-  
-  &__columns {
-    display: flex;
-    flex-wrap: wrap;
-  }
 
   &__title {
     font-weight: normal;
@@ -14,10 +9,32 @@
     color: $secondary-color;
   }
 
+  &__controls {
+    @include centeredFlexContainer;
+  }
+
+  &__new-column-button {
+    @include button($secondary-color);
+
+    margin-right: 1em;
+    font-size: 1em;
+  }
+
+  &__new-ticket-button {
+    @include button($secondary-color);
+
+    font-size: 1em;
+  }
+
+  &__columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   &__column {
     margin: 1em;
     margin-top: 0;
-    
+
     flex: 1 1 0;
 
     &:first-child {
@@ -28,4 +45,5 @@
       margin-right: 0;
     }
   }
+
 }

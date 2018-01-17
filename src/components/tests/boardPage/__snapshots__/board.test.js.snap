@@ -10,11 +10,49 @@ exports[`Board Should render correctly 1`] = `
     Sample title
   </h1>
   <div
+    className="board__controls"
+  >
+    <button
+      className="board__new-column-button"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-columns"
+      />
+       Add column
+    </button>
+    <button
+      className="board__new-ticket-button"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-ticket-alt"
+      />
+       Create ticket
+    </button>
+  </div>
+  <div
     className="board__columns"
   >
     <Column
       boardId=""
       className="board__column"
+      columns={
+        Array [
+          Object {
+            "id": "1",
+            "title": "To do",
+          },
+          Object {
+            "id": "2",
+            "title": "In progress",
+          },
+          Object {
+            "id": "3",
+            "title": "Done",
+          },
+        ]
+      }
       id="1"
       key="1"
       showModal={[Function]}
@@ -35,6 +73,22 @@ exports[`Board Should render correctly 1`] = `
     <Column
       boardId=""
       className="board__column"
+      columns={
+        Array [
+          Object {
+            "id": "1",
+            "title": "To do",
+          },
+          Object {
+            "id": "2",
+            "title": "In progress",
+          },
+          Object {
+            "id": "3",
+            "title": "Done",
+          },
+        ]
+      }
       id="2"
       key="2"
       showModal={[Function]}
@@ -55,6 +109,22 @@ exports[`Board Should render correctly 1`] = `
     <Column
       boardId=""
       className="board__column"
+      columns={
+        Array [
+          Object {
+            "id": "1",
+            "title": "To do",
+          },
+          Object {
+            "id": "2",
+            "title": "In progress",
+          },
+          Object {
+            "id": "3",
+            "title": "Done",
+          },
+        ]
+      }
       id="3"
       key="3"
       showModal={[Function]}

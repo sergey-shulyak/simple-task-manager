@@ -14,7 +14,7 @@ const mapDispatch = dispatch => ({
   hideModal: modalName => dispatch(modals.hideModal(modalName)),
   updateModalData: (modalName, data) => dispatch(modals.updateModalData(modalName, data)),
   createBoard: board => dispatch(boards.createBoard(board)),
-  updateBoard: board => dispatch(boards.updateBoard(board)),
+  updateBoard: (board, meta) => dispatch(boards.updateBoard(board, meta)),
   deleteBoard: id => dispatch(boards.deleteBoard(id)),
   createTicket: (boardId, data) => dispatch(tickets.createTicket(boardId, data)),
   updateTicket: (boardId, data) => dispatch(tickets.updateTicket(boardId, data)),

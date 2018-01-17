@@ -28,7 +28,7 @@ exports[`Ticket Should render correctly 1`] = `
       >
         <i
           aria-hidden="true"
-          className="fa fa-wrench"
+          className="fas fa-wrench"
         />
          
       </span>
@@ -49,7 +49,7 @@ exports[`Ticket Should render correctly 1`] = `
       >
         <i
           aria-hidden="true"
-          className="fa fa-angle-up"
+          className="fas fa-angle-up"
         />
          
       </span>
@@ -69,7 +69,7 @@ exports[`Ticket Should render correctly 1`] = `
     >
       <i
         aria-hidden="true"
-        className="fa fa-pencil"
+        className="fas fa-edit"
       />
     </button>
     <button
@@ -78,7 +78,7 @@ exports[`Ticket Should render correctly 1`] = `
     >
       <i
         aria-hidden="true"
-        className="fa fa-trash"
+        className="fas fa-trash"
       />
     </button>
   </div>

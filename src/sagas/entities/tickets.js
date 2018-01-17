@@ -23,8 +23,8 @@ export function* createTicketSaga({ payload = {}, meta = {} }) {
   try {
     const createdTicket = yield call(api.createTicket, meta.boardId, payload);
 
-    yield put(hideModal(modalNames.EDIT_TICKET));
     yield put(fetchTickets(meta.boardId));
+    yield put(hideModal(modalNames.EDIT_TICKET));
     yield call(showInfoToast, `Ticket «${createdTicket.title}» created`);
   } catch (error) {
     yield put(setTicketsError(error.message));
@@ -36,8 +36,8 @@ export function* updateTicketSaga({ payload = {}, meta = {} }) {
   try {
     const { updatedTicket } = yield call(api.updateTicket, payload);
 
-    yield put(hideModal(modalNames.EDIT_TICKET));
     yield put(fetchTickets(meta.boardId));
+    yield put(hideModal(modalNames.EDIT_TICKET));
     yield call(showInfoToast, `Ticket «${updatedTicket.title}» updated`);
   } catch (error) {
     yield put(setTicketsError(error.message));
@@ -49,8 +49,8 @@ export function* deleteTicketSaga({ payload = {}, meta = {} }) {
   try {
     const { deletedTicket } = yield call(api.deleteTicket, payload.ticketId);
 
-    yield put(hideModal(modalNames.DELETE_TICKET));
     yield put(fetchTickets(meta.boardId));
+    yield put(hideModal(modalNames.DELETE_TICKET));
     yield call(showInfoToast, `Ticket «${deletedTicket.title}» removed`);
   } catch (error) {
     yield put(setTicketsError(error.message));

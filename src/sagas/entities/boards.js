@@ -28,8 +28,8 @@ export function* createBoardSaga({ payload = {} }) {
   try {
     const createdBoard = yield call(api.createBoard, payload);
 
-    yield put(hideModal(modalNames.EDIT_BOARD));
     yield put(fetchBoards());
+    yield put(hideModal(modalNames.EDIT_BOARD));
     yield call(showInfoToast, `Board «${createdBoard.title}» created`);
   } catch (error) {
     yield put(setBoardsError(error.message));
@@ -37,13 +37,30 @@ export function* createBoardSaga({ payload = {} }) {
   }
 }
 
-export function* updateBoardSaga({ payload = {} }) {
+function* showColumnToast(meta) {
+  if (meta.isRemoved) {
+    yield put(hideModal(modalNames.DELETE_COLUMN));
+    yield call(showInfoToast, `Column «${meta.columnTitle}» removed`);
+  } else {
+    yield put(hideModal(modalNames.EDIT_COLUMN));
+    yield meta.isNew
+      ? yield call(showInfoToast, `Column «${meta.columnTitle}» created`)
+      : yield call(showInfoToast, `Column «${meta.columnTitle}» updated`);
+  }
+}
+
+export function* updateBoardSaga({ payload = {}, meta = {} }) {
   try {
     const { updatedBoard } = yield call(api.updateBoard, payload);
 
-    yield put(hideModal(modalNames.EDIT_BOARD));
-    yield put(fetchBoards());
-    yield call(showInfoToast, `Board «${updatedBoard.title}» updated`);
+    if (meta.onlyColumns) {
+      yield put(fetchBoards(payload.id));
+      yield* showColumnToast(meta);
+    } else {
+      yield put(fetchBoards());
+      yield put(hideModal(modalNames.EDIT_BOARD));
+      yield call(showInfoToast, `Board «${updatedBoard.title}» updated`);
+    }
   } catch (error) {
     yield put(setBoardsError(error.message));
     yield call(showErrorToast, `Failed to update board «${payload.title}»`, error);
@@ -54,8 +71,8 @@ export function* deleteBoardSaga({ payload = {} }) {
   try {
     const { deletedBoard } = yield call(api.deleteBoard, payload);
 
-    yield put(hideModal(modalNames.DELETE_BOARD));
     yield put(fetchBoards());
+    yield put(hideModal(modalNames.DELETE_BOARD));
     yield call(showInfoToast, `Board «${deletedBoard.title}» removed`);
   } catch (error) {
     yield put(setBoardsError(error.message));

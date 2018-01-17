@@ -3,19 +3,44 @@ import PropTypes from 'prop-types';
 
 import Column from './column';
 
+import modalNames from '../../modals/modalNames';
+
 import './board.scss';
 
-const Board = ({ id, title, columns, tickets, showModal }) => (
+const handleNewTicketButtonClick = (event, props) =>
+  props.showModal(modalNames.EDIT_TICKET);
+
+const handleNewColumnButtonClick = (event, props) =>
+  props.showModal(modalNames.EDIT_COLUMN, {
+    boardId: props.id,
+    columns: props.columns,
+    isNew: true
+  });
+
+const Board = props => (
   <div className="board">
-    <h1 className="board__title">{title}</h1>
+    <h1 className="board__title">{props.title}</h1>
+    <div className="board__controls">
+      <button
+        className="board__new-column-button"
+        onClick={e => handleNewColumnButtonClick(e, props)}>
+        <i className="fas fa-columns" /> Add column
+      </button>
+      <button
+        className="board__new-ticket-button"
+        onClick={e => handleNewTicketButtonClick(e, props)}>
+        <i className="fas fa-ticket-alt" /> Create ticket
+      </button>
+    </div>
     <div className="board__columns">
-      {columns.map(column => (
+      {props.columns.map(column => (
         <Column
           key={column.id}
           className="board__column"
-          boardId={id}
-          tickets={tickets.filter(ticket => ticket.columnId === column.id)}
-          showModal={showModal}
+          boardId={props.id}
+          tickets={props.tickets.filter(ticket => ticket.columnId === column.id)}
+          showModal={props.showModal}
+          columns={props.columns}
           {...column}
         />))}
     </div>

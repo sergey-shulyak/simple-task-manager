@@ -36,12 +36,12 @@ const BoardEntry = props => (
         <button
           className="board-entry__edit"
           onClick={event => handleEditButtonClick(event, props)}>
-          <i className="fa fa-pencil" aria-hidden="true" />
+          <i className="fas fa-edit" aria-hidden="true" /> Edit
         </button>
         <button
           className="board-entry__delete"
           onClick={event => handleDeleteButtonClick(event, props)}>
-          <i className="fa fa-trash" aria-hidden="true" />
+          <i className="fas fa-trash" aria-hidden="true" /> Remove
         </button>
       </div>
     </div>

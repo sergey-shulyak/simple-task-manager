@@ -139,3 +139,10 @@ $red: #b16262;
     font-size: 1em;
   }
 }
+
+  @mixin centeredFlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }

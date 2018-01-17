@@ -9,14 +9,11 @@ exports[`BoardListPage Should render correctly 1`] = `
     replace={false}
     to="/boards"
   >
-    Go back
+    <i
+      className="far fa-arrow-alt-circle-left"
+    />
+     Go back
   </Link>
-  <button
-    className="board-page__new-ticket-link"
-    onClick={[Function]}
-  >
-    New ticket
-  </button>
   <Board
     className="board-page__board"
     columns={

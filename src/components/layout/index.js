@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import EditBoardModal from '../modals/editBoard';
 import DeleteModal from '../modals/delete';
+import EditColumnModal from '../modals/editColumn';
 import EditTicketModal from '../modals/editTicket';
 
 import modalNames from '../modals/modalNames';
@@ -25,6 +26,18 @@ const isEdit = (modalName, modals) =>
 const getDeleteBoardHandler = deleteBoard => (event, props) => {
   event.preventDefault();
   deleteBoard(props.data.id);
+};
+
+const getDeleteColumnHandler = updateBoard => (event, props) => {
+  event.preventDefault();
+
+  const { id, title, boardId, columns } = props.data;
+  const filteredColumns = columns.filter(column => column.id !== id);
+
+  updateBoard(
+    { id: boardId, columns: filteredColumns },
+    { onlyColumns: true, columnTitle: title, isRemoved: true }
+  );
 };
 
 const getDeleteTicketHandler = deleteTicket => (event, props) => {
@@ -51,6 +64,21 @@ const Layout = ({ modals, ...props }) => (
       data={getData(modalNames.DELETE_BOARD, modals)}
       handleClose={() => props.hideModal(modalNames.DELETE_BOARD)}
       handleDelete={getDeleteBoardHandler(props.deleteBoard)} />
+
+    <EditColumnModal
+      isShown={isShown(modalNames.EDIT_COLUMN, modals)}
+      isEdit={isEdit(modalNames.EDIT_COLUMN, modals)}
+      data={getData(modalNames.EDIT_COLUMN, modals)}
+      handleClose={props.hideModal}
+      handleChange={props.updateModalData}
+      updateBoard={props.updateBoard} />
+
+    <DeleteModal
+      title="Delete Column"
+      isShown={isShown(modalNames.DELETE_COLUMN, modals)}
+      data={getData(modalNames.DELETE_COLUMN, modals)}
+      handleClose={() => props.hideModal(modalNames.DELETE_COLUMN)}
+      handleDelete={getDeleteColumnHandler(props.updateBoard)} />
 
     <EditTicketModal
       isShown={isShown(modalNames.EDIT_TICKET, modals)}

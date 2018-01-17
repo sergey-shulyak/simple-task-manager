@@ -3,21 +3,30 @@
 .board-list-page {
   margin: 2em;
 
+  &__controls {
+    float: left;
+  }
+
   &__back-link {
     @include button($secondary-color);
-    position: sticky;
-    top: 1em;
+    margin-right: 1em;
   }
 
   &__new-board-link {
-    @include button($green);
-    position: sticky;
-    top: 1em;
-    left : 9em;
+    @include button($secondary-color);
+    font-size: 1em;
+  }
+
+  &__title {
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: $default-font;
+    font-weight: normal;
   }
 
   &__board-list {
-    margin: -3em auto;
-    width: 40%;
+    margin: auto;
+    width: 60%;
   }
 }

@@ -34,6 +34,7 @@ const EditBoardModal = props => (
       <form onSubmit={event => handleSubmit(event, props)} method="POST">
         <label htmlFor="title" className="edit-board__label">Title</label>
         <input
+          autoFocus
           className="edit-board__input"
           id="title"
           name="title"
