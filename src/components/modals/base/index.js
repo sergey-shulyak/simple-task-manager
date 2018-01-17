@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 
 import './modal.scss';
 
+const handleKeyPress = (event, props) => {
+  if (event.key === 'Escape') {
+    props.handleClose();
+  }
+};
+
 const Modal = props =>
   (props.isShown ?
-    <div className="background">
+    <div className="background" onKeyDown={e => handleKeyPress(e, props)}>
       <div className={`modal ${props.className}`}>
         <div className="modal__header">
           <h2 className="modal__title">

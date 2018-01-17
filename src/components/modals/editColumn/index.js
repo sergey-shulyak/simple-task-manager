@@ -47,6 +47,7 @@ const EditColumnModal = props => (
       <form onSubmit={event => handleSubmit(event, props)} method="POST">
         <label htmlFor="title" className="edit-column__label">Title</label>
         <input
+          autoFocus
           className="edit-column__input"
           id="title"
           name="title"

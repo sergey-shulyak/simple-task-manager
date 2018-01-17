@@ -38,6 +38,7 @@ const EditTicketModal = props => (
       <form onSubmit={event => handleSubmit(event, props)} method="POST">
         <label htmlFor="title" className="edit-ticket__label">Title</label>
         <input
+          autoFocus
           className="edit-ticket__input"
           id="title"
           name="title"
