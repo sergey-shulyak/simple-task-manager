@@ -25,7 +25,7 @@ fi
 
 echo "Starting server"
 if ssh "$SERVER_USER@$SERVER_HOST" -p $SERVER_SSH_PORT <<RESTART
-  pkill -9 -f -U $UID node
+  pgrep -U $UID node | xargs kill
   bash -c "cd $SERVER_DESTINATION/$PROJECT_NAME/server; nohup npm start > server.log 2>&1 &"
 RESTART
 then
