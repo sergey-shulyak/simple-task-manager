@@ -22,12 +22,16 @@ class BoardListPage extends Component {
 
     return (
       <div className="board-list-page">
-        <Link to={HOME_URL} className="board-list-page__back-link">Go back</Link>
-        <a
-          className="board-list-page__new-board-link"
-          onClick={e => this.handleNewBoardButtonClick(e, this.props)}
-        >New board
-        </a>
+        <div className="board-list-page__controls">
+          <Link to={HOME_URL} className="board-list-page__back-link">
+            <i className="far fa-arrow-alt-circle-left" /> Go back
+          </Link>
+          <button
+            className="board-list-page__new-board-link"
+            onClick={e => this.handleNewBoardButtonClick(e, this.props)}>
+            <i className="fas fa-plus" /> Add board
+          </button>
+        </div>
         <BoardList className="board-list-page__board-list">
           {boards.map(board => (
             <BoardEntry

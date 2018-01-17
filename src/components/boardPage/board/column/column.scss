@@ -1,10 +1,29 @@
-@import '../../../common.scss';
+@import '../../../common';
 
 .column {
   &__title {
+    display: inline-block;
     color: $secondary-color;
     font-weight: lighter;
     text-align: center;
+  }
+
+  &__controls {
+    @include centeredFlexContainer;
+  }
+
+  &__button-rename {
+    @include button($secondary-color);
+    margin-left: 1em;
+    padding: 0.5em;
+    font-size: 1em;
+  }
+
+  &__button-delete {
+    @include button($red);
+    margin-left: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
   }
 
   &__ticket {

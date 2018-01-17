@@ -4,19 +4,29 @@ exports[`BoardListPage Should render correctly 1`] = `
 <div
   className="board-list-page"
 >
-  <Link
-    className="board-list-page__back-link"
-    replace={false}
-    to="/"
+  <div
+    className="board-list-page__controls"
   >
-    Go back
-  </Link>
-  <a
-    className="board-list-page__new-board-link"
-    onClick={[Function]}
-  >
-    New board
-  </a>
+    <Link
+      className="board-list-page__back-link"
+      replace={false}
+      to="/"
+    >
+      <i
+        className="far fa-arrow-alt-circle-left"
+      />
+       Go back
+    </Link>
+    <button
+      className="board-list-page__new-board-link"
+      onClick={[Function]}
+    >
+      <i
+        className="fas fa-plus"
+      />
+       Add board
+    </button>
+  </div>
   <BoardList
     className="board-list-page__board-list"
   >

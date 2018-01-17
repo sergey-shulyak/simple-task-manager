@@ -42,6 +42,8 @@ export function* updateBoardSaga({ payload = {} }) {
     const { updatedBoard } = yield call(api.updateBoard, payload);
 
     yield put(hideModal(modalNames.EDIT_BOARD));
+    yield put(hideModal(modalNames.EDIT_COLUMN));
+    yield put(hideModal(modalNames.DELETE_COLUMN));
     yield put(fetchBoards());
     yield call(showInfoToast, `Board «${updatedBoard.title}» updated`);
   } catch (error) {

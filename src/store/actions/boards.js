@@ -8,7 +8,7 @@ const mapColumnStringToArray = columns => (columns
 
 const boardWithTransformedColumns = ({ columns, ...board }) => ({
   ...board,
-  columns: mapColumnStringToArray(columns)
+  columns: Array.isArray(columns) ? columns : mapColumnStringToArray(columns)
 });
 
 export const {
