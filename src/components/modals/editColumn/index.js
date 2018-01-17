@@ -8,14 +8,14 @@ import modalNames from '../modalNames';
 
 import './editColumn.scss';
 
-function splice(arr, start, deleteCount, ...items) {
-  return [...arr.slice(0, start), ...items, ...arr.slice(start + deleteCount)]
-}
+const splice = (arr, start, deleteCount, ...items) => [
+  ...arr.slice(0, start), ...items, ...arr.slice(start + deleteCount)
+];
 
 const handleSubmit = (event, props) => {
   event.preventDefault();
 
-  const { id, boardId, columns } = props.data;
+  const { id, boardId, columns, isNew = false } = props.data;
   const formData = serialize(event.target, { hash: true });
 
   const existingColumn = columns.find(column =>
@@ -26,7 +26,10 @@ const handleSubmit = (event, props) => {
     ? splice(columns, columnIndex, 1, { ...existingColumn, ...formData })
     : [...columns, { id, ...formData }];
 
-  props.updateBoard({ id: boardId, columns: newColumns });
+  props.updateBoard({
+    id: boardId,
+    columns: newColumns
+  }, { onlyColumns: true, isNew, columnTitle: formData.title });
 };
 
 const handleChange = (event, props) => {

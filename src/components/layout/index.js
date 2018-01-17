@@ -31,10 +31,13 @@ const getDeleteBoardHandler = deleteBoard => (event, props) => {
 const getDeleteColumnHandler = updateBoard => (event, props) => {
   event.preventDefault();
 
-  const { id, boardId, columns } = props.data;
-  const updatedColumns = columns.filter(column => column.id !== id);
+  const { id, title, boardId, columns } = props.data;
+  const filteredColumns = columns.filter(column => column.id !== id);
 
-  updateBoard({ id: boardId, columns: updatedColumns });
+  updateBoard(
+    { id: boardId, columns: filteredColumns },
+    { onlyColumns: true, columnTitle: title, isRemoved: true }
+  );
 };
 
 const getDeleteTicketHandler = deleteTicket => (event, props) => {

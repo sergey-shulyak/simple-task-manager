@@ -22,7 +22,10 @@ export const {
     [actions.FETCH_BOARDS]: id => ({ id }),
     [actions.SAVE_BOARDS_TO_STORE]: ({ entities }) => entities.boards,
     [actions.CREATE_BOARD]: boardWithTransformedColumns,
-    [actions.UPDATE_BOARD]: boardWithTransformedColumns
+    [actions.UPDATE_BOARD]: [
+      boardWithTransformedColumns,
+      (data, meta) => meta
+    ]
   },
   actions.DELETE_BOARD
 );

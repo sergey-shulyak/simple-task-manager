@@ -13,7 +13,8 @@ const handleNewTicketButtonClick = (event, props) =>
 const handleNewColumnButtonClick = (event, props) =>
   props.showModal(modalNames.EDIT_COLUMN, {
     boardId: props.id,
-    columns: props.columns
+    columns: props.columns,
+    isNew: true
   });
 
 const Board = props => (
